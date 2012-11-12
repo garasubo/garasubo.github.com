@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[garasubo's note]]></title>
+  <link href="http://garasubo.github.com/atom.xml" rel="self"/>
+  <link href="http://garasubo.github.com/"/>
+  <updated>2012-11-12T23:14:36+09:00</updated>
+  <id>http://garasubo.github.com/</id>
+  <author>
+    <name><![CDATA[garasubo]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
