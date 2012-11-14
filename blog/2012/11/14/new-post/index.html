@@ -5,13 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - garasubo's note</title>
+  <title>Octopress導入記 - garasubo's note</title>
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="Blog Archive 2012 Octopress導入記
-Nov 14 2012 start up
-Nov 12 2012 Recent Posts Octopress導入記 start up GitHub Repos Status updating... @garasubo on &hellip;">
+  <meta name="description" content="octopressを導入するまで ruby 1.9を導入 octopressを動かすにはruby 1.9以上が必要。
+自分のubuntu 12.04には1.8.7しか入っていなかったのでrvmというものをつかって導入。
+rvmとはrubyの複数のバージョンを管理するためのツールで、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@ Nov 12 2012 Recent Posts Octopress導入記 start up GitHub Repos Status updatin
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://garasubo.github.com/blog/archives/">
+  <link rel="canonical" href="http://garasubo.github.com/blog/2012/11/14/new-post/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -65,41 +65,121 @@ Nov 12 2012 Recent Posts Octopress導入記 start up GitHub Repos Status updatin
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+    
+      <h1 class="entry-title">Octopress導入記</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-14T10:38:00+09:00" pubdate data-updated="true">Nov 14<span>th</span>, 2012</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives">
 
 
+<div class="entry-content"><p>octopressを導入するまで</p>
 
-  
-  <h2>2012</h2>
+<h1>ruby 1.9を導入</h1>
 
-<article>
-  
-<h1><a href="/blog/2012/11/14/new-post/">Octopress導入記</a></h1>
-<time datetime="2012-11-14T10:38:00+09:00" pubdate><span class='month'>Nov</span> <span class='day'>14</span> <span class='year'>2012</span></time>
+<p>octopressを動かすにはruby 1.9以上が必要。
+自分のubuntu 12.04には1.8.7しか入っていなかったのでrvmというものをつかって導入。
+rvmとはrubyの複数のバージョンを管理するためのツールで、これを使うとrubyの様々なバージョンをインストールすることが可能。</p>
 
+<p>で、「rvm インストール」とかで検索したらいろいろな方法があるのだが、どうもうまくいかない。
+twitterでヘルプを投げたところ@ompugaoさんから教えてもらった方法がうまくいった。</p>
 
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/11/12/start-up/">start up</a></h1>
-<time datetime="2012-11-12T23:15:00+09:00" pubdate><span class='month'>Nov</span> <span class='day'>12</span> <span class='year'>2012</span></time>
+<ol>
+<li>curl -L get.rvm.io | bash -s stable</li>
+<li>rvm requirementsで必要なパッケージを確認してinstall</li>
+<li>rvm install ruby-1.9.3</li>
+</ol>
 
 
-</article>
+<p>これをやる前にうっかりaptitudeでrvm-rubyをinstallしちゃったら</p>
 
+<pre><code>It looks you are one of the happy Ubuntu users, 
+RVM packaged by Ubuntu is old and broken, 
+</code></pre>
+
+<p>とか言われる。happyだから仕方ないね。
+まあ、解決策もちゃんとでてきて
+<a href="http://stackoverflow.com/questions/9056008/installed-ruby-1-9-3-with-rvm-but-command-line-doesnt-show-ruby-v/9056395#9056395">Installed Ruby 1.9.3 with RVM but command line doesn&#8217;t show ruby -v</a>
+の言われたとおりにすれば直った。</p>
+
+<p>それで</p>
+
+<pre><code>rvm 1.9.3
+</code></pre>
+
+<p>とかすれば、バージョン1.9.3が使える。が、シェルの設定でログインシェルとして使用するとかいうのをチェックしないとうまくいかない。</p>
+
+<h1>octopress導入</h1>
+
+<p><a href="http://blog.glidenote.com/blog/2011/11/07/install-octopress-on-github/">GithubとOctopressでモダンな技術系ブログを作ってみる</a>
+あたりを参考にすれば何とかなる。</p>
+
+<p>あとつまずいたのは、実際の記事を書くときになぜかファイルの文字コードがutf-8になっていなくてrake generateでコケたことくらいか。</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">garasubo</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-14T10:38:00+09:00" pubdate data-updated="true">Nov 14<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2012/11/14/new-post/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2012/11/14/new-post/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/12/start-up/" title="Previous Post: start up">&laquo; start up</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>

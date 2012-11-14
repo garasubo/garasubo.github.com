@@ -9,8 +9,9 @@
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="できつぁ
-">
+  <meta name="description" content="octopressを導入するまで ruby 1.9を導入 octopressを動かすにはruby 1.9以上が必要。
+自分のubuntu 12.04には1.8.7しか入っていなかったのでrvmというものをつかって導入。
+rvmとはrubyの複数のバージョンを管理するためのツールで、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +72,83 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/11/14/new-post/">Octopress導入記</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-14T10:38:00+09:00" pubdate data-updated="true">Nov 14<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>octopressを導入するまで</p>
+
+<h1>ruby 1.9を導入</h1>
+
+<p>octopressを動かすにはruby 1.9以上が必要。
+自分のubuntu 12.04には1.8.7しか入っていなかったのでrvmというものをつかって導入。
+rvmとはrubyの複数のバージョンを管理するためのツールで、これを使うとrubyの様々なバージョンをインストールすることが可能。</p>
+
+<p>で、「rvm インストール」とかで検索したらいろいろな方法があるのだが、どうもうまくいかない。
+twitterでヘルプを投げたところ@ompugaoさんから教えてもらった方法がうまくいった。</p>
+
+<ol>
+<li>curl -L get.rvm.io | bash -s stable</li>
+<li>rvm requirementsで必要なパッケージを確認してinstall</li>
+<li>rvm install ruby-1.9.3</li>
+</ol>
+
+
+<p>これをやる前にうっかりaptitudeでrvm-rubyをinstallしちゃったら</p>
+
+<pre><code>It looks you are one of the happy Ubuntu users, 
+RVM packaged by Ubuntu is old and broken, 
+</code></pre>
+
+<p>とか言われる。happyだから仕方ないね。
+まあ、解決策もちゃんとでてきて
+<a href="http://stackoverflow.com/questions/9056008/installed-ruby-1-9-3-with-rvm-but-command-line-doesnt-show-ruby-v/9056395#9056395">Installed Ruby 1.9.3 with RVM but command line doesn&#8217;t show ruby -v</a>
+の言われたとおりにすれば直った。</p>
+
+<p>それで</p>
+
+<pre><code>rvm 1.9.3
+</code></pre>
+
+<p>とかすれば、バージョン1.9.3が使える。が、シェルの設定でログインシェルとして使用するとかいうのをチェックしないとうまくいかない。</p>
+
+<h1>octopress導入</h1>
+
+<p><a href="http://blog.glidenote.com/blog/2011/11/07/install-octopress-on-github/">GithubとOctopressでモダンな技術系ブログを作ってみる</a>
+あたりを参考にすれば何とかなる。</p>
+
+<p>あとつまずいたのは、実際の記事を書くときになぜかファイルの文字コードがutf-8になっていなくてrake generateでコケたことくらいか。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/11/12/start-up/">Start Up</a></h1>
     
     
@@ -113,6 +191,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/11/14/new-post/">Octopress導入記</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/11/12/start-up/">start up</a>
