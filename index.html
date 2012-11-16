@@ -9,9 +9,9 @@
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="octopressを導入するまで ruby 1.9を導入 octopressを動かすにはruby 1.9以上が必要。
-自分のubuntu 12.04には1.8.7しか入っていなかったのでrvmというものをつかって導入。
-rvmとはrubyの複数のバージョンを管理するためのツールで、 &hellip;">
+  <meta name="description" content="こんな記事を見たのがきっかけ
+”恋に落ちるエディタ”「Sublime Text」 完全入門ガイド！ | デザイナーブログ | 株式会社LIG 普段はvimを愛用して、たしかに単体のファイルを編集する分にはいいのだが、
+ある程度のプロジェクトを管理するために便利なものはないかなあと思っていたが、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,6 +72,84 @@ rvmとはrubyの複数のバージョンを管理するためのツールで、 
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/11/16/st2/">Sublime Text 2を使ってみる</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-16T09:55:00+09:00" pubdate data-updated="true">Nov 16<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/11/16/st2/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>こんな記事を見たのがきっかけ<br/>
+<a href="http://liginc.co.jp/designer/archives/6774">”恋に落ちるエディタ”「Sublime Text」 完全入門ガイド！ | デザイナーブログ | 株式会社LIG</a></p>
+
+<p>普段はvimを愛用して、たしかに単体のファイルを編集する分にはいいのだが、
+ある程度のプロジェクトを管理するために便利なものはないかなあと思っていたが、これは便利そうだなと思った。</p>
+
+<p>導入方法とかはさっきの記事にあるので割愛。<br/>
+ただし、package controlのインストールのところだけはなんかコピペじゃうまくいかなかった。
+<a href="http://wbond.net/sublime_packages/package_control/installation">公式</a>のところにあるのをコピペしたらうまくいった。</p>
+
+<p>設定として、まずはvimキーバインドを使いたいので、
+Preferences > Setting &#8211;Defaultを開き、</p>
+
+<pre><code>"ignored_packages": ["Vintage"]
+</code></pre>
+
+<p>とかなっているのを</p>
+
+<pre><code>"ignored_packages": []
+</code></pre>
+
+<p>としてやれば、Vintageというパッケージが有効化されvimのコマンドが使えるようになる。<br/>
+参考:<a href="http://ginpen.com/2012/07/15/vim-for-sublime-text/">Sublime Text 2をvim風に操作するには、プラグインすら不要でした。設定の変更のみ。</a><br/>
+ただし、すべてのコマンドが使えるわけでなく:eとか:qとかは使えない。</p>
+
+<p>あと、タブをスペースに展開したかったので<br/>
+<a href="http://d.hatena.ne.jp/soikw/20120603/1338713309">Sublime TextでHaskell編集時のタブをスペース4つにする</a>
+にあった設定をSetting &#8211;Usersに追加した。</p>
+
+<p>便利だと思う機能として<Ctr>-pでのファイルサーチで、
+今までだと、あるディレクトリの下にあるファイルとかをそのディレクトリ
+名をいちいち入力しなきゃならなかったのが、その手間が省けて便利。</p>
+
+<p>他にもいろいろな便利なショートカットがあるらしく、<br/>
+<a href="http://funatti.hatenablog.com/entry/2012/07/13/155629"> Emacs, Vim, Sublime Text 2 徹底比較</a><br/>
+とかいう記事がそれなりにまとまっている。</p>
+
+<p>とまあ、便利そうなんだけど、やっぱり新しいツールとだけあって自分はまださぐりさぐりの状態で使っている。<br/>
+makeコマンドをsublimeから呼び出したいのだが、build systemとかいうのを使えばできるのか？</p>
+
+<p>あとはgitとかとの連携もできるらしいけど、そのへんもよくわかんない。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/11/14/new-post/">Octopress導入記</a></h1>
     
     
@@ -89,6 +167,8 @@ rvmとはrubyの複数のバージョンを管理するためのツールで、 
 
 
 <time datetime="2012-11-14T10:38:00+09:00" pubdate data-updated="true">Nov 14<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/11/14/new-post/#disqus_thread">Comments</a>
         
       </p>
     
@@ -167,6 +247,8 @@ RVM packaged by Ubuntu is old and broken,
 
 <time datetime="2012-11-12T23:15:00+09:00" pubdate data-updated="true">Nov 12<span>th</span>, 2012</time>
         
+         | <a href="/blog/2012/11/12/start-up/#disqus_thread">Comments</a>
+        
       </p>
     
   </header>
@@ -191,6 +273,10 @@ RVM packaged by Ubuntu is old and broken,
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/11/16/st2/">Sublime Text 2を使ってみる</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/11/14/new-post/">Octopress導入記</a>
@@ -265,6 +351,19 @@ RVM packaged by Ubuntu is old and broken,
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'garasubo';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

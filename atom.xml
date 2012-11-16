@@ -4,7 +4,7 @@
   <title><![CDATA[garasubo's note]]></title>
   <link href="http://garasubo.github.com/atom.xml" rel="self"/>
   <link href="http://garasubo.github.com/"/>
-  <updated>2012-11-14T11:24:38+09:00</updated>
+  <updated>2012-11-16T11:16:11+09:00</updated>
   <id>http://garasubo.github.com/</id>
   <author>
     <name><![CDATA[garasubo]]></name>
@@ -12,6 +12,55 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text 2を使ってみる]]></title>
+    <link href="http://garasubo.github.com/blog/2012/11/16/st2/"/>
+    <updated>2012-11-16T09:55:00+09:00</updated>
+    <id>http://garasubo.github.com/blog/2012/11/16/st2</id>
+    <content type="html"><![CDATA[<p>こんな記事を見たのがきっかけ<br/>
+<a href="http://liginc.co.jp/designer/archives/6774">”恋に落ちるエディタ”「Sublime Text」 完全入門ガイド！ | デザイナーブログ | 株式会社LIG</a></p>
+
+<p>普段はvimを愛用して、たしかに単体のファイルを編集する分にはいいのだが、
+ある程度のプロジェクトを管理するために便利なものはないかなあと思っていたが、これは便利そうだなと思った。</p>
+
+<p>導入方法とかはさっきの記事にあるので割愛。<br/>
+ただし、package controlのインストールのところだけはなんかコピペじゃうまくいかなかった。
+<a href="http://wbond.net/sublime_packages/package_control/installation">公式</a>のところにあるのをコピペしたらうまくいった。</p>
+
+<p>設定として、まずはvimキーバインドを使いたいので、
+Preferences > Setting &#8211;Defaultを開き、</p>
+
+<pre><code>"ignored_packages": ["Vintage"]
+</code></pre>
+
+<p>とかなっているのを</p>
+
+<pre><code>"ignored_packages": []
+</code></pre>
+
+<p>としてやれば、Vintageというパッケージが有効化されvimのコマンドが使えるようになる。<br/>
+参考:<a href="http://ginpen.com/2012/07/15/vim-for-sublime-text/">Sublime Text 2をvim風に操作するには、プラグインすら不要でした。設定の変更のみ。</a><br/>
+ただし、すべてのコマンドが使えるわけでなく:eとか:qとかは使えない。</p>
+
+<p>あと、タブをスペースに展開したかったので<br/>
+<a href="http://d.hatena.ne.jp/soikw/20120603/1338713309">Sublime TextでHaskell編集時のタブをスペース4つにする</a>
+にあった設定をSetting &#8211;Usersに追加した。</p>
+
+<p>便利だと思う機能として<Ctr>-pでのファイルサーチで、
+今までだと、あるディレクトリの下にあるファイルとかをそのディレクトリ
+名をいちいち入力しなきゃならなかったのが、その手間が省けて便利。</p>
+
+<p>他にもいろいろな便利なショートカットがあるらしく、<br/>
+<a href="http://funatti.hatenablog.com/entry/2012/07/13/155629"> Emacs, Vim, Sublime Text 2 徹底比較</a><br/>
+とかいう記事がそれなりにまとまっている。</p>
+
+<p>とまあ、便利そうなんだけど、やっぱり新しいツールとだけあって自分はまださぐりさぐりの状態で使っている。<br/>
+makeコマンドをsublimeから呼び出したいのだが、build systemとかいうのを使えばできるのか？</p>
+
+<p>あとはgitとかとの連携もできるらしいけど、そのへんもよくわかんない。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress導入記]]></title>
