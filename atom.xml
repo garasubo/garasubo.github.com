@@ -4,7 +4,7 @@
   <title><![CDATA[garasubo's note]]></title>
   <link href="http://garasubo.github.com/atom.xml" rel="self"/>
   <link href="http://garasubo.github.com/"/>
-  <updated>2012-11-16T11:16:11+09:00</updated>
+  <updated>2012-11-20T22:28:08+09:00</updated>
   <id>http://garasubo.github.com/</id>
   <author>
     <name><![CDATA[garasubo]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[gitでのbranchでの開発]]></title>
+    <link href="http://garasubo.github.com/blog/2012/11/20/git/"/>
+    <updated>2012-11-20T21:49:00+09:00</updated>
+    <id>http://garasubo.github.com/blog/2012/11/20/git</id>
+    <content type="html"><![CDATA[<p>最近何かとgitを使うことが多くなったので、branchの作り方から
+mergeの仕方まできちんと学ばなきゃなと思い立って色々調べた。</p>
+
+<h2>リモートブランチの扱い方</h2>
+
+<p><a href="http://d.hatena.ne.jp/nayutaya/20090519/1242701594">&#8220;gitのリモートブランチを使って作業を行う流れのメモ - 那由多屋 開発日誌&#8221;</a></p>
+
+<h2>merge</h2>
+
+<p>ブランチつくったら、あとでマージしなきゃいけない。
+実はgitのマージにはいくつか種類があるらしく、これはきちんと把握しておく必要が有りそう。<br/>
+<a href="http://d.hatena.ne.jp/sinsoku/20111025/1319497900">&#8220;図で分かるgit-mergeの&#8211;ff, &#8211;no-ff, &#8211;squashの違い - アジャイルSEを目指すブログ&#8221;</a><br/>
+これを読む限り、基本的には&#8211;no&#8211;ffでマージコミットをきちんとつくるのが
+あとでログ見返すときにも良さそうな気がする。</p>
+
+<h2>うっかりマージミスした時の対処。</h2>
+
+<p>commitを取り消すコマンドであるresetは使い方を誤るととんでもないことになるので気をつけなければならない。
+このへんが参考になりそう。
+<a href="http://d.hatena.ne.jp/ToMmY/20110719/1311034743">git で merge をとりけす法 - ToMmY Makes Love with Codes</a><br/>
+<a href="http://projects.tsuntsun.net/~nabeken/diary/Sysadmin/git-7.html">~nabeken/diary/ : git で間違って merge してしまった場合 (fast forward でマージしてしまったのを取り消したい)</a></p>
+
+<h2>rebaseコマンドについて</h2>
+
+<p>誰かがrebaseコマンド使えない奴はgit使えるうちに入らないと言っていたので調べた。
+コミットに対して直接変更を加えるので危ないことは確かっぽいが、
+小さなmergeをしたい時とかはこっちのほうが良いのかもしれない。
+少なくとも知っておいて損はないと思うので。<br/>
+<a href="http://d.hatena.ne.jp/sinsoku/20110925/1316933393">図で分かるgit-rebase - アジャイルSEを目指すブログ</a></p>
+
+<h2>間違ったブランチを変更してしまった！</h2>
+
+<p>gitならこんなことまで出来るんだって感じ。
+記事読んで理解するのにちょっと時間かかった。<br/>
+<a href="http://d.hatena.ne.jp/ToMmY/20110914/1316024033">別のトピックブランチにしてしまった複数のコミットを移動する - ToMmY Makes Love with Codes</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sublime Text 2を使ってみる]]></title>
@@ -47,7 +90,7 @@ Preferences > Setting &#8211;Defaultを開き、</p>
 <a href="http://d.hatena.ne.jp/soikw/20120603/1338713309">Sublime TextでHaskell編集時のタブをスペース4つにする</a>
 にあった設定をSetting &#8211;Usersに追加した。</p>
 
-<p>便利だと思う機能として<Ctr>-pでのファイルサーチで、
+<p>便利だと思う機能としてCtr-pでのファイルサーチで、
 今までだと、あるディレクトリの下にあるファイルとかをそのディレクトリ
 名をいちいち入力しなきゃならなかったのが、その手間が省けて便利。</p>
 
@@ -69,7 +112,7 @@ makeコマンドをsublimeから呼び出したいのだが、build systemとか
     <id>http://garasubo.github.com/blog/2012/11/14/new-post</id>
     <content type="html"><![CDATA[<p>octopressを導入するまで</p>
 
-<h1>ruby 1.9を導入</h1>
+<h2>ruby 1.9を導入</h2>
 
 <p>octopressを動かすにはruby 1.9以上が必要。
 自分のubuntu 12.04には1.8.7しか入っていなかったのでrvmというものをつかって導入。
@@ -103,7 +146,7 @@ RVM packaged by Ubuntu is old and broken,
 
 <p>とかすれば、バージョン1.9.3が使える。が、シェルの設定でログインシェルとして使用するとかいうのをチェックしないとうまくいかない。</p>
 
-<h1>octopress導入</h1>
+<h2>octopress導入</h2>
 
 <p><a href="http://blog.glidenote.com/blog/2011/11/07/install-octopress-on-github/">GithubとOctopressでモダンな技術系ブログを作ってみる</a>
 あたりを参考にすれば何とかなる。</p>
