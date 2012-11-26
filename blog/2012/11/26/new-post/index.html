@@ -5,13 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sublime Text 2を使ってみる - garasubo's note</title>
+  <title>Ubuntuのgccでリンクのオプションが無視される問題について - garasubo's note</title>
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="こんな記事を見たのがきっかけ
-”恋に落ちるエディタ”「Sublime Text」 完全入門ガイド！ | デザイナーブログ | 株式会社LIG 普段はvimを愛用して、たしかに単体のファイルを編集する分にはいいのだが、
-ある程度のプロジェクトを管理するために便利なものはないかなあと思っていたが、 &hellip;">
+  <meta name="description" content="Ubuntuを10.04から12.04にアップデートした際、
+gccで-lで指定したファイルが全然リンクされないという問題があった。
+たとえば、 gcc -lm main.c として、main.cで普通にmathライブラリを使うようなファイルを書くと、
+そんな関数の実体見つからんよ、と怒られていた &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://garasubo.github.com/blog/2012/11/16/st2/">
+  <link rel="canonical" href="http://garasubo.github.com/blog/2012/11/26/new-post/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -69,7 +70,7 @@
   
   <header>
     
-      <h1 class="entry-title">Sublime Text 2を使ってみる</h1>
+      <h1 class="entry-title">Ubuntuのgccでリンクのオプションが無視される問題について</h1>
     
     
       <p class="meta">
@@ -85,7 +86,7 @@
   
 
 
-<time datetime="2012-11-16T09:55:00+09:00" pubdate data-updated="true">Nov 16<span>th</span>, 2012</time>
+<time datetime="2012-11-26T14:17:00+09:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -94,47 +95,36 @@
   </header>
 
 
-<div class="entry-content"><p>こんな記事を見たのがきっかけ<br/>
-<a href="http://liginc.co.jp/designer/archives/6774">”恋に落ちるエディタ”「Sublime Text」 完全入門ガイド！ | デザイナーブログ | 株式会社LIG</a></p>
+<div class="entry-content"><p>Ubuntuを10.04から12.04にアップデートした際、
+gccで-lで指定したファイルが全然リンクされないという問題があった。
+たとえば、</p>
 
-<p>普段はvimを愛用して、たしかに単体のファイルを編集する分にはいいのだが、
-ある程度のプロジェクトを管理するために便利なものはないかなあと思っていたが、これは便利そうだなと思った。</p>
-
-<p>導入方法とかはさっきの記事にあるので割愛。<br/>
-ただし、package controlのインストールのところだけはなんかコピペじゃうまくいかなかった。
-<a href="http://wbond.net/sublime_packages/package_control/installation">公式</a>のところにあるのをコピペしたらうまくいった。</p>
-
-<p>設定として、まずはvimキーバインドを使いたいので、
-Preferences > Setting &#8211;Defaultを開き、</p>
-
-<pre><code>"ignored_packages": ["Vintage"]
+<pre><code>gcc -lm main.c
 </code></pre>
 
-<p>とかなっているのを</p>
+<p>として、main.cで普通にmathライブラリを使うようなファイルを書くと、
+そんな関数の実体見つからんよ、と怒られていた。</p>
 
-<pre><code>"ignored_packages": []
+<p>ちょっと検索したらこんなの見つかった。<br/>
+<a href="https://forums.ubuntulinux.jp/viewtopic.php?id=13673">Ubuntu日本語フォーラム / math.h へのリンクがうまくいかない</a><br/>
+どうやら、Ubuntuのあるバージョンからgccの&#8211;as-neededというオプションが
+デフォルトで有効になるような親切設計になったらしく、
+これがあると-lのオプションはソースファイルの後に置かないと無視されるようになるらしい。
+なので、</p>
+
+<pre><code>gcc main.c -lm
 </code></pre>
 
-<p>としてやれば、Vintageというパッケージが有効化されvimのコマンドが使えるようになる。<br/>
-参考:<a href="http://ginpen.com/2012/07/15/vim-for-sublime-text/">Sublime Text 2をvim風に操作するには、プラグインすら不要でした。設定の変更のみ。</a><br/>
-ただし、すべてのコマンドが使えるわけでなく:eとか:qとかは使えない。</p>
+<p>とすればいいのだが、makeの暗黙ルールでLDFLAGSはソースの前に置かれるようなっているので、なんかルール書き換えるのは癪。</p>
 
-<p>あと、タブをスペースに展開したかったので<br/>
-<a href="http://d.hatena.ne.jp/soikw/20120603/1338713309">Sublime TextでHaskell編集時のタブをスペース4つにする</a>
-にあった設定をSetting &#8211;Usersに追加した。</p>
+<p>そこで、LDFLAGSに</p>
 
-<p>便利だと思う機能としてCtr-pでのファイルサーチで、
-今までだと、あるディレクトリの下にあるファイルとかをそのディレクトリ
-名をいちいち入力しなきゃならなかったのが、その手間が省けて便利。</p>
+<pre><code>-Wl,--no-as-needed
+</code></pre>
 
-<p>他にもいろいろな便利なショートカットがあるらしく、<br/>
-<a href="http://funatti.hatenablog.com/entry/2012/07/13/155629"> Emacs, Vim, Sublime Text 2 徹底比較</a><br/>
-とかいう記事がそれなりにまとまっている。</p>
+<p>というオプションを追加してやると、&#8211;as-neededオプションが無効化された。</p>
 
-<p>とまあ、便利そうなんだけど、やっぱり新しいツールとだけあって自分はまださぐりさぐりの状態で使っている。<br/>
-makeコマンドをsublimeから呼び出したいのだが、build systemとかいうのを使えばできるのか？</p>
-
-<p>あとはgitとかとの連携もできるらしいけど、そのへんもよくわかんない。</p>
+<p>しかし、なんでこんなオプションをデフォルトで有効にしてしまったのか。</p>
 </div>
 
 
@@ -157,7 +147,7 @@ makeコマンドをsublimeから呼び出したいのだが、build systemとか
   
 
 
-<time datetime="2012-11-16T09:55:00+09:00" pubdate data-updated="true">Nov 16<span>th</span>, 2012</time>
+<time datetime="2012-11-26T14:17:00+09:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
       
 
 
@@ -165,7 +155,7 @@ makeコマンドをsublimeから呼び出したいのだが、build systemとか
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2012/11/16/st2/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2012/11/16/st2/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2012/11/26/new-post/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2012/11/26/new-post/" >Tweet</a>
   
   
   
@@ -176,10 +166,8 @@ makeコマンドをsublimeから呼び出したいのだが、build systemとか
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/11/14/new-post/" title="Previous Post: Octopress導入記">&laquo; Octopress導入記</a>
+        <a class="basic-alignment left" href="/blog/2012/11/20/git/" title="Previous Post: gitでのbranchでの開発">&laquo; gitでのbranchでの開発</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/11/20/git/" title="Next Post: gitでのbranchでの開発">gitでのbranchでの開発 &raquo;</a>
       
     </p>
   </footer>
@@ -291,8 +279,8 @@ makeコマンドをsublimeから呼び出したいのだが、build systemとか
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://garasubo.github.com/blog/2012/11/16/st2/';
-        var disqus_url = 'http://garasubo.github.com/blog/2012/11/16/st2/';
+        var disqus_identifier = 'http://garasubo.github.com/blog/2012/11/26/new-post/';
+        var disqus_url = 'http://garasubo.github.com/blog/2012/11/26/new-post/';
         var disqus_script = 'embed.js';
       
     (function () {

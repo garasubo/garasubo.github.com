@@ -9,8 +9,10 @@
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="最近何かとgitを使うことが多くなったので、branchの作り方から
-mergeの仕方まできちんと学ばなきゃなと思い立って色々調べた。 リモートブランチの扱い方 &#8220;gitのリモートブランチを使って作業を行う流れのメモ - 那由多屋 開発日誌&#8221; merge ブランチつくったら &hellip;">
+  <meta name="description" content="Ubuntuを10.04から12.04にアップデートした際、
+gccで-lで指定したファイルが全然リンクされないという問題があった。
+たとえば、 gcc -lm main.c として、main.cで普通にmathライブラリを使うようなファイルを書くと、
+そんな関数の実体見つからんよ、と怒られていた &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +73,73 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/11/26/new-post/">Ubuntuのgccでリンクのオプションが無視される問題について</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-26T14:17:00+09:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/11/26/new-post/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ubuntuを10.04から12.04にアップデートした際、
+gccで-lで指定したファイルが全然リンクされないという問題があった。
+たとえば、</p>
+
+<pre><code>gcc -lm main.c
+</code></pre>
+
+<p>として、main.cで普通にmathライブラリを使うようなファイルを書くと、
+そんな関数の実体見つからんよ、と怒られていた。</p>
+
+<p>ちょっと検索したらこんなの見つかった。<br/>
+<a href="https://forums.ubuntulinux.jp/viewtopic.php?id=13673">Ubuntu日本語フォーラム / math.h へのリンクがうまくいかない</a><br/>
+どうやら、Ubuntuのあるバージョンからgccの&#8211;as-neededというオプションが
+デフォルトで有効になるような親切設計になったらしく、
+これがあると-lのオプションはソースファイルの後に置かないと無視されるようになるらしい。
+なので、</p>
+
+<pre><code>gcc main.c -lm
+</code></pre>
+
+<p>とすればいいのだが、makeの暗黙ルールでLDFLAGSはソースの前に置かれるようなっているので、なんかルール書き換えるのは癪。</p>
+
+<p>そこで、LDFLAGSに</p>
+
+<pre><code>-Wl,--no-as-needed
+</code></pre>
+
+<p>というオプションを追加してやると、&#8211;as-neededオプションが無効化された。</p>
+
+<p>しかし、なんでこんなオプションをデフォルトで有効にしてしまったのか。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/11/20/git/">Gitでのbranchでの開発</a></h1>
     
     
@@ -114,7 +183,7 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
 <h2>うっかりマージミスした時の対処。</h2>
 
 <p>commitを取り消すコマンドであるresetは使い方を誤るととんでもないことになるので気をつけなければならない。
-このへんが参考になりそう。
+このへんが参考になりそう。<br/>
 <a href="http://d.hatena.ne.jp/ToMmY/20110719/1311034743">git で merge をとりけす法 - ToMmY Makes Love with Codes</a><br/>
 <a href="http://projects.tsuntsun.net/~nabeken/diary/Sysadmin/git-7.html">~nabeken/diary/ : git で間違って merge してしまった場合 (fast forward でマージしてしまったのを取り消したい)</a></p>
 
@@ -344,6 +413,10 @@ RVM packaged by Ubuntu is old and broken,
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/new-post/">Ubuntuのgccでリンクのオプションが無視される問題について</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/11/20/git/">gitでのbranchでの開発</a>

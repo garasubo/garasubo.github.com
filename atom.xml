@@ -4,7 +4,7 @@
   <title><![CDATA[garasubo's note]]></title>
   <link href="http://garasubo.github.com/atom.xml" rel="self"/>
   <link href="http://garasubo.github.com/"/>
-  <updated>2012-11-20T23:02:08+09:00</updated>
+  <updated>2012-11-26T14:27:53+09:00</updated>
   <id>http://garasubo.github.com/</id>
   <author>
     <name><![CDATA[garasubo]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntuのgccでリンクのオプションが無視される問題について]]></title>
+    <link href="http://garasubo.github.com/blog/2012/11/26/new-post/"/>
+    <updated>2012-11-26T14:17:00+09:00</updated>
+    <id>http://garasubo.github.com/blog/2012/11/26/new-post</id>
+    <content type="html"><![CDATA[<p>Ubuntuを10.04から12.04にアップデートした際、
+gccで-lで指定したファイルが全然リンクされないという問題があった。
+たとえば、</p>
+
+<pre><code>gcc -lm main.c
+</code></pre>
+
+<p>として、main.cで普通にmathライブラリを使うようなファイルを書くと、
+そんな関数の実体見つからんよ、と怒られていた。</p>
+
+<p>ちょっと検索したらこんなの見つかった。<br/>
+<a href="https://forums.ubuntulinux.jp/viewtopic.php?id=13673">Ubuntu日本語フォーラム / math.h へのリンクがうまくいかない</a><br/>
+どうやら、Ubuntuのあるバージョンからgccの&#8211;as-neededというオプションが
+デフォルトで有効になるような親切設計になったらしく、
+これがあると-lのオプションはソースファイルの後に置かないと無視されるようになるらしい。
+なので、</p>
+
+<pre><code>gcc main.c -lm
+</code></pre>
+
+<p>とすればいいのだが、makeの暗黙ルールでLDFLAGSはソースの前に置かれるようなっているので、なんかルール書き換えるのは癪。</p>
+
+<p>そこで、LDFLAGSに</p>
+
+<pre><code>-Wl,--no-as-needed
+</code></pre>
+
+<p>というオプションを追加してやると、&#8211;as-neededオプションが無効化された。</p>
+
+<p>しかし、なんでこんなオプションをデフォルトで有効にしてしまったのか。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[gitでのbranchでの開発]]></title>
@@ -36,7 +74,7 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
 <h2>うっかりマージミスした時の対処。</h2>
 
 <p>commitを取り消すコマンドであるresetは使い方を誤るととんでもないことになるので気をつけなければならない。
-このへんが参考になりそう。
+このへんが参考になりそう。<br/>
 <a href="http://d.hatena.ne.jp/ToMmY/20110719/1311034743">git で merge をとりけす法 - ToMmY Makes Love with Codes</a><br/>
 <a href="http://projects.tsuntsun.net/~nabeken/diary/Sysadmin/git-7.html">~nabeken/diary/ : git で間違って merge してしまった場合 (fast forward でマージしてしまったのを取り消したい)</a></p>
 
