@@ -9,10 +9,10 @@
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="Ubuntuを10.04から12.04にアップデートした際、
-gccで-lで指定したファイルが全然リンクされないという問題があった。
-たとえば、 gcc -lm main.c として、main.cで普通にmathライブラリを使うようなファイルを書くと、
-そんな関数の実体見つからんよ、と怒られていた &hellip;">
+  <meta name="description" content="マージコミットをリバート うっかり間違ったブランチで&#8211;no-ffでmergeを打ってしまった場合、
+revertでそのコミットの変更を消すコミットをつくることができる。
+ただし、このときどちらのブランチを残すのかという事を指示してあげる必要がある。
+git logなどで、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +67,80 @@ gccで-lで指定したファイルが全然リンクされないという問題
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/28/new-post/">Gitでのミスリカバリー</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-28T19:21:00+09:00" pubdate data-updated="true">Dec 28<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/12/28/new-post/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>マージコミットをリバート</h2>
+
+<p>うっかり間違ったブランチで&#8211;no-ffでmergeを打ってしまった場合、
+revertでそのコミットの変更を消すコミットをつくることができる。<br/>
+ただし、このときどちらのブランチを残すのかという事を指示してあげる必要がある。<br/>
+git logなどで、その時のマージコミットのログを見ると、どのコミット同士をマージしたのかということが書いてある。<br/>
+それを見てどちらを残すかを-mオプションで指定する。</p>
+
+<p>詳しくは<a href="http://books.google.co.jp/books?id=8DAvoM4OMxEC&amp;printsec=frontcover&amp;hl=ja#v=onepage&amp;q&amp;f=false">ここ</a>の80ページ目あたりが親切。</p>
+
+<h2>リモートレポジトリに対してリセットをする</h2>
+
+<p><a href="http://tmtms.hatenablog.com/entry/20101221/git">Gitでリモートリポジトリを巻き戻す - @tmtms のメモ</a>を参考にした。</p>
+
+<p>まず、リセットしたいレポジトリのバックアップレポジトリをつくる。<br/>
+これはいざ間違えた時の対策。</p>
+
+<pre><code>git push origin tar_bak
+</code></pre>
+
+<p>つづいてgit reflogして戻したい地点を見つける</p>
+
+<pre><code>******* HEAD@{0}: hoge
+******* HEAD@{1}: hogehoge
+******* HEAD@{2}: hogehogehoge
+******* HEAD@{3}: hogehogehogehoge
+...
+</code></pre>
+
+<p>hogehogehogeの地点まで戻りたいとして、</p>
+
+<pre><code>git push -f origin HEAD@{2}:tar
+</code></pre>
+
+<p>とすればよい。こうすると、origin/tarの指すコミットが移動する。</p>
+
+<p>他の人にも影響することなので、やるときは注意。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -415,6 +489,10 @@ RVM packaged by Ubuntu is old and broken,
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/12/28/new-post/">Gitでのミスリカバリー</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/11/26/new-post/">Ubuntuのgccでリンクのオプションが無視される問題について</a>
       </li>
     
@@ -428,10 +506,6 @@ RVM packaged by Ubuntu is old and broken,
     
       <li class="post">
         <a href="/blog/2012/11/14/new-post/">Octopress導入記</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/12/start-up/">start up</a>
       </li>
     
   </ul>

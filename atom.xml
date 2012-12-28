@@ -4,7 +4,7 @@
   <title><![CDATA[garasubo's note]]></title>
   <link href="http://garasubo.github.com/atom.xml" rel="self"/>
   <link href="http://garasubo.github.com/"/>
-  <updated>2012-11-26T14:27:53+09:00</updated>
+  <updated>2012-12-28T20:23:58+09:00</updated>
   <id>http://garasubo.github.com/</id>
   <author>
     <name><![CDATA[garasubo]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Gitでのミスリカバリー]]></title>
+    <link href="http://garasubo.github.com/blog/2012/12/28/new-post/"/>
+    <updated>2012-12-28T19:21:00+09:00</updated>
+    <id>http://garasubo.github.com/blog/2012/12/28/new-post</id>
+    <content type="html"><![CDATA[<h2>マージコミットをリバート</h2>
+
+<p>うっかり間違ったブランチで&#8211;no-ffでmergeを打ってしまった場合、
+revertでそのコミットの変更を消すコミットをつくることができる。<br/>
+ただし、このときどちらのブランチを残すのかという事を指示してあげる必要がある。<br/>
+git logなどで、その時のマージコミットのログを見ると、どのコミット同士をマージしたのかということが書いてある。<br/>
+それを見てどちらを残すかを-mオプションで指定する。</p>
+
+<p>詳しくは<a href="http://books.google.co.jp/books?id=8DAvoM4OMxEC&amp;printsec=frontcover&amp;hl=ja#v=onepage&amp;q&amp;f=false">ここ</a>の80ページ目あたりが親切。</p>
+
+<h2>リモートレポジトリに対してリセットをする</h2>
+
+<p><a href="http://tmtms.hatenablog.com/entry/20101221/git">Gitでリモートリポジトリを巻き戻す - @tmtms のメモ</a>を参考にした。</p>
+
+<p>まず、リセットしたいレポジトリのバックアップレポジトリをつくる。<br/>
+これはいざ間違えた時の対策。</p>
+
+<pre><code>git push origin tar_bak
+</code></pre>
+
+<p>つづいてgit reflogして戻したい地点を見つける</p>
+
+<pre><code>******* HEAD@{0}: hoge
+******* HEAD@{1}: hogehoge
+******* HEAD@{2}: hogehogehoge
+******* HEAD@{3}: hogehogehogehoge
+...
+</code></pre>
+
+<p>hogehogehogeの地点まで戻りたいとして、</p>
+
+<pre><code>git push -f origin HEAD@{2}:tar
+</code></pre>
+
+<p>とすればよい。こうすると、origin/tarの指すコミットが移動する。</p>
+
+<p>他の人にも影響することなので、やるときは注意。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ubuntuのgccでリンクのオプションが無視される問題について]]></title>

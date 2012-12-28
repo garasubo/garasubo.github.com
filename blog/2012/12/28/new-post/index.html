@@ -5,15 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - garasubo's note</title>
+  <title>Gitでのミスリカバリー - garasubo's note</title>
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="Blog Archive 2012 Gitでのミスリカバリー
-Dec 28 2012 Ubuntuのgccでリンクのオプションが無視される問題について
-Nov 26 2012 gitでのbranchでの開発
-Nov 20 2012 Sublime Text 2を使ってみる
-Nov 16 2012 &hellip;">
+  <meta name="description" content="マージコミットをリバート うっかり間違ったブランチで&#8211;no-ffでmergeを打ってしまった場合、
+revertでそのコミットの変更を消すコミットをつくることができる。
+ただし、このときどちらのブランチを残すのかという事を指示してあげる必要がある。
+git logなどで、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +21,7 @@ Nov 16 2012 &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://garasubo.github.com/blog/archives/">
+  <link rel="canonical" href="http://garasubo.github.com/blog/2012/12/28/new-post/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -67,82 +66,125 @@ Nov 16 2012 &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+    
+      <h1 class="entry-title">Gitでのミスリカバリー</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-28T19:21:00+09:00" pubdate data-updated="true">Dec 28<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives">
 
 
+<div class="entry-content"><h2>マージコミットをリバート</h2>
 
-  
-  <h2>2012</h2>
+<p>うっかり間違ったブランチで&#8211;no-ffでmergeを打ってしまった場合、
+revertでそのコミットの変更を消すコミットをつくることができる。<br/>
+ただし、このときどちらのブランチを残すのかという事を指示してあげる必要がある。<br/>
+git logなどで、その時のマージコミットのログを見ると、どのコミット同士をマージしたのかということが書いてある。<br/>
+それを見てどちらを残すかを-mオプションで指定する。</p>
 
-<article>
-  
-<h1><a href="/blog/2012/12/28/new-post/">Gitでのミスリカバリー</a></h1>
-<time datetime="2012-12-28T19:21:00+09:00" pubdate><span class='month'>Dec</span> <span class='day'>28</span> <span class='year'>2012</span></time>
+<p>詳しくは<a href="http://books.google.co.jp/books?id=8DAvoM4OMxEC&amp;printsec=frontcover&amp;hl=ja#v=onepage&amp;q&amp;f=false">ここ</a>の80ページ目あたりが親切。</p>
 
+<h2>リモートレポジトリに対してリセットをする</h2>
 
-</article>
+<p><a href="http://tmtms.hatenablog.com/entry/20101221/git">Gitでリモートリポジトリを巻き戻す - @tmtms のメモ</a>を参考にした。</p>
 
+<p>まず、リセットしたいレポジトリのバックアップレポジトリをつくる。<br/>
+これはいざ間違えた時の対策。</p>
 
+<pre><code>git push origin tar_bak
+</code></pre>
 
-<article>
-  
-<h1><a href="/blog/2012/11/26/new-post/">Ubuntuのgccでリンクのオプションが無視される問題について</a></h1>
-<time datetime="2012-11-26T14:17:00+09:00" pubdate><span class='month'>Nov</span> <span class='day'>26</span> <span class='year'>2012</span></time>
+<p>つづいてgit reflogして戻したい地点を見つける</p>
 
+<pre><code>******* HEAD@{0}: hoge
+******* HEAD@{1}: hogehoge
+******* HEAD@{2}: hogehogehoge
+******* HEAD@{3}: hogehogehogehoge
+...
+</code></pre>
 
-</article>
+<p>hogehogehogeの地点まで戻りたいとして、</p>
 
+<pre><code>git push -f origin HEAD@{2}:tar
+</code></pre>
 
+<p>とすればよい。こうすると、origin/tarの指すコミットが移動する。</p>
 
-<article>
-  
-<h1><a href="/blog/2012/11/20/git/">gitでのbranchでの開発</a></h1>
-<time datetime="2012-11-20T21:49:00+09:00" pubdate><span class='month'>Nov</span> <span class='day'>20</span> <span class='year'>2012</span></time>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/11/16/st2/">Sublime Text 2を使ってみる</a></h1>
-<time datetime="2012-11-16T09:55:00+09:00" pubdate><span class='month'>Nov</span> <span class='day'>16</span> <span class='year'>2012</span></time>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/11/14/new-post/">Octopress導入記</a></h1>
-<time datetime="2012-11-14T10:38:00+09:00" pubdate><span class='month'>Nov</span> <span class='day'>14</span> <span class='year'>2012</span></time>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2012/11/12/start-up/">start up</a></h1>
-<time datetime="2012-11-12T23:15:00+09:00" pubdate><span class='month'>Nov</span> <span class='day'>12</span> <span class='year'>2012</span></time>
-
-
-</article>
-
+<p>他の人にも影響することなので、やるときは注意。</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">garasubo</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-28T19:21:00+09:00" pubdate data-updated="true">Dec 28<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2012/12/28/new-post/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2012/12/28/new-post/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/26/new-post/" title="Previous Post: Ubuntuのgccでリンクのオプションが無視される問題について">&laquo; Ubuntuのgccでリンクのオプションが無視される問題について</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -243,7 +285,10 @@ Nov 16 2012 &hellip;">
       var disqus_shortname = 'garasubo';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://garasubo.github.com/blog/2012/12/28/new-post/';
+        var disqus_url = 'http://garasubo.github.com/blog/2012/12/28/new-post/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
