@@ -4,7 +4,7 @@
   <title><![CDATA[garasubo's note]]></title>
   <link href="http://garasubo.github.com/atom.xml" rel="self"/>
   <link href="http://garasubo.github.com/"/>
-  <updated>2012-12-28T20:23:58+09:00</updated>
+  <updated>2013-02-22T15:22:44+09:00</updated>
   <id>http://garasubo.github.com/</id>
   <author>
     <name><![CDATA[garasubo]]></name>
@@ -12,6 +12,43 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[git pullをrebaseで行う]]></title>
+    <link href="http://garasubo.github.com/blog/2013/02/22/new-post/"/>
+    <updated>2013-02-22T14:52:00+09:00</updated>
+    <id>http://garasubo.github.com/blog/2013/02/22/new-post</id>
+    <content type="html"><![CDATA[<p>複数人でリモートのレポジトリをいじるとリモートの変更を
+git pullでひっぱって来ないといけないわけだが、
+git pullはremoteの変更をgit fetchして取ってきてから、
+その変更を自分の追跡ブランチにmergeをするということをしている。<br/>
+そのため、場合によっては無駄にマージコミットができてしまい、気が分岐しているように見えて、
+ログの参照性をさげてしまう。<br/>
+そこでpull時にmergeの代わりにrebaseを使い、そのようなことを避けるオプションがある。</p>
+
+<pre><code>git pull --rebase
+</code></pre>
+
+<p><a href="http://keijinsonyaban.blogspot.jp/2010/11/git-tips.html">見えないチカラ: 【翻訳】あなたの知らないGit Tips</a>によると、</p>
+
+<pre><code>git config --global pull.rebase true
+</code></pre>
+
+<p>としてあげると全追跡ブランチでpull時はオプション無しでrebaseを使うようになる。(Git 1.7.9から)</p>
+
+<p>ただし、rebaseでpullしてくると</p>
+
+<pre><code>1. 追跡ブランチからブランチを切る
+2. そのブランチに対して追跡ブランチにマージコミットを打つ（その間、追跡ブランチには何もコミットしていない）
+3. 追跡ブランチでpull
+</code></pre>
+
+<p>とすると、マージコミットが消えて、その追跡ブランチからブランチを切ったという情報が消えてしまった。<br/>
+これはマージコミットをリバートするときはどちらを残すか明示的に指定しないといけないように、
+どちらが本来の流れか分からなくなるからか？<br/>
+にわかだからよくわかりません＞＜</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Gitでのミスリカバリー]]></title>

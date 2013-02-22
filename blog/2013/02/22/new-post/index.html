@@ -5,14 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ubuntuのgccでリンクのオプションが無視される問題について - garasubo's note</title>
+  <title>git pullをrebaseで行う - garasubo's note</title>
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="Ubuntuを10.04から12.04にアップデートした際、
-gccで-lで指定したファイルが全然リンクされないという問題があった。
-たとえば、 gcc -lm main.c として、main.cで普通にmathライブラリを使うようなファイルを書くと、
-そんな関数の実体見つからんよ、と怒られていた &hellip;">
+  <meta name="description" content="複数人でリモートのレポジトリをいじるとリモートの変更を
+git pullでひっぱって来ないといけないわけだが、
+git pullはremoteの変更をgit fetchして取ってきてから、
+その変更を自分の追跡ブランチにmergeをするということをしている。
+そのため、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +22,7 @@ gccで-lで指定したファイルが全然リンクされないという問題
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://garasubo.github.com/blog/2012/11/26/new-post/">
+  <link rel="canonical" href="http://garasubo.github.com/blog/2013/02/22/new-post/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -70,7 +71,7 @@ gccで-lで指定したファイルが全然リンクされないという問題
   
   <header>
     
-      <h1 class="entry-title">Ubuntuのgccでリンクのオプションが無視される問題について</h1>
+      <h1 class="entry-title">Git Pullをrebaseで行う</h1>
     
     
       <p class="meta">
@@ -86,7 +87,7 @@ gccで-lで指定したファイルが全然リンクされないという問題
   
 
 
-<time datetime="2012-11-26T14:17:00+09:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+<time datetime="2013-02-22T14:52:00+09:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -95,36 +96,35 @@ gccで-lで指定したファイルが全然リンクされないという問題
   </header>
 
 
-<div class="entry-content"><p>Ubuntuを10.04から12.04にアップデートした際、
-gccで-lで指定したファイルが全然リンクされないという問題があった。
-たとえば、</p>
+<div class="entry-content"><p>複数人でリモートのレポジトリをいじるとリモートの変更を
+git pullでひっぱって来ないといけないわけだが、
+git pullはremoteの変更をgit fetchして取ってきてから、
+その変更を自分の追跡ブランチにmergeをするということをしている。<br/>
+そのため、場合によっては無駄にマージコミットができてしまい、気が分岐しているように見えて、
+ログの参照性をさげてしまう。<br/>
+そこでpull時にmergeの代わりにrebaseを使い、そのようなことを避けるオプションがある。</p>
 
-<pre><code>gcc -lm main.c
+<pre><code>git pull --rebase
 </code></pre>
 
-<p>として、main.cで普通にmathライブラリを使うようなファイルを書くと、
-そんな関数の実体見つからんよ、と怒られていた。</p>
+<p><a href="http://keijinsonyaban.blogspot.jp/2010/11/git-tips.html">見えないチカラ: 【翻訳】あなたの知らないGit Tips</a>によると、</p>
 
-<p>ちょっと検索したらこんなの見つかった。<br/>
-<a href="https://forums.ubuntulinux.jp/viewtopic.php?id=13673">Ubuntu日本語フォーラム / math.h へのリンクがうまくいかない</a><br/>
-どうやら、Ubuntuのあるバージョンからgccの&#8211;as-neededというオプションが
-デフォルトで有効になるような親切設計になったらしく、
-これがあると-lのオプションはソースファイルの後に置かないと無視されるようになるらしい。
-なので、</p>
-
-<pre><code>gcc main.c -lm
+<pre><code>git config --global pull.rebase true
 </code></pre>
 
-<p>とすればいいのだが、makeの暗黙ルールでLDFLAGSはソースの前に置かれるようなっているので、なんかルール書き換えるのは癪。</p>
+<p>としてあげると全追跡ブランチでpull時はオプション無しでrebaseを使うようになる。(Git 1.7.9から)</p>
 
-<p>そこで、LDFLAGSに</p>
+<p>ただし、rebaseでpullしてくると</p>
 
-<pre><code>-Wl,--no-as-needed
+<pre><code>1. 追跡ブランチからブランチを切る
+2. そのブランチに対して追跡ブランチにマージコミットを打つ（その間、追跡ブランチには何もコミットしていない）
+3. 追跡ブランチでpull
 </code></pre>
 
-<p>というオプションを追加してやると、&#8211;as-neededオプションが無効化された。</p>
-
-<p>しかし、なんでこんなオプションをデフォルトで有効にしてしまったのか。</p>
+<p>とすると、マージコミットが消えて、その追跡ブランチからブランチを切ったという情報が消えてしまった。<br/>
+これはマージコミットをリバートするときはどちらを残すか明示的に指定しないといけないように、
+どちらが本来の流れか分からなくなるからか？<br/>
+にわかだからよくわかりません＞＜</p>
 </div>
 
 
@@ -147,7 +147,7 @@ gccで-lで指定したファイルが全然リンクされないという問題
   
 
 
-<time datetime="2012-11-26T14:17:00+09:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+<time datetime="2013-02-22T14:52:00+09:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2013</time>
       
 
 
@@ -155,7 +155,7 @@ gccで-lで指定したファイルが全然リンクされないという問題
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2012/11/26/new-post/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2012/11/26/new-post/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2013/02/22/new-post/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2013/02/22/new-post/" >Tweet</a>
   
   
   
@@ -166,10 +166,8 @@ gccで-lで指定したファイルが全然リンクされないという問題
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/11/20/git/" title="Previous Post: gitでのbranchでの開発">&laquo; gitでのbranchでの開発</a>
+        <a class="basic-alignment left" href="/blog/2012/12/28/new-post/" title="Previous Post: Gitでのミスリカバリー">&laquo; Gitでのミスリカバリー</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/12/28/new-post/" title="Next Post: Gitでのミスリカバリー">Gitでのミスリカバリー &raquo;</a>
       
     </p>
   </footer>
@@ -281,8 +279,8 @@ gccで-lで指定したファイルが全然リンクされないという問題
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://garasubo.github.com/blog/2012/11/26/new-post/';
-        var disqus_url = 'http://garasubo.github.com/blog/2012/11/26/new-post/';
+        var disqus_identifier = 'http://garasubo.github.com/blog/2013/02/22/new-post/';
+        var disqus_url = 'http://garasubo.github.com/blog/2013/02/22/new-post/';
         var disqus_script = 'embed.js';
       
     (function () {
