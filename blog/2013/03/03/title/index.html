@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>start up - garasubo's note</title>
+  <title>VimShellを久々に使ってみたら便利だった - garasubo's note</title>
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="できつぁ
-">
+  <meta name="description" content="以前、VimShellを使おうとして入れてみたのだが、はっきりとした理由は忘れたが、いまいちなので使わなかった。
+が、久々に使ってみると普通のシェルのように使えるようになっていた。 install ここから 導入にはvimprocが必要で、加えてunite. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://garasubo.github.com/blog/2012/11/12/start-up/">
+  <link rel="canonical" href="http://garasubo.github.com/blog/2013/03/03/title/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Start Up</h1>
+      <h1 class="entry-title">VimShellを久々に使ってみたら便利だった</h1>
     
     
       <p class="meta">
@@ -84,7 +84,7 @@
   
 
 
-<time datetime="2012-11-12T23:15:00+09:00" pubdate data-updated="true">Nov 12<span>th</span>, 2012</time>
+<time datetime="2013-03-03T20:59:00+09:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -93,7 +93,45 @@
   </header>
 
 
-<div class="entry-content"><p>できつぁ</p>
+<div class="entry-content"><p>以前、VimShellを使おうとして入れてみたのだが、はっきりとした理由は忘れたが、いまいちなので使わなかった。
+が、久々に使ってみると普通のシェルのように使えるようになっていた。</p>
+
+<h2>install</h2>
+
+<p><a href="https://github.com/Shougo/vimshell">ここ</a>から</p>
+
+<p>導入にはvimprocが必要で、加えてunite.vimとneocomplcacheがないと、一部の拡張機能が使えない。</p>
+
+<h2>使い方</h2>
+
+<p>:VimShellでshellになる<br/>
+インサートモードで入力、コマンドモードでは普通にいつものvimみたいに動いて、
+ヤンクとかもできる。<br/>
+インサートモードではCtrl+lでコマンドの履歴表示、tabで補完がつかえる。<br/>
+:VimShellPopで画面の一部でVimshellが起動するのでちょっとしたコマンドを起動するには便利。</p>
+
+<pre><code>:VimShellInteractive [任意のインタプリタ]
+</code></pre>
+
+<p>はスクリプト言語を走らせるのにはかなり便利で、vimで編集しているテキストをそのインタプリタに送りつけるという事ができる。</p>
+
+<p>非同期でコマンドを実行してくれるので、
+コンパイルしながらちょっとコードの確認とかいうこともできる。</p>
+
+<p>以前はインタプリタはiexeとかしないと動かなかったんだけど、そういうこともないみたい。</p>
+
+<h2>欠点</h2>
+
+<p>bashrcやzshrcとの連携機能は無いので、そっちで独自の設定をみっちりやっていると使いにくいかもしれない。<br/>
+エイリアスくらいなら自動変換ツールくらい誰かつくっていそうなものだが。</p>
+
+<p>コマンドの補完はやはり賢くない気がする。加えて、個人的にneocomlcacheの動作がイマイチだと思ったので普段は使わないのだが、
+これを使わないと、ファイル名補完くらいしか効かない。</p>
+
+<p>あと、gnuplot -persistでプロットしたグラフがgnuplot終了後消えてしまった。</p>
+
+<p>とかまあまあ、完全なシェルとしてはさすがに使えないにしても、十分に使う価値のあるツールだとは思う。<br/>
+更新も活発だし、作者はzshを目標としているらしいので、これからもどんどん良くなっていくのではないでしょうか。</p>
 </div>
 
 
@@ -116,7 +154,7 @@
   
 
 
-<time datetime="2012-11-12T23:15:00+09:00" pubdate data-updated="true">Nov 12<span>th</span>, 2012</time>
+<time datetime="2013-03-03T20:59:00+09:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2013</time>
       
 
 
@@ -124,7 +162,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2012/11/12/start-up/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2012/11/12/start-up/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2013/03/03/title/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2013/03/03/title/" >Tweet</a>
   
   
   
@@ -135,8 +173,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2013/02/22/new-post/" title="Previous Post: git pullをrebaseで行う">&laquo; git pullをrebaseで行う</a>
       
-        <a class="basic-alignment right" href="/blog/2012/11/14/new-post/" title="Next Post: Octopress導入記">Octopress導入記 &raquo;</a>
       
     </p>
   </footer>
@@ -248,8 +286,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://garasubo.github.com/blog/2012/11/12/start-up/';
-        var disqus_url = 'http://garasubo.github.com/blog/2012/11/12/start-up/';
+        var disqus_identifier = 'http://garasubo.github.com/blog/2013/03/03/title/';
+        var disqus_url = 'http://garasubo.github.com/blog/2013/03/03/title/';
         var disqus_script = 'embed.js';
       
     (function () {

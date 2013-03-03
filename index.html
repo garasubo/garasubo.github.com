@@ -9,11 +9,8 @@
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="複数人でリモートのレポジトリをいじるとリモートの変更を
-git pullでひっぱって来ないといけないわけだが、
-git pullはremoteの変更をgit fetchして取ってきてから、
-その変更を自分の追跡ブランチにmergeをするということをしている。
-そのため、 &hellip;">
+  <meta name="description" content="以前、VimShellを使おうとして入れてみたのだが、はっきりとした理由は忘れたが、いまいちなので使わなかった。
+が、久々に使ってみると普通のシェルのように使えるようになっていた。 install ここから 導入にはvimprocが必要で、加えてunite. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +65,82 @@ git pullはremoteの変更をgit fetchして取ってきてから、
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/03/title/">VimShellを久々に使ってみたら便利だった</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-03T20:59:00+09:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2013</time>
+        
+         | <a href="/blog/2013/03/03/title/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>以前、VimShellを使おうとして入れてみたのだが、はっきりとした理由は忘れたが、いまいちなので使わなかった。
+が、久々に使ってみると普通のシェルのように使えるようになっていた。</p>
+
+<h2>install</h2>
+
+<p><a href="https://github.com/Shougo/vimshell">ここ</a>から</p>
+
+<p>導入にはvimprocが必要で、加えてunite.vimとneocomplcacheがないと、一部の拡張機能が使えない。</p>
+
+<h2>使い方</h2>
+
+<p>:VimShellでshellになる<br/>
+インサートモードで入力、コマンドモードでは普通にいつものvimみたいに動いて、
+ヤンクとかもできる。<br/>
+インサートモードではCtrl+lでコマンドの履歴表示、tabで補完がつかえる。<br/>
+:VimShellPopで画面の一部でVimshellが起動するのでちょっとしたコマンドを起動するには便利。</p>
+
+<pre><code>:VimShellInteractive [任意のインタプリタ]
+</code></pre>
+
+<p>はスクリプト言語を走らせるのにはかなり便利で、vimで編集しているテキストをそのインタプリタに送りつけるという事ができる。</p>
+
+<p>非同期でコマンドを実行してくれるので、
+コンパイルしながらちょっとコードの確認とかいうこともできる。</p>
+
+<p>以前はインタプリタはiexeとかしないと動かなかったんだけど、そういうこともないみたい。</p>
+
+<h2>欠点</h2>
+
+<p>bashrcやzshrcとの連携機能は無いので、そっちで独自の設定をみっちりやっていると使いにくいかもしれない。<br/>
+エイリアスくらいなら自動変換ツールくらい誰かつくっていそうなものだが。</p>
+
+<p>コマンドの補完はやはり賢くない気がする。加えて、個人的にneocomlcacheの動作がイマイチだと思ったので普段は使わないのだが、
+これを使わないと、ファイル名補完くらいしか効かない。</p>
+
+<p>あと、gnuplot -persistでプロットしたグラフがgnuplot終了後消えてしまった。</p>
+
+<p>とかまあまあ、完全なシェルとしてはさすがに使えないにしても、十分に使う価値のあるツールだとは思う。<br/>
+更新も活発だし、作者はzshを目標としているらしいので、これからもどんどん良くなっていくのではないでしょうか。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -556,6 +629,10 @@ RVM packaged by Ubuntu is old and broken,
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/03/03/title/">VimShellを久々に使ってみたら便利だった</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/02/22/new-post/">git pullをrebaseで行う</a>
       </li>
     
@@ -569,10 +646,6 @@ RVM packaged by Ubuntu is old and broken,
     
       <li class="post">
         <a href="/blog/2012/11/20/git/">gitでのbranchでの開発</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/11/16/st2/">Sublime Text 2を使ってみる</a>
       </li>
     
   </ul>
