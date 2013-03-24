@@ -4,7 +4,7 @@
   <title><![CDATA[garasubo's note]]></title>
   <link href="http://garasubo.github.com/atom.xml" rel="self"/>
   <link href="http://garasubo.github.com/"/>
-  <updated>2013-03-03T22:37:58+09:00</updated>
+  <updated>2013-03-24T15:37:33+09:00</updated>
   <id>http://garasubo.github.com/</id>
   <author>
     <name><![CDATA[garasubo]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[tig便利]]></title>
+    <link href="http://garasubo.github.com/blog/2013/03/24/tig%E4%BE%BF%E5%88%A9/"/>
+    <updated>2013-03-24T15:25:00+09:00</updated>
+    <id>http://garasubo.github.com/blog/2013/03/24/tig便利</id>
+    <content type="html"><![CDATA[<p>Gitの変更履歴をとても便利に閲覧することができるtigがなかなか。<br/>
+詳しくは<a href="http://qiita.com/items/4ce9918b6dd6971d60e4">Tig の表示方法あれこれ #git #AdventCalendar #tig
+- Qiita</a></p>
+
+<p>gitkのCUI版みたいなのり。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[VimShellを久々に使ってみたら便利だった]]></title>
