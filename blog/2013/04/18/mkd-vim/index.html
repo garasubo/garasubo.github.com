@@ -5,14 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ubuntuのgccでリンクのオプションが無視される問題について - garasubo's note</title>
+  <title>markdownをvimで扱う - garasubo's note</title>
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="Ubuntuを10.04から12.04にアップデートした際、
-gccで-lで指定したファイルが全然リンクされないという問題があった。
-たとえば、 gcc -lm main.c として、main.cで普通にmathライブラリを使うようなファイルを書くと、
-そんな関数の実体見つからんよ、と怒られていた &hellip;">
+  <meta name="description" content="最近、ノーパで授業ノートを取る機会が増えてきた。
+今まではプレーンテキストで何とかしていたのだが、さすがに整形しないとあれなのでmarkdown記法を使うことにした。 そのために以下のプラグインを導入。 plasticboy/vim-markdown &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +19,7 @@ gccで-lで指定したファイルが全然リンクされないという問題
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://garasubo.github.com/blog/2012/11/26/new-post/">
+  <link rel="canonical" href="http://garasubo.github.com/blog/2013/04/18/mkd-vim/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -70,7 +68,7 @@ gccで-lで指定したファイルが全然リンクされないという問題
   
   <header>
     
-      <h1 class="entry-title">Ubuntuのgccでリンクのオプションが無視される問題について</h1>
+      <h1 class="entry-title">Markdownをvimで扱う</h1>
     
     
       <p class="meta">
@@ -86,7 +84,7 @@ gccで-lで指定したファイルが全然リンクされないという問題
   
 
 
-<time datetime="2012-11-26T14:17:00+09:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+<time datetime="2013-04-18T16:37:00+09:00" pubdate data-updated="true">Apr 18<span>th</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -95,36 +93,45 @@ gccで-lで指定したファイルが全然リンクされないという問題
   </header>
 
 
-<div class="entry-content"><p>Ubuntuを10.04から12.04にアップデートした際、
-gccで-lで指定したファイルが全然リンクされないという問題があった。
-たとえば、</p>
+<div class="entry-content"><p>最近、ノーパで授業ノートを取る機会が増えてきた。
+今まではプレーンテキストで何とかしていたのだが、さすがに整形しないとあれなのでmarkdown記法を使うことにした。</p>
 
-<pre><code>gcc -lm main.c
+<p>そのために以下のプラグインを導入。</p>
+
+<ul>
+<li><p><a href="https://github.com/plasticboy/vim-markdown">plasticboy/vim-markdown</a>
+  vim用のmarkdownのシンタックスファイル。
+  数年前はバグがあるとか叩かれていたみたいだけど、最近も更新されているようなのでそういうことはもうないと思われる。
+  少なくとも、僕はまだバグに出会っていない。</p></li>
+<li><p><a href="https://github.com/thinca/vim-quickrun">thinca/vim-quickrun</a>
+  編集のプログラムをその場でさっと実行するためのプラグイン。
+  これを使うことで、markdown記法のテキストをサッと整形してブラウザでプレビューさせることができる。</p></li>
+<li><p><a href="https://github.com/tyru/open-browser.vim">tyru/open-browser.vim</a>
+  vimから指定したURLをブラウザで立ち上げるプラグイン。
+  quickrunと組み合わせて使った。</p></li>
+</ul>
+
+
+<p>これらのプラグインを導入した後、vimrcに以下の記述を追加。</p>
+
+<pre><code>let g:quickrun_config = {}
+let g:quickrun_config.mkd = {
+            \ 'outputter' : 'browser',
+            \   'command': 'pandoc',
+            \   'exec': '%c --from=markdown --to=html %o %s %a',
+            \ }
 </code></pre>
 
-<p>として、main.cで普通にmathライブラリを使うようなファイルを書くと、
-そんな関数の実体見つからんよ、と怒られていた。</p>
+<p>pandocはmarkdownのテキストをhtmlに変換するコマンド。
+他にももっといいのがあるらしいのだが、aptで簡単に導入できるので今回はこれを使った。</p>
 
-<p>ちょっと検索したらこんなの見つかった。<br/>
-<a href="https://forums.ubuntulinux.jp/viewtopic.php?id=13673">Ubuntu日本語フォーラム / math.h へのリンクがうまくいかない</a><br/>
-どうやら、Ubuntuのあるバージョンからgccの&#8211;as-neededというオプションが
-デフォルトで有効になるような親切設計になったらしく、
-これがあると-lのオプションはソースファイルの後に置かないと無視されるようになるらしい。
-なので、</p>
+<p>これで<Leader>rでブラウザで仕上がりがプレビューできる。</p>
 
-<pre><code>gcc main.c -lm
-</code></pre>
+<p>参考：<br/>
+<a href="http://blog.glidenote.com/blog/2013/01/10/vim-quickrun-marked/">vim-quickrunとMarkedでmarkdown編集が快適になった - Glide Note -グライドノート</a><br/>
+<a href="http://vim-users.jp/2011/09/hack230/">Vim-users.jp - Hack #230: Markdown形式の文書を書く2 (quickrun0.5.0対応版)</a></p>
 
-<p>とすればいいのだが、makeの暗黙ルールでLDFLAGSはソースの前に置かれるようなっているので、なんかルール書き換えるのは癪。</p>
-
-<p>そこで、LDFLAGSに</p>
-
-<pre><code>-Wl,--no-as-needed
-</code></pre>
-
-<p>というオプションを追加してやると、&#8211;as-neededオプションが無効化された。</p>
-
-<p>しかし、なんでこんなオプションをデフォルトで有効にしてしまったのか。</p>
+<p>本当はリアルタイムでプレビューとかする方法もあるらしいが、とりあえずこれで満足した。</p>
 </div>
 
 
@@ -147,7 +154,7 @@ gccで-lで指定したファイルが全然リンクされないという問題
   
 
 
-<time datetime="2012-11-26T14:17:00+09:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+<time datetime="2013-04-18T16:37:00+09:00" pubdate data-updated="true">Apr 18<span>th</span>, 2013</time>
       
 
 
@@ -155,7 +162,7 @@ gccで-lで指定したファイルが全然リンクされないという問題
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2012/11/26/new-post/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2012/11/26/new-post/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2013/04/18/mkd-vim/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2013/04/18/mkd-vim/" >Tweet</a>
   
   
   
@@ -166,10 +173,8 @@ gccで-lで指定したファイルが全然リンクされないという問題
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/11/20/git/" title="Previous Post: gitでのbranchでの開発">&laquo; gitでのbranchでの開発</a>
+        <a class="basic-alignment left" href="/blog/2013/03/24/tig%E4%BE%BF%E5%88%A9/" title="Previous Post: tig便利">&laquo; tig便利</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/12/28/new-post/" title="Next Post: Gitでのミスリカバリー">Gitでのミスリカバリー &raquo;</a>
       
     </p>
   </footer>
@@ -281,8 +286,8 @@ gccで-lで指定したファイルが全然リンクされないという問題
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://garasubo.github.com/blog/2012/11/26/new-post/';
-        var disqus_url = 'http://garasubo.github.com/blog/2012/11/26/new-post/';
+        var disqus_identifier = 'http://garasubo.github.com/blog/2013/04/18/mkd-vim/';
+        var disqus_url = 'http://garasubo.github.com/blog/2013/04/18/mkd-vim/';
         var disqus_script = 'embed.js';
       
     (function () {
