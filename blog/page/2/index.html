@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>gitでのbranchでの開発 - garasubo's note</title>
+  <title>garasubo's note</title>
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="最近何かとgitを使うことが多くなったので、branchの作り方から
-mergeの仕方まできちんと学ばなきゃなと思い立って色々調べた。 リモートブランチの扱い方 &#8220;gitのリモートブランチを使って作業を行う流れのメモ - 那由多屋 開発日誌&#8221; merge ブランチつくったら &hellip;">
+  <meta name="description" content="できつぁ
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://garasubo.github.com/blog/2012/11/20/git/">
+  <link rel="canonical" href="http://garasubo.github.com/blog/page/2/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -63,12 +63,15 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
 </nav>
   <div id="main">
     <div id="content">
-      <div>
-<article class="hentry" role="article">
+      <div class="blog-index">
   
+  
+  
+    <article>
+      
   <header>
     
-      <h1 class="entry-title">Gitでのbranchでの開発</h1>
+      <h1 class="entry-title"><a href="/blog/2012/11/12/start-up/">Start Up</a></h1>
     
     
       <p class="meta">
@@ -84,108 +87,31 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
   
 
 
-<time datetime="2012-11-20T21:49:00+09:00" pubdate data-updated="true">Nov 20<span>th</span>, 2012</time>
+<time datetime="2012-11-12T23:15:00+09:00" pubdate data-updated="true">Nov 12<span>th</span>, 2012</time>
         
-         | <a href="#disqus_thread">Comments</a>
+         | <a href="/blog/2012/11/12/start-up/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>最近何かとgitを使うことが多くなったので、branchの作り方から
-mergeの仕方まできちんと学ばなきゃなと思い立って色々調べた。</p>
-
-<h2>リモートブランチの扱い方</h2>
-
-<p><a href="http://d.hatena.ne.jp/nayutaya/20090519/1242701594">&#8220;gitのリモートブランチを使って作業を行う流れのメモ - 那由多屋 開発日誌&#8221;</a></p>
-
-<h2>merge</h2>
-
-<p>ブランチつくったら、あとでマージしなきゃいけない。
-実はgitのマージにはいくつか種類があるらしく、これはきちんと把握しておく必要が有りそう。<br/>
-<a href="http://d.hatena.ne.jp/sinsoku/20111025/1319497900">&#8220;図で分かるgit-mergeの&#8211;ff, &#8211;no-ff, &#8211;squashの違い - アジャイルSEを目指すブログ&#8221;</a><br/>
-これを読む限り、基本的には&#8211;no&#8211;ffでマージコミットをきちんとつくるのが
-あとでログ見返すときにも良さそうな気がする。</p>
-
-<h2>うっかりマージミスした時の対処。</h2>
-
-<p>commitを取り消すコマンドであるresetは使い方を誤るととんでもないことになるので気をつけなければならない。
-このへんが参考になりそう。<br/>
-<a href="http://d.hatena.ne.jp/ToMmY/20110719/1311034743">git で merge をとりけす法 - ToMmY Makes Love with Codes</a><br/>
-<a href="http://projects.tsuntsun.net/~nabeken/diary/Sysadmin/git-7.html">~nabeken/diary/ : git で間違って merge してしまった場合 (fast forward でマージしてしまったのを取り消したい)</a></p>
-
-<h2>rebaseコマンドについて</h2>
-
-<p>誰かがrebaseコマンド使えない奴はgit使えるうちに入らないと言っていたので調べた。
-コミットに対して直接変更を加えるので危ないことは確かっぽいが、
-小さなmergeをしたい時とかはこっちのほうが良いのかもしれない。
-少なくとも知っておいて損はないと思うので。<br/>
-<a href="http://d.hatena.ne.jp/sinsoku/20110925/1316933393">図で分かるgit-rebase - アジャイルSEを目指すブログ</a></p>
-
-<h2>間違ったブランチを変更してしまった！</h2>
-
-<p>gitならこんなことまで出来るんだって感じ。
-記事読んで理解するのにちょっと時間かかった。<br/>
-<a href="http://d.hatena.ne.jp/ToMmY/20110914/1316024033">別のトピックブランチにしてしまった複数のコミットを移動する - ToMmY Makes Love with Codes</a></p>
+  <div class="entry-content"><p>できつぁ</p>
 </div>
-
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">garasubo</span></span>
-
-      
-
-
-
-
-
-
-
-
   
 
 
-<time datetime="2012-11-20T21:49:00+09:00" pubdate data-updated="true">Nov 20<span>th</span>, 2012</time>
-      
-
-
-    </p>
+    </article>
+  
+  <div class="pagination">
     
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2012/11/20/git/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2012/11/20/git/" >Tweet</a>
-  
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
-
+    <a href="/blog/archives">Blog Archives</a>
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2012/11/16/st2/" title="Previous Post: Sublime Text 2を使ってみる">&laquo; Sublime Text 2を使ってみる</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2012/11/26/new-post/" title="Next Post: Ubuntuのgccでリンクのオプションが無視される問題について">Ubuntuのgccでリンクのオプションが無視される問題について &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
 </div>
-  </section>
-
-</div>
-
 <aside class="sidebar">
   
     <section>
@@ -218,7 +144,7 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   
   <a href="https://github.com/garasubo">@garasubo</a> on GitHub
@@ -248,7 +174,7 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -268,7 +194,6 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
   
 </aside>
 
-
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -283,10 +208,7 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
       var disqus_shortname = 'garasubo';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://garasubo.github.com/blog/2012/11/20/git/';
-        var disqus_url = 'http://garasubo.github.com/blog/2012/11/20/git/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

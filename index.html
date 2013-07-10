@@ -9,8 +9,9 @@
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="最近、ノーパで授業ノートを取る機会が増えてきた。
-今まではプレーンテキストで何とかしていたのだが、さすがに整形しないとあれなのでmarkdown記法を使うことにした。 そのために以下のプラグインを導入。 plasticboy/vim-markdown &hellip;">
+  <meta name="description" content="ある方程式とかを解くときに、行列をつくるということはよくやるが、
+その内の非ゼロ要素が極端に少ない場合、行列がムダにおおきくなってしまうので、
+疎行列用のクラスを使ってやる必要がある。 Eigenの場合、SparseMatrixという疎行列クラスがあるので、これを使えば行列のように &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +66,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/07/10/eigen-sparse/">Eigenで疎行列を扱う</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-10T19:38:00+09:00" pubdate data-updated="true">Jul 10<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/07/10/eigen-sparse/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>ある方程式とかを解くときに、行列をつくるということはよくやるが、
+その内の非ゼロ要素が極端に少ない場合、行列がムダにおおきくなってしまうので、
+疎行列用のクラスを使ってやる必要がある。</p>
+
+<p>Eigenの場合、SparseMatrixという疎行列クラスがあるので、これを使えば行列のように
+簡単に扱えて便利だった。
+boostとかにも疎行列用のクラスはあるのだが、どこのサイトで見たか忘れたが、各種ライブラリと速度比較してEigenはかなり優秀だそうで。</p>
+
+<p>検索しても情報が少ないが、公式のチュートリアルとリファレンスが最もまともな資料だった（ともに英語）。<br/>
+<a href="http://eigen.tuxfamily.org/dox/TutorialSparse.html">Tutorial page 9 - Sparse Matrix</a><br/>
+<a href="http://eigen.tuxfamily.org/dox/classEigen_1_1SparseMatrix.html">SparseMatrix&lt; <em>Scalar, </em>Options, _Index > Class Template Reference</a></p>
+
+<p>要素のセット方法を探すのに結構手間取った。
+個別に要素をセットするときはinsertメソッドを使い、
+まとめてセットするならTutorialのFirst
+Exampleにあるみたいに、Eigen::Tripletのvectorをつくってから、setFormTripletsでやるのが楽かなって感じ。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -707,45 +761,9 @@ RVM packaged by Ubuntu is old and broken,
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/12/start-up/">Start Up</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-12T23:15:00+09:00" pubdate data-updated="true">Nov 12<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/11/12/start-up/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>できつぁ</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -756,6 +774,10 @@ RVM packaged by Ubuntu is old and broken,
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/10/eigen-sparse/">Eigenで疎行列を扱う</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/04/18/mkd-vim/">markdownをvimで扱う</a>
@@ -771,10 +793,6 @@ RVM packaged by Ubuntu is old and broken,
     
       <li class="post">
         <a href="/blog/2013/02/22/new-post/">git pullをrebaseで行う</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/12/28/new-post/">Gitでのミスリカバリー</a>
       </li>
     
   </ul>

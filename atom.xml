@@ -4,7 +4,7 @@
   <title><![CDATA[garasubo's note]]></title>
   <link href="http://garasubo.github.com/atom.xml" rel="self"/>
   <link href="http://garasubo.github.com/"/>
-  <updated>2013-04-18T18:36:29+09:00</updated>
+  <updated>2013-07-10T19:50:57+09:00</updated>
   <id>http://garasubo.github.com/</id>
   <author>
     <name><![CDATA[garasubo]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Eigenで疎行列を扱う]]></title>
+    <link href="http://garasubo.github.com/blog/2013/07/10/eigen-sparse/"/>
+    <updated>2013-07-10T19:38:00+09:00</updated>
+    <id>http://garasubo.github.com/blog/2013/07/10/eigen-sparse</id>
+    <content type="html"><![CDATA[<p>ある方程式とかを解くときに、行列をつくるということはよくやるが、
+その内の非ゼロ要素が極端に少ない場合、行列がムダにおおきくなってしまうので、
+疎行列用のクラスを使ってやる必要がある。</p>
+
+<p>Eigenの場合、SparseMatrixという疎行列クラスがあるので、これを使えば行列のように
+簡単に扱えて便利だった。
+boostとかにも疎行列用のクラスはあるのだが、どこのサイトで見たか忘れたが、各種ライブラリと速度比較してEigenはかなり優秀だそうで。</p>
+
+<p>検索しても情報が少ないが、公式のチュートリアルとリファレンスが最もまともな資料だった（ともに英語）。<br/>
+<a href="http://eigen.tuxfamily.org/dox/TutorialSparse.html">Tutorial page 9 - Sparse Matrix</a><br/>
+<a href="http://eigen.tuxfamily.org/dox/classEigen_1_1SparseMatrix.html">SparseMatrix&lt; <em>Scalar, </em>Options, _Index > Class Template Reference</a></p>
+
+<p>要素のセット方法を探すのに結構手間取った。
+個別に要素をセットするときはinsertメソッドを使い、
+まとめてセットするならTutorialのFirst
+Exampleにあるみたいに、Eigen::Tripletのvectorをつくってから、setFormTripletsでやるのが楽かなって感じ。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[markdownをvimで扱う]]></title>
