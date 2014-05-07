@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://garasubo.github.com/sitemap.xml 

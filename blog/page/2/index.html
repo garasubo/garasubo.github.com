@@ -20,13 +20,14 @@ rvmとはrubyの複数のバージョンを管理するためのツールで、 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://garasubo.github.com/blog/page/2/">
+  <link rel="canonical" href="http://garasubo.github.com/blog/page/2">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="garasubo's note" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -90,7 +91,8 @@ rvmとはrubyの複数のバージョンを管理するためのツールで、 
 
 <time datetime="2012-11-14T10:38:00+09:00" pubdate data-updated="true">Nov 14<span>th</span>, 2012</time>
         
-         | <a href="/blog/2012/11/14/new-post/#disqus_thread">Comments</a>
+           | <a href="/blog/2012/11/14/new-post/#disqus_thread"
+             data-disqus-identifier="http://garasubo.github.com/blog/2012/11/14/new-post/">Comments</a>
         
       </p>
     
@@ -123,7 +125,7 @@ RVM packaged by Ubuntu is old and broken,
 
 <p>とか言われる。happyだから仕方ないね。
 まあ、解決策もちゃんとでてきて
-<a href="http://stackoverflow.com/questions/9056008/installed-ruby-1-9-3-with-rvm-but-command-line-doesnt-show-ruby-v/9056395#9056395">Installed Ruby 1.9.3 with RVM but command line doesn&#8217;t show ruby -v</a>
+<a href="http://stackoverflow.com/questions/9056008/installed-ruby-1-9-3-with-rvm-but-command-line-doesnt-show-ruby-v/9056395#9056395">Installed Ruby 1.9.3 with RVM but command line doesn&rsquo;t show ruby -v</a>
 の言われたとおりにすれば直った。</p>
 
 <p>それで</p>
@@ -169,7 +171,8 @@ RVM packaged by Ubuntu is old and broken,
 
 <time datetime="2012-11-12T23:15:00+09:00" pubdate data-updated="true">Nov 12<span>th</span>, 2012</time>
         
-         | <a href="/blog/2012/11/12/start-up/#disqus_thread">Comments</a>
+           | <a href="/blog/2012/11/12/start-up/#disqus_thread"
+             data-disqus-identifier="http://garasubo.github.com/blog/2012/11/12/start-up/">Comments</a>
         
       </p>
     
@@ -207,11 +210,11 @@ RVM packaged by Ubuntu is old and broken,
       </li>
     
       <li class="post">
-        <a href="/blog/2013/04/18/mkd-vim/">markdownをvimで扱う</a>
+        <a href="/blog/2013/04/18/mkd-vim/">Markdownをvimで扱う</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/03/24/tig%E4%BE%BF%E5%88%A9/">tig便利</a>
+        <a href="/blog/2013/03/24/tig%E4%BE%BF%E5%88%A9/">Tig便利</a>
       </li>
     
       <li class="post">
@@ -230,7 +233,7 @@ RVM packaged by Ubuntu is old and broken,
   <a href="https://github.com/garasubo">@garasubo</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -251,25 +254,14 @@ RVM packaged by Ubuntu is old and broken,
 </section>
 
 
+
+
 <section>
   <h1>Latest Tweets</h1>
-  <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  <script type="text/javascript">
-    $.domReady(function(){
-      getTwitterFeed("garasubo", 4, false);
-    });
-  </script>
-  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
-  
-    <a href="http://twitter.com/garasubo" class="twitter-follow-button" data-show-count="false">Follow @garasubo</a>
-  
+  <a class="twitter-timeline"  href="https://twitter.com/garasubo"  data-widget-id="463930254969434112">@garasubo からのツイート</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
 </section>
-
-
-
-
 
   
 </aside>
@@ -292,7 +284,7 @@ RVM packaged by Ubuntu is old and broken,
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -303,7 +295,7 @@ RVM packaged by Ubuntu is old and broken,
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
+  js = d.createElement(s); js.id = id; js.async = true;
   js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
@@ -317,7 +309,7 @@ RVM packaged by Ubuntu is old and broken,
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

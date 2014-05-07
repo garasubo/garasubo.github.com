@@ -4,7 +4,7 @@
   <title><![CDATA[garasubo's note]]></title>
   <link href="http://garasubo.github.com/atom.xml" rel="self"/>
   <link href="http://garasubo.github.com/"/>
-  <updated>2014-04-19T22:29:50+09:00</updated>
+  <updated>2014-05-07T15:44:56+09:00</updated>
   <id>http://garasubo.github.com/</id>
   <author>
     <name><![CDATA[garasubo]]></name>
@@ -26,7 +26,7 @@
 また、一度読んだところも頭に入らず、もう一度読むという事もしばしば。</p>
 
 <p>ということで、この辺を参考にする<br/>
-<a href="http://blog.matsumoto-r.jp/?p=2369">人間とウェブの未来 - GNU GLOBALとvimで巨大なコードでも快適にコードリーディング</a><br/>
+<a href="http://blog.matsumoto-r.jp/?p=2369">人間とウェブの未来 &ndash; GNU GLOBALとvimで巨大なコードでも快適にコードリーディング</a><br/>
 <a href="http://testnoda.sakura.ne.jp/index.php?plugin=attach&amp;refer=testnoda%2F%E3%83%9A%E3%83%BC%E3%82%B8%E4%BD%9C%E8%80%85&amp;openfile=%E3%81%B2%E3%82%89%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E5%88%9D%E5%BF%83%E8%80%85%E5%A5%AE%E9%97%98%E8%A8%98.pdf">ひらメソッド初心者奮闘記（PDF）</a></p>
 
 <p>ひらメソッドっていうのは、コードを読みながら、
@@ -61,7 +61,7 @@ optionsをvimwiki_optionsとかに置換したらなおった。</p>
 boostとかにも疎行列用のクラスはあるのだが、どこのサイトで見たか忘れたが、各種ライブラリと速度比較してEigenはかなり優秀だそうで。</p>
 
 <p>検索しても情報が少ないが、公式のチュートリアルとリファレンスが最もまともな資料だった（ともに英語）。<br/>
-<a href="http://eigen.tuxfamily.org/dox/TutorialSparse.html">Tutorial page 9 - Sparse Matrix</a><br/>
+<a href="http://eigen.tuxfamily.org/dox/TutorialSparse.html">Tutorial page 9 &ndash; Sparse Matrix</a><br/>
 <a href="http://eigen.tuxfamily.org/dox/classEigen_1_1SparseMatrix.html">SparseMatrix&lt; <em>Scalar, </em>Options, _Index > Class Template Reference</a></p>
 
 <p>要素のセット方法を探すのに結構手間取った。
@@ -72,7 +72,7 @@ Exampleにあるみたいに、Eigen::Tripletのvectorをつくってから、se
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[markdownをvimで扱う]]></title>
+    <title type="html"><![CDATA[Markdownをvimで扱う]]></title>
     <link href="http://garasubo.github.com/blog/2013/04/18/mkd-vim/"/>
     <updated>2013-04-18T16:37:00+09:00</updated>
     <id>http://garasubo.github.com/blog/2013/04/18/mkd-vim</id>
@@ -122,21 +122,21 @@ let g:quickrun_config.mkd = {
 <p>これで&lt;Leader>rでブラウザで仕上がりがプレビューできる。</p>
 
 <p>参考：<br/>
-<a href="http://blog.glidenote.com/blog/2013/01/10/vim-quickrun-marked/">vim-quickrunとMarkedでmarkdown編集が快適になった - Glide Note -グライドノート</a><br/>
-<a href="http://vim-users.jp/2011/09/hack230/">Vim-users.jp - Hack #230: Markdown形式の文書を書く2 (quickrun0.5.0対応版)</a></p>
+<a href="http://blog.glidenote.com/blog/2013/01/10/vim-quickrun-marked/">vim-quickrunとMarkedでmarkdown編集が快適になった &ndash; Glide Note -グライドノート</a><br/>
+<a href="http://vim-users.jp/2011/09/hack230/">Vim-users.jp &ndash; Hack #230: Markdown形式の文書を書く2 (quickrun0.5.0対応版)</a></p>
 
 <p>本当はリアルタイムでプレビューとかする方法もあるらしいが、とりあえずこれで満足した。</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[tig便利]]></title>
+    <title type="html"><![CDATA[Tig便利]]></title>
     <link href="http://garasubo.github.com/blog/2013/03/24/tig%E4%BE%BF%E5%88%A9/"/>
     <updated>2013-03-24T15:25:00+09:00</updated>
     <id>http://garasubo.github.com/blog/2013/03/24/tig便利</id>
     <content type="html"><![CDATA[<p>Gitの変更履歴をとても便利に閲覧することができるtigがなかなか。<br/>
 詳しくは<a href="http://qiita.com/items/4ce9918b6dd6971d60e4">Tig の表示方法あれこれ #git #AdventCalendar #tig
-- Qiita</a></p>
+&ndash; Qiita</a></p>
 
 <p>gitkのCUI版みたいなのり。</p>
 ]]></content>
@@ -190,7 +190,7 @@ let g:quickrun_config.mkd = {
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[git pullをrebaseで行う]]></title>
+    <title type="html"><![CDATA[Git Pullをrebaseで行う]]></title>
     <link href="http://garasubo.github.com/blog/2013/02/22/new-post/"/>
     <updated>2013-02-22T14:52:00+09:00</updated>
     <id>http://garasubo.github.com/blog/2013/02/22/new-post</id>
@@ -233,7 +233,7 @@ git pullはremoteの変更をgit fetchして取ってきてから、
     <id>http://garasubo.github.com/blog/2012/12/28/new-post</id>
     <content type="html"><![CDATA[<h2>マージコミットをリバート</h2>
 
-<p>うっかり間違ったブランチで&#8211;no-ffでmergeを打ってしまった場合、
+<p>うっかり間違ったブランチで&mdash;no-ffでmergeを打ってしまった場合、
 revertでそのコミットの変更を消すコミットをつくることができる。<br/>
 ただし、このときどちらのブランチを残すのかという事を指示してあげる必要がある。<br/>
 git logなどで、その時のマージコミットのログを見ると、どのコミット同士をマージしたのかということが書いてある。<br/>
@@ -243,7 +243,7 @@ git logなどで、その時のマージコミットのログを見ると、ど�
 
 <h2>リモートレポジトリに対してリセットをする</h2>
 
-<p><a href="http://tmtms.hatenablog.com/entry/20101221/git">Gitでリモートリポジトリを巻き戻す - @tmtms のメモ</a>を参考にした。</p>
+<p><a href="http://tmtms.hatenablog.com/entry/20101221/git">Gitでリモートリポジトリを巻き戻す &ndash; @tmtms のメモ</a>を参考にした。</p>
 
 <p>まず、リセットしたいレポジトリのバックアップレポジトリをつくる。<br/>
 これはいざ間違えた時の対策。</p>
@@ -288,7 +288,7 @@ gccで-lで指定したファイルが全然リンクされないという問題
 
 <p>ちょっと検索したらこんなの見つかった。<br/>
 <a href="https://forums.ubuntulinux.jp/viewtopic.php?id=13673">Ubuntu日本語フォーラム / math.h へのリンクがうまくいかない</a><br/>
-どうやら、Ubuntuのあるバージョンからgccの&#8211;as-neededというオプションが
+どうやら、Ubuntuのあるバージョンからgccの&mdash;as-neededというオプションが
 デフォルトで有効になるような親切設計になったらしく、
 これがあると-lのオプションはソースファイルの後に置かないと無視されるようになるらしい。
 なので、</p>
@@ -303,14 +303,14 @@ gccで-lで指定したファイルが全然リンクされないという問題
 <pre><code>-Wl,--no-as-needed
 </code></pre>
 
-<p>というオプションを追加してやると、&#8211;as-neededオプションが無効化された。</p>
+<p>というオプションを追加してやると、&mdash;as-neededオプションが無効化された。</p>
 
 <p>しかし、なんでこんなオプションをデフォルトで有効にしてしまったのか。</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[gitでのbranchでの開発]]></title>
+    <title type="html"><![CDATA[Gitでのbranchでの開発]]></title>
     <link href="http://garasubo.github.com/blog/2012/11/20/git/"/>
     <updated>2012-11-20T21:49:00+09:00</updated>
     <id>http://garasubo.github.com/blog/2012/11/20/git</id>
@@ -319,21 +319,21 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
 
 <h2>リモートブランチの扱い方</h2>
 
-<p><a href="http://d.hatena.ne.jp/nayutaya/20090519/1242701594">&#8220;gitのリモートブランチを使って作業を行う流れのメモ - 那由多屋 開発日誌&#8221;</a></p>
+<p><a href="http://d.hatena.ne.jp/nayutaya/20090519/1242701594">&ldquo;gitのリモートブランチを使って作業を行う流れのメモ &ndash; 那由多屋 開発日誌&rdquo;</a></p>
 
 <h2>merge</h2>
 
 <p>ブランチつくったら、あとでマージしなきゃいけない。
 実はgitのマージにはいくつか種類があるらしく、これはきちんと把握しておく必要が有りそう。<br/>
-<a href="http://d.hatena.ne.jp/sinsoku/20111025/1319497900">&#8220;図で分かるgit-mergeの&#8211;ff, &#8211;no-ff, &#8211;squashの違い - アジャイルSEを目指すブログ&#8221;</a><br/>
-これを読む限り、基本的には&#8211;no&#8211;ffでマージコミットをきちんとつくるのが
+<a href="http://d.hatena.ne.jp/sinsoku/20111025/1319497900">&ldquo;図で分かるgit-mergeの&mdash;ff, &mdash;no-ff, &mdash;squashの違い &ndash; アジャイルSEを目指すブログ&rdquo;</a><br/>
+これを読む限り、基本的には&mdash;no&mdash;ffでマージコミットをきちんとつくるのが
 あとでログ見返すときにも良さそうな気がする。</p>
 
 <h2>うっかりマージミスした時の対処。</h2>
 
 <p>commitを取り消すコマンドであるresetは使い方を誤るととんでもないことになるので気をつけなければならない。
 このへんが参考になりそう。<br/>
-<a href="http://d.hatena.ne.jp/ToMmY/20110719/1311034743">git で merge をとりけす法 - ToMmY Makes Love with Codes</a><br/>
+<a href="http://d.hatena.ne.jp/ToMmY/20110719/1311034743">git で merge をとりけす法 &ndash; ToMmY Makes Love with Codes</a><br/>
 <a href="http://projects.tsuntsun.net/~nabeken/diary/Sysadmin/git-7.html">~nabeken/diary/ : git で間違って merge してしまった場合 (fast forward でマージしてしまったのを取り消したい)</a></p>
 
 <h2>rebaseコマンドについて</h2>
@@ -342,13 +342,13 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
 コミットに対して直接変更を加えるので危ないことは確かっぽいが、
 小さなmergeをしたい時とかはこっちのほうが良いのかもしれない。
 少なくとも知っておいて損はないと思うので。<br/>
-<a href="http://d.hatena.ne.jp/sinsoku/20110925/1316933393">図で分かるgit-rebase - アジャイルSEを目指すブログ</a></p>
+<a href="http://d.hatena.ne.jp/sinsoku/20110925/1316933393">図で分かるgit-rebase &ndash; アジャイルSEを目指すブログ</a></p>
 
 <h2>間違ったブランチを変更してしまった！</h2>
 
 <p>gitならこんなことまで出来るんだって感じ。
 記事読んで理解するのにちょっと時間かかった。<br/>
-<a href="http://d.hatena.ne.jp/ToMmY/20110914/1316024033">別のトピックブランチにしてしまった複数のコミットを移動する - ToMmY Makes Love with Codes</a></p>
+<a href="http://d.hatena.ne.jp/ToMmY/20110914/1316024033">別のトピックブランチにしてしまった複数のコミットを移動する &ndash; ToMmY Makes Love with Codes</a></p>
 ]]></content>
   </entry>
   
@@ -368,7 +368,7 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
 <a href="http://wbond.net/sublime_packages/package_control/installation">公式</a>のところにあるのをコピペしたらうまくいった。</p>
 
 <p>設定として、まずはvimキーバインドを使いたいので、
-Preferences > Setting &#8211;Defaultを開き、</p>
+Preferences > Setting &mdash;Defaultを開き、</p>
 
 <pre><code>"ignored_packages": ["Vintage"]
 </code></pre>
@@ -384,7 +384,7 @@ Preferences > Setting &#8211;Defaultを開き、</p>
 
 <p>あと、タブをスペースに展開したかったので<br/>
 <a href="http://d.hatena.ne.jp/soikw/20120603/1338713309">Sublime TextでHaskell編集時のタブをスペース4つにする</a>
-にあった設定をSetting &#8211;Usersに追加した。</p>
+にあった設定をSetting &mdash;Usersに追加した。</p>
 
 <p>便利だと思う機能としてCtr-pでのファイルサーチで、
 今までだと、あるディレクトリの下にあるファイルとかをそのディレクトリ
@@ -432,7 +432,7 @@ RVM packaged by Ubuntu is old and broken,
 
 <p>とか言われる。happyだから仕方ないね。
 まあ、解決策もちゃんとでてきて
-<a href="http://stackoverflow.com/questions/9056008/installed-ruby-1-9-3-with-rvm-but-command-line-doesnt-show-ruby-v/9056395#9056395">Installed Ruby 1.9.3 with RVM but command line doesn&#8217;t show ruby -v</a>
+<a href="http://stackoverflow.com/questions/9056008/installed-ruby-1-9-3-with-rvm-but-command-line-doesnt-show-ruby-v/9056395#9056395">Installed Ruby 1.9.3 with RVM but command line doesn&rsquo;t show ruby -v</a>
 の言われたとおりにすれば直った。</p>
 
 <p>それで</p>
@@ -452,7 +452,7 @@ RVM packaged by Ubuntu is old and broken,
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[start up]]></title>
+    <title type="html"><![CDATA[Start Up]]></title>
     <link href="http://garasubo.github.com/blog/2012/11/12/start-up/"/>
     <updated>2012-11-12T23:15:00+09:00</updated>
     <id>http://garasubo.github.com/blog/2012/11/12/start-up</id>

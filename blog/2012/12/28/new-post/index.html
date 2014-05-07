@@ -9,7 +9,7 @@
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="マージコミットをリバート うっかり間違ったブランチで&#8211;no-ffでmergeを打ってしまった場合、
+  <meta name="description" content="マージコミットをリバート うっかり間違ったブランチで&mdash;no-ffでmergeを打ってしまった場合、
 revertでそのコミットの変更を消すコミットをつくることができる。
 ただし、このときどちらのブランチを残すのかという事を指示してあげる必要がある。
 git logなどで、 &hellip;">
@@ -21,13 +21,14 @@ git logなどで、 &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://garasubo.github.com/blog/2012/12/28/new-post/">
+  <link rel="canonical" href="http://garasubo.github.com/blog/2012/12/28/new-post">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="garasubo's note" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -88,7 +89,8 @@ git logなどで、 &hellip;">
 
 <time datetime="2012-12-28T19:21:00+09:00" pubdate data-updated="true">Dec 28<span>th</span>, 2012</time>
         
-         | <a href="#disqus_thread">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://garasubo.github.com">Comments</a>
         
       </p>
     
@@ -97,7 +99,7 @@ git logなどで、 &hellip;">
 
 <div class="entry-content"><h2>マージコミットをリバート</h2>
 
-<p>うっかり間違ったブランチで&#8211;no-ffでmergeを打ってしまった場合、
+<p>うっかり間違ったブランチで&mdash;no-ffでmergeを打ってしまった場合、
 revertでそのコミットの変更を消すコミットをつくることができる。<br/>
 ただし、このときどちらのブランチを残すのかという事を指示してあげる必要がある。<br/>
 git logなどで、その時のマージコミットのログを見ると、どのコミット同士をマージしたのかということが書いてある。<br/>
@@ -107,7 +109,7 @@ git logなどで、その時のマージコミットのログを見ると、ど�
 
 <h2>リモートレポジトリに対してリセットをする</h2>
 
-<p><a href="http://tmtms.hatenablog.com/entry/20101221/git">Gitでリモートリポジトリを巻き戻す - @tmtms のメモ</a>を参考にした。</p>
+<p><a href="http://tmtms.hatenablog.com/entry/20101221/git">Gitでリモートリポジトリを巻き戻す &ndash; @tmtms のメモ</a>を参考にした。</p>
 
 <p>まず、リセットしたいレポジトリのバックアップレポジトリをつくる。<br/>
 これはいざ間違えた時の対策。</p>
@@ -162,7 +164,7 @@ git logなどで、その時のマージコミットのログを見ると、ど�
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2012/12/28/new-post/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2012/12/28/new-post/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2012/12/28/new-post/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2012/12/28/new-post/" >Tweet</a>
   
   
   
@@ -205,11 +207,11 @@ git logなどで、その時のマージコミットのログを見ると、ど�
       </li>
     
       <li class="post">
-        <a href="/blog/2013/04/18/mkd-vim/">markdownをvimで扱う</a>
+        <a href="/blog/2013/04/18/mkd-vim/">Markdownをvimで扱う</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/03/24/tig%E4%BE%BF%E5%88%A9/">tig便利</a>
+        <a href="/blog/2013/03/24/tig%E4%BE%BF%E5%88%A9/">Tig便利</a>
       </li>
     
       <li class="post">
@@ -228,7 +230,7 @@ git logなどで、その時のマージコミットのログを見ると、ど�
   <a href="https://github.com/garasubo">@garasubo</a> on GitHub
   
   <script type="text/javascript">
-    $.domReady(function(){
+    $(document).ready(function(){
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
@@ -249,25 +251,14 @@ git logなどで、その時のマージコミットのログを見ると、ど�
 </section>
 
 
+
+
 <section>
   <h1>Latest Tweets</h1>
-  <ul id="tweets">
-    <li class="loading">Status updating...</li>
-  </ul>
-  <script type="text/javascript">
-    $.domReady(function(){
-      getTwitterFeed("garasubo", 4, false);
-    });
-  </script>
-  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
-  
-    <a href="http://twitter.com/garasubo" class="twitter-follow-button" data-show-count="false">Follow @garasubo</a>
-  
+  <a class="twitter-timeline"  href="https://twitter.com/garasubo"  data-widget-id="463930254969434112">@garasubo からのツイート</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
 </section>
-
-
-
-
 
   
 </aside>
@@ -294,7 +285,7 @@ git logなどで、その時のマージコミットのログを見ると、ど�
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -305,7 +296,7 @@ git logなどで、その時のマージコミットのログを見ると、ど�
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
+  js = d.createElement(s); js.id = id; js.async = true;
   js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
@@ -319,7 +310,7 @@ git logなどで、その時のマージコミットのログを見ると、ど�
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
