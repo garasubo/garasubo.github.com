@@ -5,13 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>garasubo's note</title>
+  <title>Tig便利 - garasubo's note</title>
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="octopressを導入するまで ruby 1.9を導入 octopressを動かすにはruby 1.9以上が必要。
-自分のubuntu 12.04には1.8.7しか入っていなかったのでrvmというものをつかって導入。
-rvmとはrubyの複数のバージョンを管理するためのツールで、 &hellip;">
+  <meta name="description" content="Gitの変更履歴をとても便利に閲覧することができるtigがなかなか。
+詳しくはTig の表示方法あれこれ #git #AdventCalendar #tig
+&ndash; Qiita gitkのCUI版みたいなのり。
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +21,7 @@ rvmとはrubyの複数のバージョンを管理するためのツールで、 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://garasubo.github.com/blog/page/2">
+  <link rel="canonical" href="http://garasubo.github.com/blog/2013/03/24/tig">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="garasubo's note" type="application/atom+xml">
@@ -65,15 +66,12 @@ rvmとはrubyの複数のバージョンを管理するためのツールで、 
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/11/14/new-post/">Octopress導入記</a></h1>
+      <h1 class="entry-title">Tig便利</h1>
     
     
       <p class="meta">
@@ -89,75 +87,32 @@ rvmとはrubyの複数のバージョンを管理するためのツールで、 
   
 
 
-<time datetime="2012-11-14T10:38:00+09:00" pubdate data-updated="true">Nov 14<span>th</span>, 2012</time>
+<time datetime="2013-03-24T15:25:00+09:00" pubdate data-updated="true">Mar 24<sup>th</sup>, 2013</time>
         
-           | <a href="/blog/2012/11/14/new-post/#disqus_thread"
-             data-disqus-identifier="http://garasubo.github.com/blog/2012/11/14/new-post/">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://garasubo.github.com">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>octopressを導入するまで</p>
+<div class="entry-content"><p>Gitの変更履歴をとても便利に閲覧することができるtigがなかなか。<br/>
+詳しくは<a href="http://qiita.com/items/4ce9918b6dd6971d60e4">Tig の表示方法あれこれ #git #AdventCalendar #tig
+&ndash; Qiita</a></p>
 
-<h2>ruby 1.9を導入</h2>
-
-<p>octopressを動かすにはruby 1.9以上が必要。
-自分のubuntu 12.04には1.8.7しか入っていなかったのでrvmというものをつかって導入。
-rvmとはrubyの複数のバージョンを管理するためのツールで、これを使うとrubyの様々なバージョンをインストールすることが可能。</p>
-
-<p>で、「rvm インストール」とかで検索したらいろいろな方法があるのだが、どうもうまくいかない。
-twitterでヘルプを投げたところ@ompugaoさんから教えてもらった方法がうまくいった。</p>
-
-<ol>
-<li>curl -L get.rvm.io | bash -s stable</li>
-<li>rvm requirementsで必要なパッケージを確認してinstall</li>
-<li>rvm install ruby-1.9.3</li>
-</ol>
-
-
-<p>これをやる前にうっかりaptitudeでrvm-rubyをinstallしちゃったら</p>
-
-<pre><code>It looks you are one of the happy Ubuntu users, 
-RVM packaged by Ubuntu is old and broken, 
-</code></pre>
-
-<p>とか言われる。happyだから仕方ないね。
-まあ、解決策もちゃんとでてきて
-<a href="http://stackoverflow.com/questions/9056008/installed-ruby-1-9-3-with-rvm-but-command-line-doesnt-show-ruby-v/9056395#9056395">Installed Ruby 1.9.3 with RVM but command line doesn&rsquo;t show ruby -v</a>
-の言われたとおりにすれば直った。</p>
-
-<p>それで</p>
-
-<pre><code>rvm 1.9.3
-</code></pre>
-
-<p>とかすれば、バージョン1.9.3が使える。が、シェルの設定でログインシェルとして使用するとかいうのをチェックしないとうまくいかない。</p>
-
-<h2>octopress導入</h2>
-
-<p><a href="http://blog.glidenote.com/blog/2011/11/07/install-octopress-on-github/">GithubとOctopressでモダンな技術系ブログを作ってみる</a>
-あたりを参考にすれば何とかなる。</p>
-
-<p>あとつまずいたのは、実際の記事を書くときになぜかファイルの文字コードがutf-8になっていなくてrake generateでコケたことくらいか。</p>
+<p>gitkのCUI版みたいなのり。</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/12/start-up/">Start Up</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">garasubo</span></span>
+
+      
 
 
 
@@ -169,37 +124,51 @@ RVM packaged by Ubuntu is old and broken,
   
 
 
-<time datetime="2012-11-12T23:15:00+09:00" pubdate data-updated="true">Nov 12<span>th</span>, 2012</time>
-        
-           | <a href="/blog/2012/11/12/start-up/#disqus_thread"
-             data-disqus-identifier="http://garasubo.github.com/blog/2012/11/12/start-up/">Comments</a>
-        
-      </p>
+<time datetime="2013-03-24T15:25:00+09:00" pubdate data-updated="true">Mar 24<sup>th</sup>, 2013</time>
+      
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>できつぁ</p>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2013/03/24/tig/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2013/03/24/tig/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/03/title/" title="Previous Post: VimShellを久々に使ってみたら便利だった">&laquo; VimShellを久々に使ってみたら便利だった</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/04/18/mkd-vim/" title="Next Post: markdownをvimで扱う">markdownをvimで扱う &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-    <a class="next" href="/">Newer &rarr;</a>
-    
-  </div>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
+  </section>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/12/icpc/">ICPC2014参戦記</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/04/19/code-reading/">Vimでコードリーティング</a>
@@ -214,11 +183,7 @@ RVM packaged by Ubuntu is old and broken,
       </li>
     
       <li class="post">
-        <a href="/blog/2013/03/24/tig%E4%BE%BF%E5%88%A9/">Tig便利</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/03/title/">VimShellを久々に使ってみたら便利だった</a>
+        <a href="/blog/2013/03/24/tig/">Tig便利</a>
       </li>
     
   </ul>
@@ -227,7 +192,7 @@ RVM packaged by Ubuntu is old and broken,
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/garasubo">@garasubo</a> on GitHub
@@ -266,6 +231,7 @@ RVM packaged by Ubuntu is old and broken,
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -280,7 +246,10 @@ RVM packaged by Ubuntu is old and broken,
       var disqus_shortname = 'garasubo';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://garasubo.github.com/blog/2013/03/24/tig/';
+        var disqus_url = 'http://garasubo.github.com/blog/2013/03/24/tig/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
