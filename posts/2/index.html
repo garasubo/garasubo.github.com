@@ -9,9 +9,8 @@
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="こんな記事を見たのがきっかけ
-”恋に落ちるエディタ”「Sublime Text」 完全入門ガイド！ | デザイナーブログ | 株式会社LIG 普段はvimを愛用して、たしかに単体のファイルを編集する分にはいいのだが、
-ある程度のプロジェクトを管理するために便利なものはないかなあと思っていたが、 &hellip;">
+  <meta name="description" content="最近何かとgitを使うことが多くなったので、branchの作り方から
+mergeの仕方まできちんと学ばなきゃなと思い立って色々調べた。 リモートブランチの扱い方 &ldquo;gitのリモートブランチを使って作業を行う流れのメモ &ndash; 那由多屋 開発日誌&rdquo; merge &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +66,79 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/20/git/">Gitでのbranchでの開発</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-20T21:49:00+09:00" pubdate data-updated="true">Nov 20<sup>th</sup>, 2012</time>
+        
+           | <a href="/blog/2012/11/20/git/#disqus_thread"
+             data-disqus-identifier="http://garasubo.github.com/blog/2012/11/20/git/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近何かとgitを使うことが多くなったので、branchの作り方から
+mergeの仕方まできちんと学ばなきゃなと思い立って色々調べた。</p>
+
+<h2>リモートブランチの扱い方</h2>
+
+<p><a href="http://d.hatena.ne.jp/nayutaya/20090519/1242701594">&ldquo;gitのリモートブランチを使って作業を行う流れのメモ &ndash; 那由多屋 開発日誌&rdquo;</a></p>
+
+<h2>merge</h2>
+
+<p>ブランチつくったら、あとでマージしなきゃいけない。
+実はgitのマージにはいくつか種類があるらしく、これはきちんと把握しておく必要が有りそう。<br/>
+<a href="http://d.hatena.ne.jp/sinsoku/20111025/1319497900">&ldquo;図で分かるgit-mergeの&mdash;ff, &mdash;no-ff, &mdash;squashの違い &ndash; アジャイルSEを目指すブログ&rdquo;</a><br/>
+これを読む限り、基本的には&mdash;no&mdash;ffでマージコミットをきちんとつくるのが
+あとでログ見返すときにも良さそうな気がする。</p>
+
+<h2>うっかりマージミスした時の対処。</h2>
+
+<p>commitを取り消すコマンドであるresetは使い方を誤るととんでもないことになるので気をつけなければならない。
+このへんが参考になりそう。<br/>
+<a href="http://d.hatena.ne.jp/ToMmY/20110719/1311034743">git で merge をとりけす法 &ndash; ToMmY Makes Love with Codes</a><br/>
+<a href="http://projects.tsuntsun.net/~nabeken/diary/Sysadmin/git-7.html">~nabeken/diary/ : git で間違って merge してしまった場合 (fast forward でマージしてしまったのを取り消したい)</a></p>
+
+<h2>rebaseコマンドについて</h2>
+
+<p>誰かがrebaseコマンド使えない奴はgit使えるうちに入らないと言っていたので調べた。
+コミットに対して直接変更を加えるので危ないことは確かっぽいが、
+小さなmergeをしたい時とかはこっちのほうが良いのかもしれない。
+少なくとも知っておいて損はないと思うので。<br/>
+<a href="http://d.hatena.ne.jp/sinsoku/20110925/1316933393">図で分かるgit-rebase &ndash; アジャイルSEを目指すブログ</a></p>
+
+<h2>間違ったブランチを変更してしまった！</h2>
+
+<p>gitならこんなことまで出来るんだって感じ。
+記事読んで理解するのにちょっと時間かかった。<br/>
+<a href="http://d.hatena.ne.jp/ToMmY/20110914/1316024033">別のトピックブランチにしてしまった複数のコミットを移動する &ndash; ToMmY Makes Love with Codes</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -281,6 +353,10 @@ RVM packaged by Ubuntu is old and broken,
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/27/android/">Android開発あれこれ</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/12/icpc/">ICPC2014参戦記</a>
       </li>
     
@@ -294,10 +370,6 @@ RVM packaged by Ubuntu is old and broken,
     
       <li class="post">
         <a href="/blog/2013/04/18/mkd-vim/">Markdownをvimで扱う</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/24/tig/">Tig便利</a>
       </li>
     
   </ul>
@@ -335,12 +407,6 @@ RVM packaged by Ubuntu is old and broken,
 
 
 
-<section>
-  <h1>Latest Tweets</h1>
-  <a class="twitter-timeline"  href="https://twitter.com/garasubo"  data-widget-id="463930254969434112">@garasubo からのツイート</a>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-</section>
 
   
 </aside>

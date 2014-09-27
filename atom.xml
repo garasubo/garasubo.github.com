@@ -4,7 +4,7 @@
   <title><![CDATA[garasubo's note]]></title>
   <link href="http://garasubo.github.com/atom.xml" rel="self"/>
   <link href="http://garasubo.github.com/"/>
-  <updated>2014-07-12T20:24:47+09:00</updated>
+  <updated>2014-09-27T11:20:53+09:00</updated>
   <id>http://garasubo.github.com/</id>
   <author>
     <name><![CDATA[garasubo]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Android開発あれこれ]]></title>
+    <link href="http://garasubo.github.com/blog/2014/09/27/android/"/>
+    <updated>2014-09-27T10:52:32+09:00</updated>
+    <id>http://garasubo.github.com/blog/2014/09/27/android</id>
+    <content type="html"><![CDATA[<p>Android開発したときのあれこれをまとめ</p>
+
+<h1>Android Studio</h1>
+
+<p><a href="Android%20Studio%20|%20Android%20Developers">https://developer.android.com/sdk/installing/studio.html</a></p>
+
+<p>公式のSDK。IntelliJベースで、補完とかがとても優秀。
+Viプラグインも結構気に入っている。
+gitignoreとかもデフォルトでちゃんとしていたりと。
+ビルドツールもなかなかよい。
+ただし、gitプラグインの使い勝手はイマイチ。
+まあ、それは別の方法で叩けばいいだけの話であって、
+これなしでのAndroid開発は考えられない。</p>
+
+<h1>シミュレータ</h1>
+
+<p>実機で走らせるとデバッグ実行できなかったりと色々と不都合なので、
+シミュレータを使うことになる。
+しかし、とっても遅くて使い物にならないとまでは言わないが、ストレスがたまる。
+WindowsとMac用にはIntell製のシミュレータが用意されていてSDKマネージャーからインストールでき、それを使えばそこそこ速いらしい。
+しかし、自分はUbuntu使っているので、この方法は使えなかった。</p>
+
+<p>他の方法ではGenymotionというシミュレータがあり、こちらのほうが高速との評価をちらちら見る。</p>
+
+<p><a href="Genymotion">http://www.genymotion.com/</a></p>
+
+<p>こちらは、Virtualbox上で動作する仮想化環境。こちらはUbuntuにも対応しているが、まだ試したことはない。
+Macbookでは試したが、確かに高速。
+ダウンロードに個人情報要求されたりするのが癪ではある。
+トラップとして謎のバグが存在しており、何回かデバッグ実行するとエラーを吐いてアプリが突然死するというものがある。
+そうなった場合は再起動しなければならない。</p>
+
+<h1>ユニットテスト</h1>
+
+<p>Robolectricというのを使った。</p>
+
+<p><a href="%E3%80%90Android%E3%80%91Android%20Studio%20+%20Gradle%20+%20Robolectric%EF%BC%81%E3%81%A7%E3%83%86%E3%82%B9%E3%83%88%E3%82%92%E3%81%97%E3%82%88%E3%81%86%20|%20Yohei%20Blog">http://blog.yohei.org/android-studio-gradle-robolectric1/</a></p>
+
+<p><a href="robolectric_deckard-gradle%20%C2%B7%20GitHub">https://github.com/robolectric/deckard-gradle/</a></p>
+
+<p>ここらへんを見ながらなんとか導入。
+罠なのが、Android Studioが勝手にパッケージ宣言を補完してくるところで、これがあるとテストが動かない。
+<code>gradle check</code>コマンドで簡単にテストできる。ターミナルで実行するよりSDKから叩いたほうが高速（理由はよく知らないけど中間ファイルか何かを再利用していたりするのか）。
+画面遷移等もチェックできるらしのだが、そこまではよく分からなかった。
+しかし、Shared PreferenceとかAndroid固有の機能が絡んでくる動作もちゃんとテスト出来るのはうれしい。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ICPC2014参戦記]]></title>

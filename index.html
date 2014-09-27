@@ -9,10 +9,8 @@
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="ICPC2014国内予選参加しました。
-結果は5完の24位でアジア地区予選には自明に進めないのでここでおしまい。 解いた問題と方針 相方にAを任している間に、C,Eの実装を考えて、
-Aが終わった後、Cを通す。
-疲れたので相方にBを任せている間に、Dの方針を聞いたり他の問題考えていた。 &hellip;">
+  <meta name="description" content="Android開発したときのあれこれをまとめ Android Studio https://developer.android.com/sdk/installing/studio.html 公式のSDK。IntelliJベースで、補完とかがとても優秀。
+Viプラグインも結構気に入っている。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +66,89 @@ Aが終わった後、Cを通す。
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/27/android/">Android開発あれこれ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-27T10:52:32+09:00" pubdate data-updated="true">Sep 27<sup>th</sup>, 2014</time>
+        
+           | <a href="/blog/2014/09/27/android/#disqus_thread"
+             data-disqus-identifier="http://garasubo.github.com/blog/2014/09/27/android/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Android開発したときのあれこれをまとめ</p>
+
+<h1>Android Studio</h1>
+
+<p><a href="Android%20Studio%20|%20Android%20Developers">https://developer.android.com/sdk/installing/studio.html</a></p>
+
+<p>公式のSDK。IntelliJベースで、補完とかがとても優秀。
+Viプラグインも結構気に入っている。
+gitignoreとかもデフォルトでちゃんとしていたりと。
+ビルドツールもなかなかよい。
+ただし、gitプラグインの使い勝手はイマイチ。
+まあ、それは別の方法で叩けばいいだけの話であって、
+これなしでのAndroid開発は考えられない。</p>
+
+<h1>シミュレータ</h1>
+
+<p>実機で走らせるとデバッグ実行できなかったりと色々と不都合なので、
+シミュレータを使うことになる。
+しかし、とっても遅くて使い物にならないとまでは言わないが、ストレスがたまる。
+WindowsとMac用にはIntell製のシミュレータが用意されていてSDKマネージャーからインストールでき、それを使えばそこそこ速いらしい。
+しかし、自分はUbuntu使っているので、この方法は使えなかった。</p>
+
+<p>他の方法ではGenymotionというシミュレータがあり、こちらのほうが高速との評価をちらちら見る。</p>
+
+<p><a href="Genymotion">http://www.genymotion.com/</a></p>
+
+<p>こちらは、Virtualbox上で動作する仮想化環境。こちらはUbuntuにも対応しているが、まだ試したことはない。
+Macbookでは試したが、確かに高速。
+ダウンロードに個人情報要求されたりするのが癪ではある。
+トラップとして謎のバグが存在しており、何回かデバッグ実行するとエラーを吐いてアプリが突然死するというものがある。
+そうなった場合は再起動しなければならない。</p>
+
+<h1>ユニットテスト</h1>
+
+<p>Robolectricというのを使った。</p>
+
+<p><a href="%E3%80%90Android%E3%80%91Android%20Studio%20+%20Gradle%20+%20Robolectric%EF%BC%81%E3%81%A7%E3%83%86%E3%82%B9%E3%83%88%E3%82%92%E3%81%97%E3%82%88%E3%81%86%20|%20Yohei%20Blog">http://blog.yohei.org/android-studio-gradle-robolectric1/</a></p>
+
+<p><a href="robolectric_deckard-gradle%20%C2%B7%20GitHub">https://github.com/robolectric/deckard-gradle/</a></p>
+
+<p>ここらへんを見ながらなんとか導入。
+罠なのが、Android Studioが勝手にパッケージ宣言を補完してくるところで、これがあるとテストが動かない。
+<code>gradle check</code>コマンドで簡単にテストできる。ターミナルで実行するよりSDKから叩いたほうが高速（理由はよく知らないけど中間ファイルか何かを再利用していたりするのか）。
+画面遷移等もチェックできるらしのだが、そこまではよく分からなかった。
+しかし、Shared PreferenceとかAndroid固有の機能が絡んでくる動作もちゃんとテスト出来るのはうれしい。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -729,79 +810,6 @@ gccで-lで指定したファイルが全然リンクされないという問題
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/20/git/">Gitでのbranchでの開発</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-20T21:49:00+09:00" pubdate data-updated="true">Nov 20<sup>th</sup>, 2012</time>
-        
-           | <a href="/blog/2012/11/20/git/#disqus_thread"
-             data-disqus-identifier="http://garasubo.github.com/blog/2012/11/20/git/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近何かとgitを使うことが多くなったので、branchの作り方から
-mergeの仕方まできちんと学ばなきゃなと思い立って色々調べた。</p>
-
-<h2>リモートブランチの扱い方</h2>
-
-<p><a href="http://d.hatena.ne.jp/nayutaya/20090519/1242701594">&ldquo;gitのリモートブランチを使って作業を行う流れのメモ &ndash; 那由多屋 開発日誌&rdquo;</a></p>
-
-<h2>merge</h2>
-
-<p>ブランチつくったら、あとでマージしなきゃいけない。
-実はgitのマージにはいくつか種類があるらしく、これはきちんと把握しておく必要が有りそう。<br/>
-<a href="http://d.hatena.ne.jp/sinsoku/20111025/1319497900">&ldquo;図で分かるgit-mergeの&mdash;ff, &mdash;no-ff, &mdash;squashの違い &ndash; アジャイルSEを目指すブログ&rdquo;</a><br/>
-これを読む限り、基本的には&mdash;no&mdash;ffでマージコミットをきちんとつくるのが
-あとでログ見返すときにも良さそうな気がする。</p>
-
-<h2>うっかりマージミスした時の対処。</h2>
-
-<p>commitを取り消すコマンドであるresetは使い方を誤るととんでもないことになるので気をつけなければならない。
-このへんが参考になりそう。<br/>
-<a href="http://d.hatena.ne.jp/ToMmY/20110719/1311034743">git で merge をとりけす法 &ndash; ToMmY Makes Love with Codes</a><br/>
-<a href="http://projects.tsuntsun.net/~nabeken/diary/Sysadmin/git-7.html">~nabeken/diary/ : git で間違って merge してしまった場合 (fast forward でマージしてしまったのを取り消したい)</a></p>
-
-<h2>rebaseコマンドについて</h2>
-
-<p>誰かがrebaseコマンド使えない奴はgit使えるうちに入らないと言っていたので調べた。
-コミットに対して直接変更を加えるので危ないことは確かっぽいが、
-小さなmergeをしたい時とかはこっちのほうが良いのかもしれない。
-少なくとも知っておいて損はないと思うので。<br/>
-<a href="http://d.hatena.ne.jp/sinsoku/20110925/1316933393">図で分かるgit-rebase &ndash; アジャイルSEを目指すブログ</a></p>
-
-<h2>間違ったブランチを変更してしまった！</h2>
-
-<p>gitならこんなことまで出来るんだって感じ。
-記事読んで理解するのにちょっと時間かかった。<br/>
-<a href="http://d.hatena.ne.jp/ToMmY/20110914/1316024033">別のトピックブランチにしてしまった複数のコミットを移動する &ndash; ToMmY Makes Love with Codes</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -817,6 +825,10 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/27/android/">Android開発あれこれ</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/07/12/icpc/">ICPC2014参戦記</a>
       </li>
     
@@ -830,10 +842,6 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
     
       <li class="post">
         <a href="/blog/2013/04/18/mkd-vim/">Markdownをvimで扱う</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/24/tig/">Tig便利</a>
       </li>
     
   </ul>
@@ -871,12 +879,6 @@ mergeの仕方まできちんと学ばなきゃなと思い立って色々調べ
 
 
 
-<section>
-  <h1>Latest Tweets</h1>
-  <a class="twitter-timeline"  href="https://twitter.com/garasubo"  data-widget-id="463930254969434112">@garasubo からのツイート</a>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-</section>
 
   
 </aside>
