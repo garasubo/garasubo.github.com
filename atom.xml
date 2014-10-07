@@ -4,7 +4,7 @@
   <title><![CDATA[garasubo's note]]></title>
   <link href="http://garasubo.github.com/atom.xml" rel="self"/>
   <link href="http://garasubo.github.com/"/>
-  <updated>2014-09-27T11:24:33+09:00</updated>
+  <updated>2014-10-07T10:34:16+09:00</updated>
   <id>http://garasubo.github.com/</id>
   <author>
     <name><![CDATA[garasubo]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[UbuntuにインストールされたVMware Playerをアンインストール]]></title>
+    <link href="http://garasubo.github.com/blog/2014/10/07/vmware/"/>
+    <updated>2014-10-07T10:28:00+09:00</updated>
+    <id>http://garasubo.github.com/blog/2014/10/07/vmware</id>
+    <content type="html"><![CDATA[<p>タイトルの通り。aptで入れたわけでないのでどうするのかなあと思ったら、
+<code>vmware-uninstall</code>ってコマンドあったから打ってみたところ、</p>
+
+<pre><code>The vmware-uninstall* scripts have been deprecated.  Instead, please use
+the vmware-installer.
+
+Long form:
+  vmware-installer --uninstall-product PRODUCT
+Short form:
+  vmware-installer -u PRODUCT
+</code></pre>
+
+<p>とのこと。</p>
+
+<p>なのでおとなしく、<code>vmware-installer --uninstall-product vmware-player</code>と入れたら消えたみたい。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Android開発あれこれ]]></title>

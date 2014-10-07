@@ -5,12 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Android開発あれこれ - garasubo's note</title>
+  <title>UbuntuにインストールされたVMware Playerをアンインストール - garasubo's note</title>
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="Android開発したときのあれこれをまとめ Android Studio Android Studio | Android Developers 公式のSDK。IntelliJベースで、補完とかがとても優秀。
-Viプラグインも結構気に入っている。 &hellip;">
+  <meta name="description" content="タイトルの通り。aptで入れたわけでないのでどうするのかなあと思ったら、
+vmware-uninstallってコマンドあったから打ってみたところ、 The vmware-uninstall* scripts have been deprecated. Instead, please use
+the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@ Viプラグインも結構気に入っている。 &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://garasubo.github.com/blog/2014/09/27/android">
+  <link rel="canonical" href="http://garasubo.github.com/blog/2014/10/07/vmware">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="garasubo's note" type="application/atom+xml">
@@ -69,7 +70,7 @@ Viプラグインも結構気に入っている。 &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Android開発あれこれ</h1>
+      <h1 class="entry-title">UbuntuにインストールされたVMware Playerをアンインストール</h1>
     
     
       <p class="meta">
@@ -85,7 +86,7 @@ Viプラグインも結構気に入っている。 &hellip;">
   
 
 
-<time datetime="2014-09-27T10:52:32+09:00" pubdate data-updated="true">Sep 27<sup>th</sup>, 2014</time>
+<time datetime="2014-10-07T10:28:00+09:00" pubdate data-updated="true">Oct 7<sup>th</sup>, 2014</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://garasubo.github.com">Comments</a>
@@ -95,51 +96,21 @@ Viプラグインも結構気に入っている。 &hellip;">
   </header>
 
 
-<div class="entry-content"><p>Android開発したときのあれこれをまとめ</p>
+<div class="entry-content"><p>タイトルの通り。aptで入れたわけでないのでどうするのかなあと思ったら、
+<code>vmware-uninstall</code>ってコマンドあったから打ってみたところ、</p>
 
-<h1>Android Studio</h1>
+<pre><code>The vmware-uninstall* scripts have been deprecated.  Instead, please use
+the vmware-installer.
 
-<p><a href="https://developer.android.com/sdk/installing/studio.html">Android Studio | Android Developers</a></p>
+Long form:
+  vmware-installer --uninstall-product PRODUCT
+Short form:
+  vmware-installer -u PRODUCT
+</code></pre>
 
-<p>公式のSDK。IntelliJベースで、補完とかがとても優秀。
-Viプラグインも結構気に入っている。
-gitignoreとかもデフォルトでちゃんとしていたりと。
-ビルドツールもなかなかよい。
-ただし、gitプラグインの使い勝手はイマイチ。
-まあ、それは別の方法で叩けばいいだけの話であって、
-これなしでのAndroid開発は考えられない。</p>
+<p>とのこと。</p>
 
-<h1>シミュレータ</h1>
-
-<p>実機で走らせるとデバッグ実行できなかったりと色々と不都合なので、
-シミュレータを使うことになる。
-しかし、とっても遅くて使い物にならないとまでは言わないが、ストレスがたまる。
-WindowsとMac用にはIntell製のシミュレータが用意されていてSDKマネージャーからインストールでき、それを使えばそこそこ速いらしい。
-しかし、自分はUbuntu使っているので、この方法は使えなかった。</p>
-
-<p>他の方法ではGenymotionというシミュレータがあり、こちらのほうが高速との評価をちらちら見る。</p>
-
-<p><a href="http://www.genymotion.com/">Genymotion</a></p>
-
-<p>こちらは、Virtualbox上で動作する仮想化環境。こちらはUbuntuにも対応しているが、まだ試したことはない。
-Macbookでは試したが、確かに高速。
-ダウンロードに個人情報要求されたりするのが癪ではある。
-トラップとして謎のバグが存在しており、何回かデバッグ実行するとエラーを吐いてアプリが突然死するというものがある。
-そうなった場合は再起動しなければならない。</p>
-
-<h1>ユニットテスト</h1>
-
-<p>Robolectricというのを使った。</p>
-
-<p><a href="http://blog.yohei.org/android-studio-gradle-robolectric1/">【Android】Android Studio + Gradle + Robolectric！でテストをしよう | Yohei Blog</a></p>
-
-<p><a href="https://github.com/robolectric/deckard-gradle/">robolectric_deckard-gradle · GitHub</a></p>
-
-<p>ここらへんを見ながらなんとか導入。
-罠なのが、Android Studioが勝手にパッケージ宣言を補完してくるところで、これがあるとテストが動かない。
-<code>gradle check</code>コマンドで簡単にテストできる。ターミナルで実行するよりSDKから叩いたほうが高速（理由はよく知らないけど中間ファイルか何かを再利用していたりするのか）。
-画面遷移等もチェックできるらしのだが、そこまではよく分からなかった。
-しかし、Shared PreferenceとかAndroid固有の機能が絡んでくる動作もちゃんとテスト出来るのはうれしい。</p>
+<p>なのでおとなしく、<code>vmware-installer --uninstall-product vmware-player</code>と入れたら消えたみたい。</p>
 </div>
 
 
@@ -162,7 +133,7 @@ Macbookでは試したが、確かに高速。
   
 
 
-<time datetime="2014-09-27T10:52:32+09:00" pubdate data-updated="true">Sep 27<sup>th</sup>, 2014</time>
+<time datetime="2014-10-07T10:28:00+09:00" pubdate data-updated="true">Oct 7<sup>th</sup>, 2014</time>
       
 
 
@@ -170,7 +141,7 @@ Macbookでは試したが、確かに高速。
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2014/09/27/android/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2014/09/27/android/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2014/10/07/vmware/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2014/10/07/vmware/" >Tweet</a>
   
   
   
@@ -181,10 +152,8 @@ Macbookでは試したが、確かに高速。
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/07/12/icpc/" title="Previous Post: ICPC2014参戦記">&laquo; ICPC2014参戦記</a>
+        <a class="basic-alignment left" href="/blog/2014/09/27/android/" title="Previous Post: Android開発あれこれ">&laquo; Android開発あれこれ</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/10/07/vmware/" title="Next Post: UbuntuにインストールされたVMware Playerをアンインストール">UbuntuにインストールされたVMware Playerをアンインストール &raquo;</a>
       
     </p>
   </footer>
@@ -279,8 +248,8 @@ Macbookでは試したが、確かに高速。
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://garasubo.github.com/blog/2014/09/27/android/';
-        var disqus_url = 'http://garasubo.github.com/blog/2014/09/27/android/';
+        var disqus_identifier = 'http://garasubo.github.com/blog/2014/10/07/vmware/';
+        var disqus_url = 'http://garasubo.github.com/blog/2014/10/07/vmware/';
         var disqus_script = 'embed.js';
       
     (function () {

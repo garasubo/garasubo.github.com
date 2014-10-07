@@ -9,8 +9,9 @@
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="Android開発したときのあれこれをまとめ Android Studio Android Studio | Android Developers 公式のSDK。IntelliJベースで、補完とかがとても優秀。
-Viプラグインも結構気に入っている。 &hellip;">
+  <meta name="description" content="タイトルの通り。aptで入れたわけでないのでどうするのかなあと思ったら、
+vmware-uninstallってコマンドあったから打ってみたところ、 The vmware-uninstall* scripts have been deprecated. Instead, please use
+the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +67,59 @@ Viプラグインも結構気に入っている。 &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/10/07/vmware/">UbuntuにインストールされたVMware Playerをアンインストール</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-07T10:28:00+09:00" pubdate data-updated="true">Oct 7<sup>th</sup>, 2014</time>
+        
+           | <a href="/blog/2014/10/07/vmware/#disqus_thread"
+             data-disqus-identifier="http://garasubo.github.com/blog/2014/10/07/vmware/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>タイトルの通り。aptで入れたわけでないのでどうするのかなあと思ったら、
+<code>vmware-uninstall</code>ってコマンドあったから打ってみたところ、</p>
+
+<pre><code>The vmware-uninstall* scripts have been deprecated.  Instead, please use
+the vmware-installer.
+
+Long form:
+  vmware-installer --uninstall-product PRODUCT
+Short form:
+  vmware-installer -u PRODUCT
+</code></pre>
+
+<p>とのこと。</p>
+
+<p>なのでおとなしく、<code>vmware-installer --uninstall-product vmware-player</code>と入れたら消えたみたい。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -742,74 +796,6 @@ git logなどで、その時のマージコミットのログを見ると、ど�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/26/new-post/">Ubuntuのgccでリンクのオプションが無視される問題について</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-26T14:17:00+09:00" pubdate data-updated="true">Nov 26<sup>th</sup>, 2012</time>
-        
-           | <a href="/blog/2012/11/26/new-post/#disqus_thread"
-             data-disqus-identifier="http://garasubo.github.com/blog/2012/11/26/new-post/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ubuntuを10.04から12.04にアップデートした際、
-gccで-lで指定したファイルが全然リンクされないという問題があった。
-たとえば、</p>
-
-<pre><code>gcc -lm main.c
-</code></pre>
-
-<p>として、main.cで普通にmathライブラリを使うようなファイルを書くと、
-そんな関数の実体見つからんよ、と怒られていた。</p>
-
-<p>ちょっと検索したらこんなの見つかった。<br/>
-<a href="https://forums.ubuntulinux.jp/viewtopic.php?id=13673">Ubuntu日本語フォーラム / math.h へのリンクがうまくいかない</a><br/>
-どうやら、Ubuntuのあるバージョンからgccの&mdash;as-neededというオプションが
-デフォルトで有効になるような親切設計になったらしく、
-これがあると-lのオプションはソースファイルの後に置かないと無視されるようになるらしい。
-なので、</p>
-
-<pre><code>gcc main.c -lm
-</code></pre>
-
-<p>とすればいいのだが、makeの暗黙ルールでLDFLAGSはソースの前に置かれるようなっているので、なんかルール書き換えるのは癪。</p>
-
-<p>そこで、LDFLAGSに</p>
-
-<pre><code>-Wl,--no-as-needed
-</code></pre>
-
-<p>というオプションを追加してやると、&mdash;as-neededオプションが無効化された。</p>
-
-<p>しかし、なんでこんなオプションをデフォルトで有効にしてしまったのか。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -825,6 +811,10 @@ gccで-lで指定したファイルが全然リンクされないという問題
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/10/07/vmware/">UbuntuにインストールされたVMware Playerをアンインストール</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/27/android/">Android開発あれこれ</a>
       </li>
     
@@ -838,10 +828,6 @@ gccで-lで指定したファイルが全然リンクされないという問題
     
       <li class="post">
         <a href="/blog/2013/07/10/eigen-sparse/">Eigenで疎行列を扱う</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/18/mkd-vim/">Markdownをvimで扱う</a>
       </li>
     
   </ul>
