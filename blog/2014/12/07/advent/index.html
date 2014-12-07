@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>論文紹介ー"User-guided Device Driver Synthesis" - garasubo's note</title>
+  <meta name="author" content="garasubo">
+
+  
+  <meta name="description" content="システム系論文紹介 Advent Calendar 2014の7日目の記事です。 論文概要 タイトル： User-guided device driver synthesis
+著者：Leonid Ryzhyk, Adam Walker, John Keys, Alexander Legg, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://garasubo.github.com/blog/2014/12/07/advent">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="garasubo's note" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">garasubo's note</a></h1>
+  
+    <h2>(´・ω・｀)</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:garasubo.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">論文紹介ー"User-guided Device Driver Synthesis"</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-07T21:38:00+09:00" pubdate data-updated="true">Dec 7<sup>th</sup>, 2014</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://garasubo.github.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="http://www.adventar.org/calendars/440">システム系論文紹介 Advent Calendar 2014</a>の7日目の記事です。</p>
+
+<h2>論文概要</h2>
+
+<ul>
+<li>タイトル： User-guided device driver synthesis</li>
+<li>著者：Leonid Ryzhyk, Adam Walker, John Keys, Alexander Legg, Arun Raghunath, Michael Stumm, Mona Vij</li>
+<li>会議：11th USENIX Symposium on Operating Systems Design and Implementation</li>
+<li>URL： <a href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-ryzhyk.pdf">https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-ryzhyk.pdf</a></li>
+</ul>
+
+
+<p>デバイスドライバをユーザーが指示を出しつつ半自動でデバイスドライバを合成するツールTermiteというものを提案しています。
+この著者はこのTermiteというツールを<a href="http://doi.acm.org/10.1145/1629575.1629583">Automatic Device Driver Synthesis with Termite</a>という論文で
+その2つのやり取りをオートマトンとしてみて、その上で行なわれるゲームの必勝法としてデバイスドライバの合成をしてやろうというものです。</p>
+
+<p>当初は完全自動だったのですが、現代の科学では完全自動だと厳しいものがあると悟った著者らがユーザーの入力補助をうまく取り入れるという
+方針に変えてこのような形になったようです。
+この論文は今までやってきたことのまとめ、という形になっているようです。</p>
+
+<h2>Specificationの書き方</h2>
+
+<p>このTermiteへの入力として必要なのはdriver, device, OSそれぞれのmodelのspecificationです。
+これはTermite Specification Language（TSL）によって与えられます。</p>
+
+<p>TSLの具体例は論文にあります。</p>
+
+<h3>Device model</h3>
+
+<p>デバイスの動作についてのモデルです。
+デバイスがどのように動くかは
+デバイスのデザイナーが持っているはずのtransaction-level models（TLM）から簡単にわかります。
+ただし、ベンダーが非公開にしている場合も多く、TLM to TSLのコンパイラも開発中とのこと。</p>
+
+<p>デバイスモデルを仕様書から書き起こす方法についてはSOSPの論文の方に詳しく議論されていましたが、この論文ではされていませんでした。</p>
+
+<h3>OS model</h3>
+
+<p>OSがドライバに向けて発行するAPIを構築するためのモデルです。
+イーサーネットならパケットを送るとか受け取るとかそんな感じです。</p>
+
+<h3>DeviceとOSモデルをつなげる</h3>
+
+<p>このデバイスとOSの定義の関係する状態を結びつける必要があるのですが、
+この2つの定義をできるだけ独立に保ちたいという要請もあります。</p>
+
+<p>そこで、virtual interfaceというものを導入しています。
+これはデバイスモデルの重要なイベントをOSに通知するコールバックみたいなものです。
+これは実際に合成されるデバイスドライバの動作というわけではなく、
+これで定義を与えてやろうというものです。</p>
+
+<p>また、ドライバの動きを制限するassertや、ドライバがどこに向かっていくのかを定義するgoalというものも定めることができます。</p>
+
+<h3>ドライバテンプレート</h3>
+
+<p>OSが実際に呼び出す関数を定めるテンプレートです。</p>
+
+<h2>User-guided code generation</h2>
+
+<p>コードの合成はIDEで編集するという感じでおこなわれます。
+このIDEの機能としてgeneratorとverifierがあります。
+generatorが自動補完のように現在の入力位置にモデルから合成したコードを埋め込むことができます。
+もちろん、合成したコードに対しての変更も可能です。
+verifierが書かれたコードが定義に合っているかどうかをチェックします。</p>
+
+<h2>Synthesis</h2>
+
+<p>モデル間の合成なのですが、これはデバイス・OSとドライバ間でおこなわれるゲームと見立てることでおこなわれます。
+ゲームの状態を有限オートマトンとして、状態遷移はコントロール可能なものとドライバやOSが勝手に行うコントロール不可能なものの2つです。
+このゲームに勝つ戦略、すなわちなってはならない状態に陥らないように行動するのがドライバで、これを合成するというわけです。
+このゲームに勝つ戦略がそもそも存在しない場合、合成は失敗となります。</p>
+
+<p>この合成は下手に行うと状態数爆発を起こしたりと厄介なのですが、
+それを起こさないため、筆者は様々な工夫をしています。</p>
+
+<p>詳しいことを書いているとキリが無いので、ここでは省略します。
+また、この論文より他の関連する論文のほうが詳しく書かれているようです。
+（私は読んでいません）</p>
+
+<h2>Debugging with counterexamples</h2>
+
+<p>このゲームベースの合成に失敗した時のデバッグ支援方法もTermiteは備えています。
+ゲームに勝つ戦略を妨げている環境の振る舞い、counterexample strategiesを探します。
+これはこのゲームの双対ゲームを解くことで得られます。
+このcounterexample strategyをステップ実行することで、デバッグを支援します。</p>
+
+<h2>Limitations of Termite</h2>
+
+<ul>
+<li>DMAを扱えない
+
+<ul>
+<li>状態数が爆発する</li>
+</ul>
+</li>
+<li>デバイスコントロールとは本質的に関係ないところは他の手法を使うことで簡単に合成できるが、現在のところでは手動で埋め込むしかない</li>
+<li>並列処理への対応ができない</li>
+<li>リアルタイム性の保障はできないので、ハードリアルタイムなドライバはつくれない</li>
+</ul>
+
+
+<h2>Implementation and evaluation</h2>
+
+<p>このTermite、Haskellのコードおよそ3万行で10人年かかっているとのこと。
+USBのwebカメラ、UARTのシリアルコントローラなどを実際に実装して評価しています。
+各デバイスドライバに実装するのに1週間ほど（ドキュメントを読んでデバイスの仕様を調べる時間も含まれている）とのこと。</p>
+
+<p>合成アルゴリズムも、提案している手法と従来手法を比べ、従来手法だと2時間以内に終わらなかったものが、1分〜10分ほどで終わっていることが示されています。
+verificationはまだ最適化されていないため、合成より時間はかかっていますが、それでも最大でも13分ほどしかかかっていません。</p>
+
+<p>実際に出来上がるドライバはどうしても手動での最適化や変更が必要なのですが、60%〜90%は自動で合成できたようです。</p>
+
+<p>また、できあがったコードサイズなのですが、これも全体的に小さくなっています。
+これは、このドライバがデバイス動かすロジックに集中していること、
+普通のデバイスドライバはコードの再利用などを考えて冗長になっていることなどが挙げられるようです。</p>
+
+<p>この方法では定義の再利用が可能というのが1つの売りなのですが、これについてもOSを変えたることで試しています。
+これも定義をほとんど変えることなく再利用できたとしています。</p>
+
+<p>パフォーマンスもほぼ同等とのことです。</p>
+
+<h2>まとめと私見</h2>
+
+<p>Termiteというデバイスドライバ合成ツールについての論文でした。
+形式的手法を用いて定義からドライバを合成し、さらにそのデバッグについても形式的手法を用いて支援しているというのはおもしろいと思い、今回この論文を紹介しました。
+私自身、デバイスドライバを書いたことは一切なく、専門分野でもなく少々準備が甘くなりつたない文章となってしまいましたが、
+ご指摘・マサカリ等ありましたら、コメントお願いします。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">garasubo</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-07T21:38:00+09:00" pubdate data-updated="true">Dec 7<sup>th</sup>, 2014</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2014/12/07/advent/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2014/12/07/advent/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/10/07/vmware/" title="Previous Post: UbuntuにインストールされたVMware Playerをアンインストール">&laquo; UbuntuにインストールされたVMware Playerをアンインストール</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/07/advent/">論文紹介ー"User-guided Device Driver Synthesis"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/10/07/vmware/">UbuntuにインストールされたVMware Playerをアンインストール</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/27/android/">Android開発あれこれ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/12/icpc/">ICPC2014参戦記</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/19/code-reading/">Vimでコードリーティング</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/garasubo">@garasubo</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'garasubo',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - garasubo -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'garasubo';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://garasubo.github.com/blog/2014/12/07/advent/';
+        var disqus_url = 'http://garasubo.github.com/blog/2014/12/07/advent/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

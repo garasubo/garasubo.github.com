@@ -9,9 +9,8 @@
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="タイトルの通り。aptで入れたわけでないのでどうするのかなあと思ったら、
-vmware-uninstallってコマンドあったから打ってみたところ、 The vmware-uninstall* scripts have been deprecated. Instead, please use
-the &hellip;">
+  <meta name="description" content="システム系論文紹介 Advent Calendar 2014の7日目の記事です。 論文概要 タイトル： User-guided device driver synthesis
+著者：Leonid Ryzhyk, Adam Walker, John Keys, Alexander Legg, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +66,171 @@ the &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/07/advent/">論文紹介ー&#8221;User-guided Device Driver Synthesis&#8221;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-07T21:38:00+09:00" pubdate data-updated="true">Dec 7<sup>th</sup>, 2014</time>
+        
+           | <a href="/blog/2014/12/07/advent/#disqus_thread"
+             data-disqus-identifier="http://garasubo.github.com/blog/2014/12/07/advent/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.adventar.org/calendars/440">システム系論文紹介 Advent Calendar 2014</a>の7日目の記事です。</p>
+
+<h2>論文概要</h2>
+
+<ul>
+<li>タイトル： User-guided device driver synthesis</li>
+<li>著者：Leonid Ryzhyk, Adam Walker, John Keys, Alexander Legg, Arun Raghunath, Michael Stumm, Mona Vij</li>
+<li>会議：11th USENIX Symposium on Operating Systems Design and Implementation</li>
+<li>URL： <a href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-ryzhyk.pdf">https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-ryzhyk.pdf</a></li>
+</ul>
+
+
+<p>デバイスドライバをユーザーが指示を出しつつ半自動でデバイスドライバを合成するツールTermiteというものを提案しています。
+この著者はこのTermiteというツールを<a href="http://doi.acm.org/10.1145/1629575.1629583">Automatic Device Driver Synthesis with Termite</a>という論文で
+その2つのやり取りをオートマトンとしてみて、その上で行なわれるゲームの必勝法としてデバイスドライバの合成をしてやろうというものです。</p>
+
+<p>当初は完全自動だったのですが、現代の科学では完全自動だと厳しいものがあると悟った著者らがユーザーの入力補助をうまく取り入れるという
+方針に変えてこのような形になったようです。
+この論文は今までやってきたことのまとめ、という形になっているようです。</p>
+
+<h2>Specificationの書き方</h2>
+
+<p>このTermiteへの入力として必要なのはdriver, device, OSそれぞれのmodelのspecificationです。
+これはTermite Specification Language（TSL）によって与えられます。</p>
+
+<p>TSLの具体例は論文にあります。</p>
+
+<h3>Device model</h3>
+
+<p>デバイスの動作についてのモデルです。
+デバイスがどのように動くかは
+デバイスのデザイナーが持っているはずのtransaction-level models（TLM）から簡単にわかります。
+ただし、ベンダーが非公開にしている場合も多く、TLM to TSLのコンパイラも開発中とのこと。</p>
+
+<p>デバイスモデルを仕様書から書き起こす方法についてはSOSPの論文の方に詳しく議論されていましたが、この論文ではされていませんでした。</p>
+
+<h3>OS model</h3>
+
+<p>OSがドライバに向けて発行するAPIを構築するためのモデルです。
+イーサーネットならパケットを送るとか受け取るとかそんな感じです。</p>
+
+<h3>DeviceとOSモデルをつなげる</h3>
+
+<p>このデバイスとOSの定義の関係する状態を結びつける必要があるのですが、
+この2つの定義をできるだけ独立に保ちたいという要請もあります。</p>
+
+<p>そこで、virtual interfaceというものを導入しています。
+これはデバイスモデルの重要なイベントをOSに通知するコールバックみたいなものです。
+これは実際に合成されるデバイスドライバの動作というわけではなく、
+これで定義を与えてやろうというものです。</p>
+
+<p>また、ドライバの動きを制限するassertや、ドライバがどこに向かっていくのかを定義するgoalというものも定めることができます。</p>
+
+<h3>ドライバテンプレート</h3>
+
+<p>OSが実際に呼び出す関数を定めるテンプレートです。</p>
+
+<h2>User-guided code generation</h2>
+
+<p>コードの合成はIDEで編集するという感じでおこなわれます。
+このIDEの機能としてgeneratorとverifierがあります。
+generatorが自動補完のように現在の入力位置にモデルから合成したコードを埋め込むことができます。
+もちろん、合成したコードに対しての変更も可能です。
+verifierが書かれたコードが定義に合っているかどうかをチェックします。</p>
+
+<h2>Synthesis</h2>
+
+<p>モデル間の合成なのですが、これはデバイス・OSとドライバ間でおこなわれるゲームと見立てることでおこなわれます。
+ゲームの状態を有限オートマトンとして、状態遷移はコントロール可能なものとドライバやOSが勝手に行うコントロール不可能なものの2つです。
+このゲームに勝つ戦略、すなわちなってはならない状態に陥らないように行動するのがドライバで、これを合成するというわけです。
+このゲームに勝つ戦略がそもそも存在しない場合、合成は失敗となります。</p>
+
+<p>この合成は下手に行うと状態数爆発を起こしたりと厄介なのですが、
+それを起こさないため、筆者は様々な工夫をしています。</p>
+
+<p>詳しいことを書いているとキリが無いので、ここでは省略します。
+また、この論文より他の関連する論文のほうが詳しく書かれているようです。
+（私は読んでいません）</p>
+
+<h2>Debugging with counterexamples</h2>
+
+<p>このゲームベースの合成に失敗した時のデバッグ支援方法もTermiteは備えています。
+ゲームに勝つ戦略を妨げている環境の振る舞い、counterexample strategiesを探します。
+これはこのゲームの双対ゲームを解くことで得られます。
+このcounterexample strategyをステップ実行することで、デバッグを支援します。</p>
+
+<h2>Limitations of Termite</h2>
+
+<ul>
+<li>DMAを扱えない
+
+<ul>
+<li>状態数が爆発する</li>
+</ul>
+</li>
+<li>デバイスコントロールとは本質的に関係ないところは他の手法を使うことで簡単に合成できるが、現在のところでは手動で埋め込むしかない</li>
+<li>並列処理への対応ができない</li>
+<li>リアルタイム性の保障はできないので、ハードリアルタイムなドライバはつくれない</li>
+</ul>
+
+
+<h2>Implementation and evaluation</h2>
+
+<p>このTermite、Haskellのコードおよそ3万行で10人年かかっているとのこと。
+USBのwebカメラ、UARTのシリアルコントローラなどを実際に実装して評価しています。
+各デバイスドライバに実装するのに1週間ほど（ドキュメントを読んでデバイスの仕様を調べる時間も含まれている）とのこと。</p>
+
+<p>合成アルゴリズムも、提案している手法と従来手法を比べ、従来手法だと2時間以内に終わらなかったものが、1分〜10分ほどで終わっていることが示されています。
+verificationはまだ最適化されていないため、合成より時間はかかっていますが、それでも最大でも13分ほどしかかかっていません。</p>
+
+<p>実際に出来上がるドライバはどうしても手動での最適化や変更が必要なのですが、60%〜90%は自動で合成できたようです。</p>
+
+<p>また、できあがったコードサイズなのですが、これも全体的に小さくなっています。
+これは、このドライバがデバイス動かすロジックに集中していること、
+普通のデバイスドライバはコードの再利用などを考えて冗長になっていることなどが挙げられるようです。</p>
+
+<p>この方法では定義の再利用が可能というのが1つの売りなのですが、これについてもOSを変えたることで試しています。
+これも定義をほとんど変えることなく再利用できたとしています。</p>
+
+<p>パフォーマンスもほぼ同等とのことです。</p>
+
+<h2>まとめと私見</h2>
+
+<p>Termiteというデバイスドライバ合成ツールについての論文でした。
+形式的手法を用いて定義からドライバを合成し、さらにそのデバッグについても形式的手法を用いて支援しているというのはおもしろいと思い、今回この論文を紹介しました。
+私自身、デバイスドライバを書いたことは一切なく、専門分野でもなく少々準備が甘くなりつたない文章となってしまいましたが、
+ご指摘・マサカリ等ありましたら、コメントお願いします。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -721,81 +885,6 @@ git pullはremoteの変更をgit fetchして取ってきてから、
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/12/28/new-post/">Gitでのミスリカバリー</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-28T19:21:00+09:00" pubdate data-updated="true">Dec 28<sup>th</sup>, 2012</time>
-        
-           | <a href="/blog/2012/12/28/new-post/#disqus_thread"
-             data-disqus-identifier="http://garasubo.github.com/blog/2012/12/28/new-post/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>マージコミットをリバート</h2>
-
-<p>うっかり間違ったブランチで&mdash;no-ffでmergeを打ってしまった場合、
-revertでそのコミットの変更を消すコミットをつくることができる。<br/>
-ただし、このときどちらのブランチを残すのかという事を指示してあげる必要がある。<br/>
-git logなどで、その時のマージコミットのログを見ると、どのコミット同士をマージしたのかということが書いてある。<br/>
-それを見てどちらを残すかを-mオプションで指定する。</p>
-
-<p>詳しくは<a href="http://books.google.co.jp/books?id=8DAvoM4OMxEC&amp;printsec=frontcover&amp;hl=ja#v=onepage&amp;q&amp;f=false">ここ</a>の80ページ目あたりが親切。</p>
-
-<h2>リモートレポジトリに対してリセットをする</h2>
-
-<p><a href="http://tmtms.hatenablog.com/entry/20101221/git">Gitでリモートリポジトリを巻き戻す &ndash; @tmtms のメモ</a>を参考にした。</p>
-
-<p>まず、リセットしたいレポジトリのバックアップレポジトリをつくる。<br/>
-これはいざ間違えた時の対策。</p>
-
-<pre><code>git push origin tar_bak
-</code></pre>
-
-<p>つづいてgit reflogして戻したい地点を見つける</p>
-
-<pre><code>******* HEAD@{0}: hoge
-******* HEAD@{1}: hogehoge
-******* HEAD@{2}: hogehogehoge
-******* HEAD@{3}: hogehogehogehoge
-...
-</code></pre>
-
-<p>hogehogehogeの地点まで戻りたいとして、</p>
-
-<pre><code>git push -f origin HEAD@{2}:tar
-</code></pre>
-
-<p>とすればよい。こうすると、origin/tarの指すコミットが移動する。</p>
-
-<p>他の人にも影響することなので、やるときは注意。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -811,6 +900,10 @@ git logなどで、その時のマージコミットのログを見ると、ど�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/07/advent/">論文紹介ー&#8221;User-guided Device Driver Synthesis&#8221;</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/10/07/vmware/">UbuntuにインストールされたVMware Playerをアンインストール</a>
       </li>
     
@@ -824,10 +917,6 @@ git logなどで、その時のマージコミットのログを見ると、ど�
     
       <li class="post">
         <a href="/blog/2014/04/19/code-reading/">Vimでコードリーティング</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/10/eigen-sparse/">Eigenで疎行列を扱う</a>
       </li>
     
   </ul>
