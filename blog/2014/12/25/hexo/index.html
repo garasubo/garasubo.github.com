@@ -5,15 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Git Pullをrebaseで行う - garasubo's note</title>
+  <title>あなたとHexo - garasubo's note</title>
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="複数人でリモートのレポジトリをいじるとリモートの変更を
-git pullでひっぱって来ないといけないわけだが、
-git pullはremoteの変更をgit fetchして取ってきてから、
-その変更を自分の追跡ブランチにmergeをするということをしている。
-そのため、 &hellip;">
+  <meta name="description" content="Octopressの動作が最近よくわからないけど不安定なのと、
+どこかでHexoいいよという話を聞いたので、このブログのHexo移転を考えている。 Hexo 所要時間3分!? Github PagesとHEXOで爆速ブログ構築してみよう！ | 株式会社LIG Octopress vs Hexo &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +19,7 @@ git pullはremoteの変更をgit fetchして取ってきてから、
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://garasubo.github.com/blog/2013/02/22/new-post">
+  <link rel="canonical" href="http://garasubo.github.com/blog/2014/12/25/hexo">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="garasubo's note" type="application/atom+xml">
@@ -72,7 +69,7 @@ git pullはremoteの変更をgit fetchして取ってきてから、
   
   <header>
     
-      <h1 class="entry-title">Git Pullをrebaseで行う</h1>
+      <h1 class="entry-title">あなたとHexo</h1>
     
     
       <p class="meta">
@@ -88,7 +85,7 @@ git pullはremoteの変更をgit fetchして取ってきてから、
   
 
 
-<time datetime="2013-02-22T14:52:00+09:00" pubdate data-updated="true">Feb 22<sup>nd</sup>, 2013</time>
+<time datetime="2014-12-25T07:44:26+09:00" pubdate data-updated="true">Dec 25<sup>th</sup>, 2014</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://garasubo.github.com">Comments</a>
@@ -98,35 +95,23 @@ git pullはremoteの変更をgit fetchして取ってきてから、
   </header>
 
 
-<div class="entry-content"><p>複数人でリモートのレポジトリをいじるとリモートの変更を
-git pullでひっぱって来ないといけないわけだが、
-git pullはremoteの変更をgit fetchして取ってきてから、
-その変更を自分の追跡ブランチにmergeをするということをしている。<br/>
-そのため、場合によっては無駄にマージコミットができてしまい、気が分岐しているように見えて、
-ログの参照性をさげてしまう。<br/>
-そこでpull時にmergeの代わりにrebaseを使い、そのようなことを避けるオプションがある。</p>
+<div class="entry-content"><p>Octopressの動作が最近よくわからないけど不安定なのと、
+どこかでHexoいいよという話を聞いたので、このブログのHexo移転を考えている。</p>
 
-<pre><code>git pull --rebase
-</code></pre>
+<p><a href="http://hexo.io/">Hexo</a></p>
 
-<p><a href="http://keijinsonyaban.blogspot.jp/2010/11/git-tips.html">見えないチカラ: 【翻訳】あなたの知らないGit Tips</a>によると、</p>
+<p><a href="http://liginc.co.jp/web/programming/server/104594">所要時間3分!? Github PagesとHEXOで爆速ブログ構築してみよう！ | 株式会社LIG</a></p>
 
-<pre><code>git config --global pull.rebase true
-</code></pre>
+<p><a href="http://www.techelex.org/octopress-vs-hexo/">Octopress vs Hexo</a></p>
 
-<p>としてあげると全追跡ブランチでpull時はオプション無しでrebaseを使うようになる。(Git 1.7.9から)</p>
+<p>Octopressからの移行は楽で、記事のmarkdownファイルを移動してきて、configをいじってあげればよい。</p>
 
-<p>ただし、rebaseでpullしてくると</p>
+<p><a href="http://hexo.io/docs/migration.html">Migration | Hexo</a></p>
 
-<pre><code>1. 追跡ブランチからブランチを切る
-2. そのブランチに対して追跡ブランチにマージコミットを打つ（その間、追跡ブランチには何もコミットしていない）
-3. 追跡ブランチでpull
-</code></pre>
+<p>それで新しくつくったブログがこちら。
+もうちょっとしたらこちらに移す。</p>
 
-<p>とすると、マージコミットが消えて、その追跡ブランチからブランチを切ったという情報が消えてしまった。<br/>
-これはマージコミットをリバートするときはどちらを残すか明示的に指定しないといけないように、
-どちらが本来の流れか分からなくなるからか？<br/>
-にわかだからよくわかりません＞＜</p>
+<p><a href="http://garasubo.github.com/hexo">新しいブログ</a></p>
 </div>
 
 
@@ -149,7 +134,7 @@ git pullはremoteの変更をgit fetchして取ってきてから、
   
 
 
-<time datetime="2013-02-22T14:52:00+09:00" pubdate data-updated="true">Feb 22<sup>nd</sup>, 2013</time>
+<time datetime="2014-12-25T07:44:26+09:00" pubdate data-updated="true">Dec 25<sup>th</sup>, 2014</time>
       
 
 
@@ -157,7 +142,7 @@ git pullはremoteの変更をgit fetchして取ってきてから、
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2013/02/22/new-post/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2013/02/22/new-post/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://garasubo.github.com/blog/2014/12/25/hexo/" data-via="garasubo" data-counturl="http://garasubo.github.com/blog/2014/12/25/hexo/" >Tweet</a>
   
   
   
@@ -168,20 +153,12 @@ git pullはremoteの変更をgit fetchして取ってきてから、
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/12/28/new-post/" title="Previous Post: Gitでのミスリカバリー">&laquo; Gitでのミスリカバリー</a>
+        <a class="basic-alignment left" href="/blog/2014/12/07/advent/" title="Previous Post: 論文紹介ー"User-guided device driver synthesis"">&laquo; 論文紹介ー"User-guided device driver synthesis"</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/03/03/title/" title="Next Post: VimShellを久々に使ってみたら便利だった">VimShellを久々に使ってみたら便利だった &raquo;</a>
       
     </p>
   </footer>
 </article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
 
 </div>
 
@@ -265,10 +242,7 @@ git pullはremoteの変更をgit fetchして取ってきてから、
       var disqus_shortname = 'garasubo';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://garasubo.github.com/blog/2013/02/22/new-post/';
-        var disqus_url = 'http://garasubo.github.com/blog/2013/02/22/new-post/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

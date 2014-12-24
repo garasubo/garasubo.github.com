@@ -4,7 +4,7 @@
   <title><![CDATA[garasubo's note]]></title>
   <link href="http://garasubo.github.com/atom.xml" rel="self"/>
   <link href="http://garasubo.github.com/"/>
-  <updated>2014-12-24T22:54:09+09:00</updated>
+  <updated>2014-12-24T22:56:29+09:00</updated>
   <id>http://garasubo.github.com/</id>
   <author>
     <name><![CDATA[garasubo]]></name>
@@ -14,16 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Hexo]]></title>
-    <link href="http://garasubo.github.com/blog/2014/12/24/hexo/"/>
-    <updated>2014-12-24T00:00:00+09:00</updated>
-    <id>http://garasubo.github.com/blog/2014/12/24/hexo</id>
-    <content type="html"><![CDATA[<p>title: あなたとHexo
-date: 2014-12-24 22:44:26</p>
-
-<h2>tags:</h2>
-
-<p>Octopressの動作が最近よくわからないけど不安定なのと、
+    <title type="html"><![CDATA[あなたとHexo]]></title>
+    <link href="http://garasubo.github.com/blog/2014/12/25/hexo/"/>
+    <updated>2014-12-25T07:44:26+09:00</updated>
+    <id>http://garasubo.github.com/blog/2014/12/25/hexo</id>
+    <content type="html"><![CDATA[<p>Octopressの動作が最近よくわからないけど不安定なのと、
 どこかでHexoいいよという話を聞いたので、このブログのHexo移転を考えている。</p>
 
 <p><a href="http://hexo.io/">Hexo</a></p>
