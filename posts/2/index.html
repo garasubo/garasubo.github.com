@@ -9,10 +9,11 @@
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="マージコミットをリバート うっかり間違ったブランチで&mdash;no-ffでmergeを打ってしまった場合、
-revertでそのコミットの変更を消すコミットをつくることができる。
-ただし、このときどちらのブランチを残すのかという事を指示してあげる必要がある。
-git logなどで、 &hellip;">
+  <meta name="description" content="複数人でリモートのレポジトリをいじるとリモートの変更を
+git pullでひっぱって来ないといけないわけだが、
+git pullはremoteの変更をgit fetchして取ってきてから、
+その変更を自分の追跡ブランチにmergeをするということをしている。
+そのため、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +69,73 @@ git logなどで、 &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/02/22/new-post/">Git Pullをrebaseで行う</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-22T14:52:00+09:00" pubdate data-updated="true">Feb 22<sup>nd</sup>, 2013</time>
+        
+           | <a href="/blog/2013/02/22/new-post/#disqus_thread"
+             data-disqus-identifier="http://garasubo.github.com/blog/2013/02/22/new-post/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>複数人でリモートのレポジトリをいじるとリモートの変更を
+git pullでひっぱって来ないといけないわけだが、
+git pullはremoteの変更をgit fetchして取ってきてから、
+その変更を自分の追跡ブランチにmergeをするということをしている。<br/>
+そのため、場合によっては無駄にマージコミットができてしまい、気が分岐しているように見えて、
+ログの参照性をさげてしまう。<br/>
+そこでpull時にmergeの代わりにrebaseを使い、そのようなことを避けるオプションがある。</p>
+
+<pre><code>git pull --rebase
+</code></pre>
+
+<p><a href="http://keijinsonyaban.blogspot.jp/2010/11/git-tips.html">見えないチカラ: 【翻訳】あなたの知らないGit Tips</a>によると、</p>
+
+<pre><code>git config --global pull.rebase true
+</code></pre>
+
+<p>としてあげると全追跡ブランチでpull時はオプション無しでrebaseを使うようになる。(Git 1.7.9から)</p>
+
+<p>ただし、rebaseでpullしてくると</p>
+
+<pre><code>1. 追跡ブランチからブランチを切る
+2. そのブランチに対して追跡ブランチにマージコミットを打つ（その間、追跡ブランチには何もコミットしていない）
+3. 追跡ブランチでpull
+</code></pre>
+
+<p>とすると、マージコミットが消えて、その追跡ブランチからブランチを切ったという情報が消えてしまった。<br/>
+これはマージコミットをリバートするときはどちらを残すか明示的に指定しないといけないように、
+どちらが本来の流れか分からなくなるからか？<br/>
+にわかだからよくわかりません＞＜</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -498,6 +566,10 @@ RVM packaged by Ubuntu is old and broken,
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/24/hexo/">Hexo</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/07/advent/">論文紹介ー&#8221;User-guided Device Driver Synthesis&#8221;</a>
       </li>
     
@@ -511,10 +583,6 @@ RVM packaged by Ubuntu is old and broken,
     
       <li class="post">
         <a href="/blog/2014/07/12/icpc/">ICPC2014参戦記</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/19/code-reading/">Vimでコードリーティング</a>
       </li>
     
   </ul>

@@ -9,8 +9,9 @@
   <meta name="author" content="garasubo">
 
   
-  <meta name="description" content="システム系論文紹介 Advent Calendar 2014の7日目の記事です。 論文概要 タイトル： User-guided device driver synthesis
-著者：Leonid Ryzhyk, Adam Walker, John Keys, Alexander Legg, &hellip;">
+  <meta name="description" content="title: あなたとHexo
+date: 2014-12-24 22:44:26 tags: Octopressの動作が最近よくわからないけど不安定なのと、
+どこかでHexoいいよという話を聞いたので、このブログのHexo移転を考えている。 Hexo 所要時間3分!? Github &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +67,66 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/24/hexo/">Hexo</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-24T00:00:00+09:00" pubdate data-updated="true"></time>
+        
+           | <a href="/blog/2014/12/24/hexo/#disqus_thread"
+             data-disqus-identifier="http://garasubo.github.com/blog/2014/12/24/hexo/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>title: あなたとHexo
+date: 2014-12-24 22:44:26</p>
+
+<h2>tags:</h2>
+
+<p>Octopressの動作が最近よくわからないけど不安定なのと、
+どこかでHexoいいよという話を聞いたので、このブログのHexo移転を考えている。</p>
+
+<p><a href="http://hexo.io/">Hexo</a></p>
+
+<p><a href="http://liginc.co.jp/web/programming/server/104594">所要時間3分!? Github PagesとHEXOで爆速ブログ構築してみよう！ | 株式会社LIG</a></p>
+
+<p><a href="http://www.techelex.org/octopress-vs-hexo/">Octopress vs Hexo</a></p>
+
+<p>Octopressからの移行は楽で、記事のmarkdownファイルを移動してきて、configをいじってあげればよい。</p>
+
+<p><a href="http://hexo.io/docs/migration.html">Migration | Hexo</a></p>
+
+<p>それで新しくつくったブログがこちら。
+もうちょっとしたらこちらに移す。</p>
+
+<p><a href="http://garasubo.github.com/hexo">新しいブログ</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -818,73 +879,6 @@ let g:quickrun_config.mkd = {
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/02/22/new-post/">Git Pullをrebaseで行う</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-22T14:52:00+09:00" pubdate data-updated="true">Feb 22<sup>nd</sup>, 2013</time>
-        
-           | <a href="/blog/2013/02/22/new-post/#disqus_thread"
-             data-disqus-identifier="http://garasubo.github.com/blog/2013/02/22/new-post/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>複数人でリモートのレポジトリをいじるとリモートの変更を
-git pullでひっぱって来ないといけないわけだが、
-git pullはremoteの変更をgit fetchして取ってきてから、
-その変更を自分の追跡ブランチにmergeをするということをしている。<br/>
-そのため、場合によっては無駄にマージコミットができてしまい、気が分岐しているように見えて、
-ログの参照性をさげてしまう。<br/>
-そこでpull時にmergeの代わりにrebaseを使い、そのようなことを避けるオプションがある。</p>
-
-<pre><code>git pull --rebase
-</code></pre>
-
-<p><a href="http://keijinsonyaban.blogspot.jp/2010/11/git-tips.html">見えないチカラ: 【翻訳】あなたの知らないGit Tips</a>によると、</p>
-
-<pre><code>git config --global pull.rebase true
-</code></pre>
-
-<p>としてあげると全追跡ブランチでpull時はオプション無しでrebaseを使うようになる。(Git 1.7.9から)</p>
-
-<p>ただし、rebaseでpullしてくると</p>
-
-<pre><code>1. 追跡ブランチからブランチを切る
-2. そのブランチに対して追跡ブランチにマージコミットを打つ（その間、追跡ブランチには何もコミットしていない）
-3. 追跡ブランチでpull
-</code></pre>
-
-<p>とすると、マージコミットが消えて、その追跡ブランチからブランチを切ったという情報が消えてしまった。<br/>
-これはマージコミットをリバートするときはどちらを残すか明示的に指定しないといけないように、
-どちらが本来の流れか分からなくなるからか？<br/>
-にわかだからよくわかりません＞＜</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -900,6 +894,10 @@ git pullはremoteの変更をgit fetchして取ってきてから、
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/24/hexo/">Hexo</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/07/advent/">論文紹介ー&#8221;User-guided Device Driver Synthesis&#8221;</a>
       </li>
     
@@ -913,10 +911,6 @@ git pullはremoteの変更をgit fetchして取ってきてから、
     
       <li class="post">
         <a href="/blog/2014/07/12/icpc/">ICPC2014参戦記</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/19/code-reading/">Vimでコードリーティング</a>
       </li>
     
   </ul>

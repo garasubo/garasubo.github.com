@@ -4,7 +4,7 @@
   <title><![CDATA[garasubo's note]]></title>
   <link href="http://garasubo.github.com/atom.xml" rel="self"/>
   <link href="http://garasubo.github.com/"/>
-  <updated>2014-12-07T18:56:16+09:00</updated>
+  <updated>2014-12-24T22:54:09+09:00</updated>
   <id>http://garasubo.github.com/</id>
   <author>
     <name><![CDATA[garasubo]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Hexo]]></title>
+    <link href="http://garasubo.github.com/blog/2014/12/24/hexo/"/>
+    <updated>2014-12-24T00:00:00+09:00</updated>
+    <id>http://garasubo.github.com/blog/2014/12/24/hexo</id>
+    <content type="html"><![CDATA[<p>title: あなたとHexo
+date: 2014-12-24 22:44:26</p>
+
+<h2>tags:</h2>
+
+<p>Octopressの動作が最近よくわからないけど不安定なのと、
+どこかでHexoいいよという話を聞いたので、このブログのHexo移転を考えている。</p>
+
+<p><a href="http://hexo.io/">Hexo</a></p>
+
+<p><a href="http://liginc.co.jp/web/programming/server/104594">所要時間3分!? Github PagesとHEXOで爆速ブログ構築してみよう！ | 株式会社LIG</a></p>
+
+<p><a href="http://www.techelex.org/octopress-vs-hexo/">Octopress vs Hexo</a></p>
+
+<p>Octopressからの移行は楽で、記事のmarkdownファイルを移動してきて、configをいじってあげればよい。</p>
+
+<p><a href="http://hexo.io/docs/migration.html">Migration | Hexo</a></p>
+
+<p>それで新しくつくったブログがこちら。
+もうちょっとしたらこちらに移す。</p>
+
+<p><a href="http://garasubo.github.com/hexo">新しいブログ</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[論文紹介ー"User-guided Device Driver Synthesis"]]></title>
