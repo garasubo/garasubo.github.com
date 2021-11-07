@@ -15,6 +15,8 @@ See also my [Speaker Deck](https://speakerdeck.com/garasubo).
 
 - [Rustで始める低レイヤープログラミング](https://garasubo.github.io/rustlt4/) in [Rust LT #4](https://rust.connpass.com/event/125666/)
 - [RustはOS界の銀の弾丸になりうるか](https://docs.google.com/presentation/d/1RRccgmR-EsnfanWrpyywvx4fDbohEHWuqsAoMAT6YUY/edit?usp=sharing) in [Kernel/VM探検隊online part2](https://kernelvm.connpass.com/event/201059/) (2021-03-20)
+- [RustでOSを実装する](https://docs.google.com/presentation/d/1iHxIPbEC8pYimheyXYtOVvK-bGgMIC6PEkuwiUT6l4M/edit?usp=sharing) in Toppers開発者会議2021 (2021-10-24)
+- [allocクレートを使えるようにする](https://docs.google.com/presentation/d/1mT1N22j0zPIutotZSSgjsoLIn4-tp14qG02K3uazEyw/edit?usp=sharing) in [Shijuku.rs #18](https://forcia.connpass.com/event/224438/)
 
 ## Contests
 - 11th place in ACM-ICPC 2015 Domestic Qualifying Round(boTech)
