@@ -7,6 +7,7 @@ garasubo is a software engineer in Japan.
     - A prototype embedded operating system written in Rust
 
 ## Publications
+- [インプレスR&D「Rustで始める自作組込みOS入門」](https://nextpublishing.jp/book/14912.html)
 - [Rustで始める自作組込みOS入門](https://techbookfest.org/product/6484983722016768?productVariantID=4877729004519424) (技術書典11)
 - 技術評論社 [Software Design 2021年9月号 第１特集第３章 Rustのメモリ管理機能とその特徴](https://gihyo.jp/magazine/SD/archive/2021/202109)
 
@@ -25,8 +26,9 @@ See also my [Speaker Deck](https://speakerdeck.com/garasubo).
 - [AtCoder](https://atcoder.jp/users/garasubo)
 
 ## Links
-- [Github](https://github.com/garasubo)
+- [GitHub](https://github.com/garasubo)
 - [Medium](https://medium.com/@garasubo)
+- [Mastodon (ja)](https://mstdn.jp/@garasubo)
 - [Twitter (ja)](https://twitter.com/garasubo)
 - [blog (ja)](https://garasubo.github.io/hexo/)
 - [Zenn (ja)](https://zenn.dev/garasubo)
