@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+
+
+const cta = [
+	{ label: 'GitHub', href: 'https://github.com/garasubo' },
+	{ label: 'Blog', href: 'https://garasubo.com/hexo' },
+	{ label: 'Twitter', href: 'https://x.com/garasubo' },
+];
+
+
+const applications = [
+	{ title: 'T-Visor', href: 'https://github.com/garasubo/T-Visor', desc: 'Type-1 Hypervisor for ARMv7-A architectures' },
+	{ title: 'ErkOS', href: 'https://github.com/garasubo/erkos', desc: 'A prototype embedded operating system written in Rust' },
+];
+---
+<Base title="@garasubo — Software Engineer" description="Rust / IoT / Systems" lang="ja">
+
+<!-- Hero -->
+<section class="py-16 md:py-24 text-center">
+<div class="mx-auto max-w-prose">
+<h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">
+@garasubo
+</h1>
+<p class="mt-3 text-lg md:text-xl text-slate-600 dark:text-slate-300">
+Software Engineer — Rust / IoT / Virtualization / Systems
+</p>
+<div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+{cta.map((b) => (
+<a
+class="inline-flex items-center rounded-full border border-white/10 px-4 py-2 text-sm font-medium hover:opacity-90"
+href={b.href} target="_blank" rel="noopener noreferrer"
+>{b.label}</a>
+))}
+</div>
+</div>
+</section>
+
+
+<!-- Applications -->
+<section class="max-w-4xl mx-auto px-6 py-10" aria-labelledby="apps">
+	<h2 id="apps" class="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">Applications</h2>
+	<div class="mt-3 grid gap-4 sm:grid-cols-2">
+		{applications.map((item) => (
+			<a href={item.href} class="block p-5 border rounded-2xl shadow-sm hover:shadow-md transition focus-visible:ring-2" target="_blank" rel="noopener noreferrer">
+				<h3 class="font-semibold mb-1">{item.title}</h3>
+				<p class="text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>
+			</a>
+		))}
+	</div>
+</section>
+</Base>
