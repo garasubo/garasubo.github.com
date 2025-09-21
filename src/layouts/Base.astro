@@ -15,15 +15,6 @@ import '../styles/globals.scss';
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.png" type="image/png" />
-        <script>
-            // 初期テーマ（OS優先→localStorage）
-            const osDark = window.matchMedia(
-                "(prefers-color-scheme: dark)",
-            ).matches;
-            const saved = localStorage.getItem("theme");
-            if (saved === "dark" || (!saved && osDark))
-                document.documentElement.classList.add("dark");
-        </script>
     </head>
     <body class="min-h-full">
         <header
