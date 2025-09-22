@@ -3,6 +3,7 @@ export default {
     content: [
         './src/**/*.astro',
         './src/**/*.mdx',
+        './src/**/*.md',
         './src/**/*.tsx',
         './src/**/*.ts',
         './src/**/*.js',

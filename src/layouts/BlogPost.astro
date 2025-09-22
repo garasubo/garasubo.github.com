@@ -1,0 +1,64 @@
+---
+import type { ImageMetadata } from 'astro';
+import Base from './Base.astro';
+
+const {
+    title,
+    description,
+    pubDate,
+    updatedDate,
+    tags = [],
+    heroImage,
+} = Astro.props as {
+    title: string;
+    description: string;
+    pubDate: Date;
+    updatedDate?: Date;
+    tags?: string[];
+    heroImage?: ImageMetadata;
+};
+
+const formatter = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium' });
+const publishedLabel = formatter.format(pubDate);
+const updatedLabel = updatedDate ? formatter.format(updatedDate) : undefined;
+---
+
+<Base title={`${title} | @garasubo`} description={description}>
+    <article class="mx-auto max-w-3xl py-12">
+        <header class="space-y-4">
+            <p class="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Blog</p>
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">{title}</h1>
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-500 dark:text-slate-400">
+                <time datetime={pubDate.toISOString()}>公開日: {publishedLabel}</time>
+                {updatedDate && (
+                    <time datetime={updatedDate.toISOString()}>更新日: {updatedLabel}</time>
+                )}
+            </div>
+            {description && (
+                <p class="text-lg text-slate-600 dark:text-slate-300">{description}</p>
+            )}
+            {tags?.length ? (
+                <ul class="flex flex-wrap gap-2 pt-2 text-xs font-medium">
+                    {tags.map((tag) => (
+                        <li class="rounded-full bg-slate-100 px-3 py-1 text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+                            {tag}
+                        </li>
+                    ))}
+                </ul>
+            ) : null}
+            {heroImage && (
+                <img
+                    src={heroImage.src}
+                    alt={heroImage.alt ?? ''}
+                    width={heroImage.width}
+                    height={heroImage.height}
+                    class="mt-6 w-full rounded-2xl border border-white/10 object-cover"
+                    loading="lazy"
+                />
+            )}
+        </header>
+        <div class="article mt-10">
+            <slot />
+        </div>
+    </article>
+</Base>

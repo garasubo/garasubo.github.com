@@ -17,13 +17,17 @@ import '../styles/globals.scss';
         <link rel="icon" href="/favicon.png" type="image/png" />
     </head>
     <body class="min-h-full">
-        <header
-            class="mx-auto max-w-6xl px-4 py-6 flex items-center justify-between"
-        >
-            <a href="/" class="font-extrabold tracking-tight text-xl"
-                >@garasubo</a
-            >
-            <slot name="header" />
+        <header class="mx-auto flex max-w-6xl items-center justify-between px-4 py-6">
+            <a href="/" class="text-xl font-extrabold tracking-tight">@garasubo</a>
+            <nav class="flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+                <a
+                    href="/blog/"
+                    class="transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+                >
+                    Blog
+                </a>
+                <slot name="header" />
+            </nav>
         </header>
 
         <main class="mx-auto max-w-6xl px-4">
