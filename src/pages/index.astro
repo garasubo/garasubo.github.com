@@ -58,59 +58,6 @@ const formatter = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium' });
         </div>
     </section>
 
-    <!-- Blog -->
-    <section class="max-w-4xl mx-auto px-6 py-10" aria-labelledby="blog">
-        <div class="flex items-center justify-between gap-4">
-            <div>
-                <h2 id="blog" class="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">Blog</h2>
-                <p class="mt-2 text-slate-600 dark:text-slate-300">
-                    最新のブログ記事をピックアップして紹介します。
-                </p>
-            </div>
-            {blogPosts.length > 0 && (
-                <a href="/blog/" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-400">
-                    すべての記事を見る →
-                </a>
-            )}
-        </div>
-        <div class="mt-6 space-y-6">
-            {blogPosts.length === 0 ? (
-                <p class="text-slate-600 dark:text-slate-300">
-                    まだ記事はありませんが、順次公開していく予定です。
-                </p>
-            ) : (
-                blogPosts.map((post) => (
-                    <a
-                        href={`/blog/${post.slug}/`}
-                        class="block rounded-2xl border border-white/10 bg-white/70 p-6 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow dark:bg-slate-900/50"
-                    >
-                        <h3 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
-                            {post.data.title}
-                        </h3>
-                        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                            {post.data.description}
-                        </p>
-                        <div class="mt-4 flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
-                            <time datetime={post.data.pubDate.toISOString()}>
-                                {formatter.format(post.data.pubDate)}
-                            </time>
-                            {post.data.tags?.length ? (
-                                <ul class="flex flex-wrap gap-2 text-[11px] font-medium">
-                                    {post.data.tags.map((tag) => (
-                                        <li class="rounded-full bg-slate-100 px-2.5 py-0.5 text-slate-600 dark:bg-slate-800 dark:text-slate-300">
-                                            {tag}
-                                        </li>
-                                    ))}
-                                </ul>
-                            ) : null}
-                        </div>
-                    </a>
-                ))
-            )}
-        </div>
-    </section>
-
-
     <!-- Applications -->
     <section class="max-w-4xl mx-auto px-6 py-10" aria-labelledby="apps">
         <h2 id="apps" class="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">Applications</h2>
@@ -118,6 +65,55 @@ const formatter = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium' });
             {applications.map((item) => (
                 <Card href={item.href} title={item.title} desc={item.desc} />
             ))}
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section class="max-w-4xl mx-auto px-6 py-10" aria-labelledby="blog">
+        <div class="flex items-center justify-between gap-4">
+            <div>
+                <h2 id="blog" class="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">Blog</h2>
+            </div>
+            {blogPosts.length > 0 && (
+                    <a href="/blog/" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-400">
+                        All Posts →
+                    </a>
+            )}
+        </div>
+        <div class="mt-6 space-y-6">
+            {blogPosts.length === 0 ? (
+                    <p class="text-slate-600 dark:text-slate-300">
+                        まだ記事はありませんが、順次公開していく予定です。
+                    </p>
+            ) : (
+                blogPosts.map((post) => (
+                        <a
+                                href={`/blog/${post.slug}/`}
+                                class="block rounded-2xl border border-white/10 bg-white/70 p-6 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow dark:bg-slate-900/50"
+                        >
+                            <h3 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
+                                {post.data.title}
+                            </h3>
+                            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                                {post.data.description}
+                            </p>
+                            <div class="mt-4 flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
+                                <time datetime={post.data.pubDate.toISOString()}>
+                                    {formatter.format(post.data.pubDate)}
+                                </time>
+                                {post.data.tags?.length ? (
+                                        <ul class="flex flex-wrap gap-2 text-[11px] font-medium">
+                                            {post.data.tags.map((tag) => (
+                                                    <li class="rounded-full bg-slate-100 px-2.5 py-0.5 text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+                                                        {tag}
+                                                    </li>
+                                            ))}
+                                        </ul>
+                                ) : null}
+                            </div>
+                        </a>
+                ))
+            )}
         </div>
     </section>
 
