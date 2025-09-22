@@ -1,0 +1,33 @@
+---
+const {
+    title = "@garasubo",
+    description = "Software Engineer (Rust / IoT / Systems / Web)",
+    lang = "ja",
+} = Astro.props;
+import '../styles/globals.scss';
+---
+
+<!doctype html>
+<html lang={lang} class="h-full">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+    </head>
+    <body class="min-h-full">
+        <header
+            class="mx-auto max-w-6xl px-4 py-6 flex items-center justify-between"
+        >
+            <a href="/" class="font-extrabold tracking-tight text-xl"
+                >@garasubo</a
+            >
+            <slot name="header" />
+        </header>
+
+        <main class="mx-auto max-w-6xl px-4">
+            <slot />
+        </main>
+    </body>
+</html>

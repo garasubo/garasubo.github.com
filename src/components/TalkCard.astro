@@ -1,0 +1,8 @@
+---
+const { href, title, eventTitle, eventHref  } = Astro.props;
+---
+
+<div class="p-5 border rounded-2xl shadow-sm hover:shadow-md transition focus-visible:ring-2">
+    <h3 class="font-semibold mb-1"><a href={href} class="hover:opacity-90"  target="_blank" rel="noopener noreferrer">{title}</a></h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400">in <a class="hover:opacity-90" href={eventHref} target="_blank" rel="noopener norefferrer">{eventTitle}</a></p>
+</div>

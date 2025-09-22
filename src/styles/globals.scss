@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+--bg: 255 255 255; /* white */
+--fg: 17 24 39; /* slate-900 */
+--muted: 107 114 128; /* gray-500 */
+--card: 249 250 251; /* gray-50 */
+--accent: 59 130 246; /* blue-500 */
+}
+.dark {
+--bg: 17 24 39; /* slate-900 */
+--fg: 243 244 246; /* gray-100 */
+--muted: 148 163 184; /* slate-400 */
+--card: 30 41 59; /* slate-800 */
+--accent: 96 165 250; /* blue-400 */
+}
+
+
+html { scroll-behavior: smooth; }
+body {
+@apply antialiased font-sans;
+background-color: rgb(var(--bg));
+color: rgb(var(--fg));
+}
+
+
+/* card hover */
+.card {
+@apply rounded-2xl border border-white/10 shadow-sm transition-transform duration-150 ease-out;
+background-color: color-mix(in oklab, rgb(var(--card)) 85%, transparent);
+}
+.card:hover { @apply -translate-y-0.5 shadow; }
+
+
+/* focus ring */
+:focus-visible { @apply outline-none ring-2 ring-offset-2 ring-blue-500 ring-offset-transparent; }
+
+
+/* link */
+.prose a { @apply underline underline-offset-4 decoration-2; }
