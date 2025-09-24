@@ -1,0 +1,20 @@
+---
+title: "UbuntuにインストールされたVMware Playerをアンインストール"
+pubDate: "2014-10-07"
+tags: []
+description: "UbuntuかVMware Playerをアンインストールする方法とvmware-installerの使い方"
+---
+
+タイトルの通り。aptで入れたわけでないのでどうするのかなあと思ったら、
+`vmware-uninstall`ってコマンドあったから打ってみたところ、
+
+    The vmware-uninstall* scripts have been deprecated.  Instead, please use
+    the vmware-installer.
+
+    Long form:
+      vmware-installer --uninstall-product PRODUCT
+    Short form:
+      vmware-installer -u PRODUCT
+とのこと。
+
+なのでおとなしく、`vmware-installer --uninstall-product vmware-player`と入れたら消えたみたい。

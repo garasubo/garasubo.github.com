@@ -1,0 +1,44 @@
+---
+title: "Sublime Text 2を使ってみる"
+pubDate: "2012-11-16"
+tags: []
+description: "恋に落ちるエディタSublime Text 2の導入と使用感について"
+---
+
+こんな記事を見たのがきっかけ  
+[”恋に落ちるエディタ”「Sublime Text」 完全入門ガイド！ | デザイナーブログ | 株式会社LIG](http://liginc.co.jp/designer/archives/6774)  
+
+普段はvimを愛用して、たしかに単体のファイルを編集する分にはいいのだが、
+ある程度のプロジェクトを管理するために便利なものはないかなあと思っていたが、これは便利そうだなと思った。
+
+導入方法とかはさっきの記事にあるので割愛。  
+ただし、package controlのインストールのところだけはなんかコピペじゃうまくいかなかった。
+[公式](http://wbond.net/sublime_packages/package_control/installation)のところにあるのをコピペしたらうまくいった。
+
+設定として、まずはvimキーバインドを使いたいので、
+Preferences > Setting --Defaultを開き、
+    "ignored_packages": ["Vintage"]
+とかなっているのを
+    "ignored_packages": []
+としてやれば、Vintageというパッケージが有効化されvimのコマンドが使えるようになる。  
+参考:[Sublime Text 2をvim風に操作するには、プラグインすら不要でした。設定の変更のみ。](http://ginpen.com/2012/07/15/vim-for-sublime-text/)  
+ただし、すべてのコマンドが使えるわけでなく:eとか:qとかは使えない。
+
+あと、タブをスペースに展開したかったので  
+[Sublime TextでHaskell編集時のタブをスペース4つにする](http://d.hatena.ne.jp/soikw/20120603/1338713309)
+にあった設定をSetting --Usersに追加した。
+
+便利だと思う機能としてCtr-pでのファイルサーチで、
+今までだと、あるディレクトリの下にあるファイルとかをそのディレクトリ
+名をいちいち入力しなきゃならなかったのが、その手間が省けて便利。
+
+他にもいろいろな便利なショートカットがあるらしく、  
+[ Emacs, Vim, Sublime Text 2 徹底比較](http://funatti.hatenablog.com/entry/2012/07/13/155629)  
+とかいう記事がそれなりにまとまっている。
+
+とまあ、便利そうなんだけど、やっぱり新しいツールとだけあって自分はまださぐりさぐりの状態で使っている。  
+makeコマンドをsublimeから呼び出したいのだが、build systemとかいうのを使えばできるのか？
+
+あとはgitとかとの連携もできるらしいけど、そのへんもよくわかんない。
+
+

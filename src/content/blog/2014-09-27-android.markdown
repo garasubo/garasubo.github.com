@@ -1,0 +1,50 @@
+---
+title: "Android開発あれこれ"
+pubDate: "2014-09-27"
+tags: []
+description: "Android開発で使用したツールやライブラリ、参考資料のまとめ"
+---
+
+Android開発したときのあれこれをまとめ
+
+# Android Studio
+[Android Studio | Android Developers](https://developer.android.com/sdk/installing/studio.html)
+
+公式のSDK。IntelliJベースで、補完とかがとても優秀。
+Viプラグインも結構気に入っている。
+gitignoreとかもデフォルトでちゃんとしていたりと。
+ビルドツールもなかなかよい。
+ただし、gitプラグインの使い勝手はイマイチ。
+まあ、それは別の方法で叩けばいいだけの話であって、
+これなしでのAndroid開発は考えられない。
+
+# シミュレータ
+実機で走らせるとデバッグ実行できなかったりと色々と不都合なので、
+シミュレータを使うことになる。
+しかし、とっても遅くて使い物にならないとまでは言わないが、ストレスがたまる。
+WindowsとMac用にはIntell製のシミュレータが用意されていてSDKマネージャーからインストールでき、それを使えばそこそこ速いらしい。
+しかし、自分はUbuntu使っているので、この方法は使えなかった。
+
+他の方法ではGenymotionというシミュレータがあり、こちらのほうが高速との評価をちらちら見る。
+
+[Genymotion](http://www.genymotion.com/)
+
+こちらは、Virtualbox上で動作する仮想化環境。こちらはUbuntuにも対応しているが、まだ試したことはない。
+Macbookでは試したが、確かに高速。
+ダウンロードに個人情報要求されたりするのが癪ではある。
+トラップとして謎のバグが存在しており、何回かデバッグ実行するとエラーを吐いてアプリが突然死するというものがある。
+そうなった場合は再起動しなければならない。
+
+# ユニットテスト
+Robolectricというのを使った。
+
+[【Android】Android Studio + Gradle + Robolectric！でテストをしよう | Yohei Blog](http://blog.yohei.org/android-studio-gradle-robolectric1/)
+
+[robolectric_deckard-gradle · GitHub](https://github.com/robolectric/deckard-gradle/)
+
+ここらへんを見ながらなんとか導入。
+罠なのが、Android Studioが勝手にパッケージ宣言を補完してくるところで、これがあるとテストが動かない。
+`gradle check`コマンドで簡単にテストできる。ターミナルで実行するよりSDKから叩いたほうが高速（理由はよく知らないけど中間ファイルか何かを再利用していたりするのか）。
+画面遷移等もチェックできるらしのだが、そこまではよく分からなかった。
+しかし、Shared PreferenceとかAndroid固有の機能が絡んでくる動作もちゃんとテスト出来るのはうれしい。
+

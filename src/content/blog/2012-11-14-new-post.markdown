@@ -1,0 +1,41 @@
+---
+title: "Octopress導入記"
+pubDate: "2012-11-14"
+tags: ["blog"]
+description: "Octopressを導入するまでの手順とrvmを使ったRuby環境構築の記録"
+---
+
+octopressを導入するまで
+
+##ruby 1.9を導入
+octopressを動かすにはruby 1.9以上が必要。
+自分のubuntu 12.04には1.8.7しか入っていなかったのでrvmというものをつかって導入。
+rvmとはrubyの複数のバージョンを管理するためのツールで、これを使うとrubyの様々なバージョンをインストールすることが可能。
+
+で、「rvm インストール」とかで検索したらいろいろな方法があるのだが、どうもうまくいかない。
+twitterでヘルプを投げたところ@ompugaoさんから教えてもらった方法がうまくいった。
+
+1. curl -L get.rvm.io | bash -s stable
+2. rvm requirementsで必要なパッケージを確認してinstall
+3. rvm install ruby-1.9.3
+
+これをやる前にうっかりaptitudeでrvm-rubyをinstallしちゃったら
+    It looks you are one of the happy Ubuntu users, 
+    RVM packaged by Ubuntu is old and broken, 
+とか言われる。happyだから仕方ないね。
+まあ、解決策もちゃんとでてきて
+[Installed Ruby 1.9.3 with RVM but command line doesn't show ruby -v](http://stackoverflow.com/questions/9056008/installed-ruby-1-9-3-with-rvm-but-command-line-doesnt-show-ruby-v/9056395#9056395)
+の言われたとおりにすれば直った。
+
+それで
+    rvm 1.9.3
+とかすれば、バージョン1.9.3が使える。が、シェルの設定でログインシェルとして使用するとかいうのをチェックしないとうまくいかない。
+
+##octopress導入
+
+[GithubとOctopressでモダンな技術系ブログを作ってみる](http://blog.glidenote.com/blog/2011/11/07/install-octopress-on-github/)
+あたりを参考にすれば何とかなる。
+
+あとつまずいたのは、実際の記事を書くときになぜかファイルの文字コードがutf-8になっていなくてrake generateでコケたことくらいか。
+
+
