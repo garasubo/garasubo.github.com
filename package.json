@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astro-community/astro-embed-link-preview": "^0.2.2",
     "astro": "^5.13.8"
   },
   "devDependencies": {
