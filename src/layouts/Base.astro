@@ -1,10 +1,28 @@
 ---
+import type { ImageMetadata } from 'astro';
 const {
     title = "@garasubo",
     description = "Software Engineer (Rust / IoT / Systems / Web)",
     lang = "ja",
-} = Astro.props;
+    image,
+    imageAlt = '',
+    ogType = 'website',
+} = Astro.props as {
+    title?: string;
+    description?: string;
+    lang?: string;
+    image?: string | ImageMetadata;
+    imageAlt?: string;
+    ogType?: 'website' | 'article';
+};
 import '../styles/globals.scss';
+const canonicalUrl = Astro.url;
+const siteName = '@garasubo';
+const locale = lang === 'ja' ? 'ja_JP' : 'en_US';
+const imagePath = typeof image === 'object' ? image?.src : image;
+const fallbackImage = '/og_image_fallback.png';
+const selectedImage = imagePath ?? fallbackImage;
+const absoluteImageUrl = new URL(selectedImage, canonicalUrl).toString();
 ---
 
 <!doctype html>
@@ -14,6 +32,22 @@ import '../styles/globals.scss';
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{title}</title>
         <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalUrl.toString()} />
+        <!-- Open Graph -->
+        <meta property="og:type" content={ogType} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl.toString()} />
+        <meta property="og:site_name" content={siteName} />
+        <meta property="og:locale" content={locale} />
+        <meta property="og:image" content={absoluteImageUrl} />
+        {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@garasubo" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={absoluteImageUrl} />
         <link rel="icon" href="/favicon.png" type="image/png" />
     </head>
     <body class="min-h-full">
