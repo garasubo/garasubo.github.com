@@ -20,7 +20,7 @@ const canonicalUrl = Astro.url;
 const siteName = '@garasubo';
 const locale = lang === 'ja' ? 'ja_JP' : 'en_US';
 const imagePath = typeof image === 'object' ? image?.src : image;
-const fallbackImage = '/og_image_fallback.png';
+const fallbackImage = '/og_image_fallback.jpg';
 const selectedImage = imagePath ?? fallbackImage;
 const absoluteImageUrl = new URL(selectedImage, canonicalUrl).toString();
 ---
