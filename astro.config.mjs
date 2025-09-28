@@ -6,7 +6,5 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
     site: 'https://garasubo.com',
     output: 'static',
-    integrations: [
-        tailwind(),
-    ],
+    integrations: [tailwind()],
 });
