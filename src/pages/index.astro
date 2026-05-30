@@ -36,8 +36,27 @@ const blogPosts = (await getCollection('blog'))
     .slice(0, 3);
 
 const formatter = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium' });
+
+const siteUrl = new URL('/', Astro.url).toString();
+const jsonLd = [
+    {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: '@garasubo',
+        url: siteUrl,
+    },
+    {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'garasubo',
+        alternateName: '@garasubo',
+        url: siteUrl,
+        jobTitle: 'Software Engineer',
+        sameAs: cta.map((c) => c.href),
+    },
+];
 ---
-<Base title="@garasubo — Software Engineer" description="Rust / IoT / Systems" lang="ja">
+<Base title="@garasubo — Software Engineer" description="Rust / IoT / Systems" lang="ja" jsonLd={jsonLd}>
 
     <!-- Hero -->
     <section class="py-16 md:py-24 text-center">

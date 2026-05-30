@@ -7,6 +7,7 @@ const {
     image,
     imageAlt = '',
     ogType = 'website',
+    jsonLd,
 } = Astro.props as {
     title?: string;
     description?: string;
@@ -14,6 +15,7 @@ const {
     image?: string | ImageMetadata;
     imageAlt?: string;
     ogType?: 'website' | 'article';
+    jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 };
 import '../styles/globals.scss';
 const canonicalUrl = Astro.url;
@@ -23,6 +25,7 @@ const imagePath = typeof image === 'object' ? image?.src : image;
 const fallbackImage = '/og_image_fallback.jpg';
 const selectedImage = imagePath ?? fallbackImage;
 const absoluteImageUrl = new URL(selectedImage, canonicalUrl).toString();
+const twitterCard = image ? 'summary_large_image' : 'summary';
 ---
 
 <!doctype html>
@@ -43,12 +46,17 @@ const absoluteImageUrl = new URL(selectedImage, canonicalUrl).toString();
         <meta property="og:image" content={absoluteImageUrl} />
         {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
         <!-- Twitter -->
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content={twitterCard} />
         <meta name="twitter:site" content="@garasubo" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={absoluteImageUrl} />
+        {imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
         <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="alternate" type="application/rss+xml" title={siteName} href={new URL('/rss.xml', canonicalUrl).toString()} />
+        {jsonLd && (
+            <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+        )}
     </head>
     <body class="min-h-full">
         <header class="mx-auto flex max-w-6xl items-center justify-between px-4 py-6">

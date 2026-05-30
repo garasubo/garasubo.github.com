@@ -21,9 +21,26 @@ const {
 const formatter = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium' });
 const publishedLabel = formatter.format(pubDate);
 const updatedLabel = updatedDate ? formatter.format(updatedDate) : undefined;
+
+const canonicalUrl = Astro.url.toString();
+const imageUrl = new URL(heroImage?.src ?? '/og_image_fallback.jpg', Astro.url).toString();
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description,
+    image: imageUrl,
+    datePublished: pubDate.toISOString(),
+    ...(updatedDate ? { dateModified: updatedDate.toISOString() } : {}),
+    keywords: tags,
+    inLanguage: 'ja',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+    author: { '@type': 'Person', name: 'garasubo', url: new URL('/', Astro.url).toString() },
+    publisher: { '@type': 'Person', name: 'garasubo', url: new URL('/', Astro.url).toString() },
+};
 ---
 
-<Base title={`${title} | @garasubo`} description={description} ogType="article" image={heroImage} imageAlt={title}>
+<Base title={`${title} | @garasubo`} description={description} ogType="article" image={heroImage} imageAlt={title} jsonLd={jsonLd}>
     <article class="mx-auto max-w-3xl py-12">
         <header class="space-y-4">
             <p class="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Blog</p>
