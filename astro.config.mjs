@@ -7,5 +7,13 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
     site: 'https://garasubo.com',
     output: 'static',
-    integrations: [tailwind(), sitemap()],
+    integrations: [
+        tailwind(),
+        sitemap({
+            customPages: [
+                'https://garasubo.com/duel-tools/record/',
+                'https://garasubo.com/duel-tools/combo/',
+            ],
+        }),
+    ],
 });
